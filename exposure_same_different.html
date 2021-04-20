@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Exposure Same Different</title>
+        <!-- <script src='jatos.js'></script> -->
+        <script src='./jspsych-6.3.1/jspsych.js'></script>        
+        <script src='./extra_functions/lodash.js'></script>
+        <script src = './extra_functions/jquery-3.4.1.js' type='text/javascript'></script>
+        <script src="./jspsych-6.3.1/plugins/jspsych-image-keyboard-response.js"></script>
+        <script src="./jspsych-6.3.1/plugins/jspsych-html-keyboard-response.js"></script>
+        <link href='./jspsych-6.3.1/css/jspsych.css' rel='stylesheet' type='text/css'></link>
+        <link href='./extra_files/custom.css' rel='stylesheet' type='text/css'></link>
+    </head>
+    <body></body>
+    <script>
+
+        // jatos.onLoad(function() {
+            debugger
+            var session_trials = [
+                'img/neck_legs_space/stim_1.png',
+                'img/neck_legs_space/stim_2.png',
+                'img/neck_legs_space/stim_3.png',
+                'img/neck_legs_space/stim_4.png',
+                'img/neck_legs_space/stim_6.png',
+                'img/neck_legs_space/stim_7.png',
+                'img/neck_legs_space/stim_8.png',
+            ];
+
+
+
+            // Create the snippets for stimulus trials
+            var session_trials = []
+            for (i=0; i<=session_trials.length; i++){
+                
+                // Create the html snippets for each trial
+                let arena_element = document.createElement('div')
+                arena_element.id = 'arena'
+
+                let prompt_element = document.createElement('P')
+                prompt_element.textContent = 'Same or different?'
+
+                             
+                iImg_element = document.createElement('img')
+                iImg_element.src = session_trials[i]
+                iImg_element.style.height = 100
+                iImg_element.style.width = 100
+
+
+                arena_element.appendChild(prompt_element)   
+                arena_element.appendChild(iImg_element)
+
+                session_trials[i] = {
+                    html_string: arena_element,
+                }
+            }
+
+
+            var session_trials = [
+                {html_string: '<p>Example text!</p>'},
+                {html_string: '<p>Next example!</p>'},
+            ]
+
+            var fixation = {
+                type: 'html-keyboard-response',
+                stimulus: '<p>Is this stimulus same (press Q) or different (press P) than the one before?</p>',
+                choices: jsPsych.NO_KEYS,
+                trial_duration: 500,
+            }
+
+            var exposure_stimuli = {
+                type: 'html-keyboard-response',
+                stimulus: jsPsych.timelineVariable('html_string'),
+                choices: ['q','p'],
+                stimulus_duration: 2000,
+                trial_duration: 2000,
+                response_ends_trial: true,                
+            }
+
+
+
+
+            // var fixation = {
+            //     type: 'html-keyboard-response',
+            //     stimulus: '<div style="font-size:60px;">+</div>',
+            //     choices: jsPsych.NO_KEYS,
+            //     trial_duration: 500,
+            // };
+            
+            // var exposure_stimuli = {
+            //     type: 'image-keyboard-response',
+            //     stimulus: jsPsych.timelineVariable('img_path'),
+            //     stimulus_width: 50,
+            //     choices: ['q','p'],
+            //     prompt: '<p>Is this stimulus same (press Q) or different (press P) than the one before?</p>',
+            //     stimulus_duration: 2000,
+            //     trial_duration: 2000,
+            //     response_ends_trial: true,                    
+            // };
+
+            var session_procedure = {
+                timeline: [exposure_stimuli,fixation],
+                timeline_variables: session_trials,
+                randomize_order: true
+            }
+            
+            jsPsych.init({
+                timeline: [session_procedure],                    
+              
+                on_finish: function(data) {
+                    console.log('Over');
+                    jsPsych.data.displayData('json');
+                }       
+            });
+   
+            // ///////////////////////////////////////////////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////////////////////
+        // });
+    
+    </script>
+</html>

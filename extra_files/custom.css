@@ -40,13 +40,9 @@ ul {
     cursor:default;
 }
 
-/* For the text inside the score box, font size must be smaller, to fit within the scorebox. */
-.score_box p {
-    font-size: 14px; 
-}
-
-
-
-.cells:hover {
-    background-color: red !important;
+#arena {
+    background-color: white;
+    width: 300px;
+    height: 500px;
+    border:2px solid #444;
 }

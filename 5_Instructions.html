@@ -4,13 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
     <title>Instructions</title>	
-	<script src="jspsych-6.1.0/jspsych.js" ></script>
-	<script src='./jspsych-6.1.0/plugins/jspsych-instructions.js'></script>
-	<script src="extra_functions/jspsych-instructions-timer-enhanced.js"></script>
-	<script src='./extra_functions/helper_functions.js'></script>
+	<script src="jspsych-6.3.1/jspsych.js" ></script>
+	<script src='./jspsych-6.3.1/plugins/jspsych-instructions.js'></script>
 	<script src="jatos.js"></script>
-	<link rel="stylesheet" href="jspsych-6.1.0/css/jspsych.css" type="text/css"></link>
-	<link rel="stylesheet" href="./extra_files/congen.css" type="text/css"></link>	
+	<link rel="stylesheet" href="jspsych-6.3.1/css/jspsych.css" type="text/css"></link>
+	<link rel="stylesheet" href="./extra_files/custom.css" type="text/css"></link>	
   </head>
 
   <body>
@@ -19,196 +17,32 @@
 		//start timeline
 		jatos.onLoad(function() {
 
-			// What phase and session is this?
-			let [curr_phase,phase_string,curr_session,curr_global_trial] = getPhaseAndSession() 
-			let curr_concept = jatos.studySessionData.inputData.concepts[phase_string]
-			let nTargets     = jatos.studySessionData.inputData.basic_parameters.nTargets
-
-			// Create HTML elements 
-			let targets_on_page = document.createElement('div')
-			targets_on_page.id = 'targets_on_page'
-			targets_on_page.style = 'display: flex; justify-content: center; align-items: center;'
-
-			let names_on_page = document.createElement('div')
-			names_on_page.id = 'names_on_page'
-			names_on_page.style = 'display: flex; justify-content: center; align-items: center;'
-
-			// Load the target_grid_element, showing which targets we're using
-			let target_grid_element = createTargetGridForInstructions();
-
-			// What component to start next
-			var comp_to_start;
-			curr_phase == 1 ? comp_to_start = jatos.studySessionData.script_comp_pos.practice_trials : comp_to_start = jatos.studySessionData.script_comp_pos.phase_pa
-
+		
 			//make a timeline
 			let timeline =[]; 
 
 			// Define pages for phase 1
-			let phase_1_pages = [			
-				// 1.	
+			let instruction_pages = [			
 				'<div class= "header">'+
-					'<h1> Game Instructions </h1>'+
+					'<h1> Instructions </h1>'+
 				'</div>'+	
 				'<div class="instruct">'+
 					'<p>Welcome to the experiment!</p>' + 
-					'<p>You will play a game that will test your perception and memory skills!</p>' +
-					'<p>The game consists of ' + jatos.studySessionData.max_phases 
-						+ ' learning phases, and a debriefing survey at the end.</p>' +
-					'<p>Lets start with phase 1 of learning. </p>' +
-				'</div>',
-				// 2.
-				'<div class= "header">'+
-					'<h1> Please go into fullscreen mode by pressing F11 (windows) or Control+Command+F (Mac) </h1>'+
-				'</div>',
-				// 3.								
-				'<div class= "header">'+
-					'<h1> Phase '+ curr_phase +' Instructions </h1>'+
-				'</div>'+	
-				'<div class="instruct">'+
-					'<p>Below, you can see some examples of ' + 
-						curr_concept.concept_object + 
-						's that differ from each other by the length of their ' + 
-						curr_concept.dim1_name + ' and ' + 
-						curr_concept.dim2_name + '.</p>' + 
-					'<div id="all_pictures">' +
-						'<img src="./img/initial_all_pictures/'+ 
-						curr_concept.concept_space 
-						+'.png" alt="all_pictures" '+
-						'style="height:60%;width:60%; object-fit:contain;"></img>' + 
-					"</div>" +
-					'<p> '+ nTargets +
-						' of these ' + curr_concept.concept_object + 
-						's are associated with the ' + 
-						nTargets +
-						' toys you see below. Think of it as a game where '+ nTargets +
-						' of these ' + curr_concept.concept_object + 
-						's are "hiding" the ' + 
-						nTargets +
-						' toys.</p>' +
-						target_grid_element.outerHTML +
-						'<p>Your job is to find out which of the '+ 
-						nTargets +' ' + 
-						curr_concept.concept_object + 
-						' are hiding which of these toys as fast as you can! ' + 
-					'</p>' +
-				'</div>',
-				// 4.
-				'<div class= "header">'+
-					'<h1> Phase '+ curr_phase +' Instructions </h1>'+
-				'</div>'+	
-				'<div class="instruct"> <br>'+
-					'<p>On each trial of learning, you will see one of the toys and two suspect ' + 
-					curr_concept.concept_object + 's on the screen.</p>' + 
-					'<p>You will have to learn which of the two ' + 
-					curr_concept.concept_object + 's is hiding the toy you see.</p>' +
-					'<p>Use the "1" and "2" keys of your keyboard to make your choice.</p>' +
-					'<p>You will then see if your were right or wrong.</p>' +								
-				'</div>',
-				// 5. 
-				'<div class= "header">'+
-					'<h1> Phase '+ curr_phase +' Instructions </h1>'+
-				'</div>'+	
-				'<div class="instruct"> <br>'+
-					'<p>In the beginning, you will have to just guess the right answers.</p>' +
-					'<p>Hopefully, after some trials you will learn to quickly recognize the '+ curr_concept.concept_object 
-					+ 's that hide each toy.</p>' +								
-				'</div>',		
-				// 6.					
-				'<div class= "header">'+
-					'<h1> Phase '+ curr_phase +' Instructions </h1>'+
-				'</div>'+	
-				'<div class="instruct"> <br>'+
-					'<p>Before beginning the actual experiment, lets do <b> '+ 
-						jatos.studySessionData.n_practice_trials + 
-						'</b> practice trials for the game,' + 
-						' to familiarize you with how things will appear on the screen and what buttons to use.' +
-					'<p><b>You will have ' + (jatos.studySessionData.timer_response_window/1000) + 
-					' seconds on each trial to make your response!</b> </p>' +
-					'<p>Please be as fast and as accurate as you can!</p>' +							
-				'</div>',																												
-			];
-
-			let phase_2_pages = [
-				// 1.
-				'<div class= "header">'+
-					'<h1> Phase '+curr_phase+' Instructions </h1>'+
-				'</div>'+	
-				'<div class="instruct"> <br>'+
-					'<p> Welcome to phase 2 of the experiment!</p>' + 
-					'<p> Phase 2 is similar to phase 1, but with important differences. </p>' +
-					'<p> <strong> You will learn different associations, and will no longer have any practice sessions</strong>. </p>' +								
-				'</div>',
-				// 2.
-				phase_1_pages[2],
-				// 3.
-				phase_1_pages[3],
-				// 4.
-				phase_1_pages[4],
-
-				// 5.
-				'<div class= "header">'+
-					'<h1> Phase '+curr_phase+' Instructions </h1>'+
-				'</div>'+	
-				'<div class="instruct"> <br>'+
-					'<p><b>Remember, there is NO practice trial for this phase.</b> You are now starting the real learning trials!</p>' +
-					'<p>You will have ' + (jatos.studySessionData.timer_response_window/1000) + ' seconds on each trial to make your response! </p>' +
-					'<p>Click Next to begin.</p>' +								
-				'</div>',
-			];
-
-			let phase_3_pages = [
-				// 1. 				
-				'<div class= "header">'+
-					'<h1> Phase 3 Instructions </h1>'+
-				'</div>'+	
-				'<div class="instruct">'+
-					'<p> Welcome to the final 3rd phase of the experiment!</p>' + 
-					'<p> <b>This phase is the same as phase 1</b>, so it will test how well you can remember the associations from phase 1.</p>' +
-					'<p> <strong>Note that you will NOT have any practice sessions.</strong> </p>' +
-				'</div>',
-				// 2.
-				phase_1_pages[2],
-				// 3.
-				phase_1_pages[3],
-				// 4.
-				phase_1_pages[4],
-				
-				// 5.
-				phase_2_pages[4]																											
+				'</div>',																										
 			];
 
 			let instructions = {
-				phase_1: {
-					type: 'instructions',
-					pages : phase_1_pages,						
-					show_clickable_nav: true,
-					button_label_next: '<span style="color: black"d;> <strong> Next </stong></span>',
-				},
-				phase_2: {
-					type: 'instructions-timer-enhanced',
-					pages : phase_2_pages,
-					show_clickable_nav: true,
-					button_label_next: '<span style="color: black"d;> <strong> Next </stong></span>',
-					timer_on: false
-				},
-				phase_3: {
-					type: 'instructions',
-					pages : phase_3_pages,
-						
-						show_clickable_nav: true,
-						button_label_next: '<span style="color: black"d;> <strong> Next </stong></span>',
-				},
+				type: 'instructions',
+				pages : instruction_pages,						
+				show_clickable_nav: true,
+				button_label_next: '<span style="color: black"d;> <strong> Next </stong></span>',
 			};
 
-			timeline.push(instructions[phase_string]);
-			
-			let imgs_to_preload = [...jatos.studySessionData.inputData.basic_parameters.targetPathsUsed[phase_string], './img/initial_all_pictures/'+ 
-						curr_concept.concept_space +'.png']
-			
+			timeline.push(instructions);
+
 			jsPsych.init({
 				
 				timeline: timeline,
-				preload_images: imgs_to_preload,
 
 				on_finish: function(data) {
 
@@ -218,12 +52,12 @@
                     jatos.studySessionData.latestFinishedComponentTitle = jatos.componentProperties.title;
 
 					// Record results
-					jatos.studySessionData.outputData.instructions_results[phase_string] = jsPsych.data.get().values()[0];
+					// jatos.studySessionData.outputData.instructions_results = jsPsych.data.get().values()[0];
 
-					jatos.submitResultData('[instructions_start_' + phase_string + '---' + 
+					jatos.submitResultData('[instructions_start_' + '---' + 
 					JSON.stringify(jatos.studySessionData) +
-					'---' + phase_string + '_instructions_end]', 
-					jatos.startComponentByPos(comp_to_start));
+					'---' + '_instructions_end]', 
+					jatos.startNextComponent);
 
 					// jsPsych.data.displayData();
 				}
