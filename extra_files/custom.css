@@ -42,7 +42,26 @@ ul {
 
 #arena {
     background-color: white;
-    width: 300px;
-    height: 500px;
+    width: 600px;
+    height: 600px;
     border:2px solid #444;
+}
+
+.exposure_exemplars {
+    height: 500px;
+    margin: 10px;
+}
+
+.exposure_prompt_text {
+    margin: 5px;
+    font-size: 90%;
+}
+
+.hline {
+    height: 2px;
+    width: 25%;
+    border: 0;
+    border-top: 1px solid rgb(0, 0, 0);
+    margin: auto;
+    /* padding: 0; */
 }

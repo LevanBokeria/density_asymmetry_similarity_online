@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Exposure Same Different</title>
-        <!-- <script src='jatos.js'></script> -->
+        <script src='jatos.js'></script>
         <script src='./jspsych-6.3.1/jspsych.js'></script>        
         <script src='./extra_functions/lodash.js'></script>
         <script src = './extra_functions/jquery-3.4.1.js' type='text/javascript'></script>
@@ -14,97 +14,169 @@
     <body></body>
     <script>
 
-        // jatos.onLoad(function() {
-            debugger
-            var session_trials = [
-                'img/neck_legs_space/stim_1.png',
-                'img/neck_legs_space/stim_2.png',
-                'img/neck_legs_space/stim_3.png',
-                'img/neck_legs_space/stim_4.png',
-                'img/neck_legs_space/stim_6.png',
-                'img/neck_legs_space/stim_7.png',
-                'img/neck_legs_space/stim_8.png',
+        jatos.onLoad(function() {
+            
+            var img_paths = [
+                'img/neck_legs_space/dim_1_stim_1_x_20_y_110.png',
+                'img/neck_legs_space/dim_1_stim_2_x_22_y_110.png',
+                'img/neck_legs_space/dim_1_stim_3_x_24_y_110.png',
+                'img/neck_legs_space/dim_1_stim_4_x_26_y_110.png',
+                'img/neck_legs_space/dim_1_stim_5_x_28_y_110.png',
+                'img/neck_legs_space/dim_1_stim_6_x_30_y_110.png',
+                'img/neck_legs_space/dim_1_stim_7_x_32_y_110.png',
+                'img/neck_legs_space/dim_1_stim_8_x_34_y_110.png',
+                'img/neck_legs_space/dim_1_stim_9_x_36_y_110.png',
+                'img/neck_legs_space/dim_1_stim_10_x_38_y_110.png',
+                'img/neck_legs_space/dim_1_stim_11_x_40_y_110.png',
+                'img/neck_legs_space/dim_1_stim_12_x_42_y_110.png',
+                'img/neck_legs_space/dim_1_stim_13_x_44_y_110.png',
+                'img/neck_legs_space/dim_1_stim_14_x_46_y_110.png',
+                'img/neck_legs_space/dim_1_stim_15_x_48_y_110.png',
+                'img/neck_legs_space/dim_1_stim_16_x_50_y_110.png',
+                'img/neck_legs_space/dim_1_stim_17_x_52_y_110.png',
+                'img/neck_legs_space/dim_1_stim_18_x_54_y_110.png',
+                'img/neck_legs_space/dim_1_stim_19_x_56_y_110.png',
+                'img/neck_legs_space/dim_1_stim_20_x_58_y_110.png',
+                'img/neck_legs_space/dim_1_stim_21_x_60_y_110.png',
+                'img/neck_legs_space/dim_1_stim_22_x_62_y_110.png',
+                'img/neck_legs_space/dim_1_stim_23_x_64_y_110.png',
+                'img/neck_legs_space/dim_1_stim_24_x_66_y_110.png',
+                'img/neck_legs_space/dim_1_stim_25_x_68_y_110.png',
+                'img/neck_legs_space/dim_1_stim_26_x_70_y_110.png',
+                'img/neck_legs_space/dim_1_stim_27_x_72_y_110.png',
+                'img/neck_legs_space/dim_1_stim_28_x_74_y_110.png',
+                'img/neck_legs_space/dim_1_stim_29_x_76_y_110.png',
+                'img/neck_legs_space/dim_1_stim_30_x_78_y_110.png',
+                'img/neck_legs_space/dim_1_stim_31_x_80_y_110.png',
+                'img/neck_legs_space/dim_1_stim_32_x_82_y_110.png',
+                'img/neck_legs_space/dim_1_stim_33_x_84_y_110.png',
+                'img/neck_legs_space/dim_1_stim_34_x_86_y_110.png',
+                'img/neck_legs_space/dim_1_stim_35_x_88_y_110.png',
+                'img/neck_legs_space/dim_1_stim_36_x_90_y_110.png',
+                'img/neck_legs_space/dim_1_stim_37_x_92_y_110.png',
+                'img/neck_legs_space/dim_1_stim_38_x_94_y_110.png',
+                'img/neck_legs_space/dim_1_stim_39_x_96_y_110.png',
+                'img/neck_legs_space/dim_1_stim_40_x_98_y_110.png',
+                'img/neck_legs_space/dim_1_stim_41_x_100_y_110.png',
+                'img/neck_legs_space/dim_1_stim_42_x_102_y_110.png',
+                'img/neck_legs_space/dim_1_stim_43_x_104_y_110.png',
+                'img/neck_legs_space/dim_1_stim_44_x_106_y_110.png',
+                'img/neck_legs_space/dim_1_stim_45_x_108_y_110.png',
+                'img/neck_legs_space/dim_1_stim_46_x_110_y_110.png',
+                'img/neck_legs_space/dim_1_stim_47_x_112_y_110.png',
+                'img/neck_legs_space/dim_1_stim_48_x_114_y_110.png',
+                'img/neck_legs_space/dim_1_stim_49_x_116_y_110.png',
+                'img/neck_legs_space/dim_1_stim_50_x_118_y_110.png',
+                'img/neck_legs_space/dim_1_stim_51_x_120_y_110.png',
+                'img/neck_legs_space/dim_1_stim_52_x_122_y_110.png',
+                'img/neck_legs_space/dim_1_stim_53_x_124_y_110.png',
+                'img/neck_legs_space/dim_1_stim_54_x_126_y_110.png',
+                'img/neck_legs_space/dim_1_stim_55_x_128_y_110.png',
+                'img/neck_legs_space/dim_1_stim_56_x_130_y_110.png',
+                'img/neck_legs_space/dim_1_stim_57_x_132_y_110.png',
+                'img/neck_legs_space/dim_1_stim_58_x_134_y_110.png',
+                'img/neck_legs_space/dim_1_stim_59_x_136_y_110.png',
+                'img/neck_legs_space/dim_1_stim_60_x_138_y_110.png',
+                'img/neck_legs_space/dim_1_stim_61_x_140_y_110.png',
+                'img/neck_legs_space/dim_1_stim_62_x_142_y_110.png',
+                'img/neck_legs_space/dim_1_stim_63_x_144_y_110.png',
+                'img/neck_legs_space/dim_1_stim_64_x_146_y_110.png',
+                'img/neck_legs_space/dim_1_stim_65_x_148_y_110.png',
+                'img/neck_legs_space/dim_1_stim_66_x_150_y_110.png',
+                'img/neck_legs_space/dim_1_stim_67_x_152_y_110.png',
+                'img/neck_legs_space/dim_1_stim_68_x_154_y_110.png',
+                'img/neck_legs_space/dim_1_stim_69_x_156_y_110.png',
+                'img/neck_legs_space/dim_1_stim_70_x_158_y_110.png',
+                'img/neck_legs_space/dim_1_stim_71_x_160_y_110.png',
+                'img/neck_legs_space/dim_1_stim_72_x_162_y_110.png',
+                'img/neck_legs_space/dim_1_stim_73_x_164_y_110.png',
+                'img/neck_legs_space/dim_1_stim_74_x_165_y_110.png',
+                'img/neck_legs_space/dim_1_stim_75_x_175_y_110.png',
+                'img/neck_legs_space/dim_1_stim_76_x_185_y_110.png',
+                'img/neck_legs_space/dim_1_stim_77_x_195_y_110.png',
+                'img/neck_legs_space/dim_1_stim_78_x_205_y_110.png',
+                'img/neck_legs_space/dim_1_stim_79_x_215_y_110.png',
+                'img/neck_legs_space/dim_1_stim_80_x_225_y_110.png',
+                'img/neck_legs_space/dim_1_stim_81_x_235_y_110.png',
+                'img/neck_legs_space/dim_1_stim_82_x_245_y_110.png',
+                'img/neck_legs_space/dim_1_stim_83_x_255_y_110.png',
+                'img/neck_legs_space/dim_1_stim_84_x_265_y_110.png',
+                'img/neck_legs_space/dim_1_stim_85_x_275_y_110.png',
+                'img/neck_legs_space/dim_1_stim_86_x_285_y_110.png',
+                'img/neck_legs_space/dim_1_stim_87_x_295_y_110.png',
+                'img/neck_legs_space/dim_1_stim_88_x_305_y_110.png',
+                'img/neck_legs_space/dim_1_stim_89_x_315_y_110.png',
+                'img/neck_legs_space/dim_1_stim_90_x_325_y_110.png',
+                'img/neck_legs_space/dim_1_stim_91_x_335_y_110.png',
+                'img/neck_legs_space/dim_1_stim_92_x_345_y_110.png',
             ];
-
-
 
             // Create the snippets for stimulus trials
             var session_trials = []
-            for (i=0; i<=session_trials.length; i++){
+
+            for (i=0; i<=img_paths.length; i++){
                 
                 // Create the html snippets for each trial
                 let arena_element = document.createElement('div')
                 arena_element.id = 'arena'
 
                 let prompt_element = document.createElement('P')
-                prompt_element.textContent = 'Same or different?'
+                prompt_element.className = 'exposure_prompt_text'
+                prompt_element.textContent = 'Is the bird the same as the one before? P=same, Q=different'
 
-                             
+                // Add the border elements
+                border_element = document.createElement('div')
+                border_element.className = 'hline'
+
                 iImg_element = document.createElement('img')
-                iImg_element.src = session_trials[i]
-                iImg_element.style.height = 100
-                iImg_element.style.width = 100
-
+                iImg_element.className = 'exposure_exemplars'
+                iImg_element.src = img_paths[i]
 
                 arena_element.appendChild(prompt_element)   
+                // arena_element.appendChild(border_element)
                 arena_element.appendChild(iImg_element)
+                // arena_element.appendChild(border_element)
 
                 session_trials[i] = {
-                    html_string: arena_element,
+                    html_string: arena_element.outerHTML,
                 }
             }
 
+            // For the fixation trials, create an html element of a blank arena, wiht the prompt text
+            let fixation_arena_element = document.createElement('div')
+            fixation_arena_element.id = 'arena'
 
-            var session_trials = [
-                {html_string: '<p>Example text!</p>'},
-                {html_string: '<p>Next example!</p>'},
-            ]
+            let fixation_prompt_element = document.createElement('P')
+            fixation_prompt_element.textContent = 'Is the bird the same as the one before? P=same, Q=different'
+            fixation_prompt_element.className = 'exposure_prompt_text'
+            fixation_arena_element.appendChild(fixation_prompt_element)
 
             var fixation = {
                 type: 'html-keyboard-response',
-                stimulus: '<p>Is this stimulus same (press Q) or different (press P) than the one before?</p>',
+                stimulus: fixation_arena_element.outerHTML,
                 choices: jsPsych.NO_KEYS,
-                trial_duration: 500,
+                trial_duration: jatos.studySessionData.iti_duration,
             }
 
             var exposure_stimuli = {
                 type: 'html-keyboard-response',
                 stimulus: jsPsych.timelineVariable('html_string'),
                 choices: ['q','p'],
-                stimulus_duration: 2000,
-                trial_duration: 2000,
-                response_ends_trial: true,                
+                stimulus_duration: jatos.studySessionData.trial_duration,
+                trial_duration: jatos.studySessionData.trial_duration,
+                response_ends_trial: false,                
             }
 
-
-
-
-            // var fixation = {
-            //     type: 'html-keyboard-response',
-            //     stimulus: '<div style="font-size:60px;">+</div>',
-            //     choices: jsPsych.NO_KEYS,
-            //     trial_duration: 500,
-            // };
-            
-            // var exposure_stimuli = {
-            //     type: 'image-keyboard-response',
-            //     stimulus: jsPsych.timelineVariable('img_path'),
-            //     stimulus_width: 50,
-            //     choices: ['q','p'],
-            //     prompt: '<p>Is this stimulus same (press Q) or different (press P) than the one before?</p>',
-            //     stimulus_duration: 2000,
-            //     trial_duration: 2000,
-            //     response_ends_trial: true,                    
-            // };
-
             var session_procedure = {
-                timeline: [exposure_stimuli,fixation],
+                timeline: [exposure_stimuli, fixation],
                 timeline_variables: session_trials,
                 randomize_order: true
             }
             
             jsPsych.init({
-                timeline: [session_procedure],                    
+                timeline: [session_procedure],  
+                preload_images: img_paths, 
+                // show_progress_bar: true,                 
               
                 on_finish: function(data) {
                     console.log('Over');
@@ -114,7 +186,7 @@
    
             // ///////////////////////////////////////////////////////////////////////////////////////////////
             //////////////////////////////////////////////////////////////////////////////////////////////////
-        // });
+        });
     
     </script>
 </html>

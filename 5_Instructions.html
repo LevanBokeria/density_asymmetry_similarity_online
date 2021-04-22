@@ -6,6 +6,7 @@
     <title>Instructions</title>	
 	<script src="jspsych-6.3.1/jspsych.js" ></script>
 	<script src='./jspsych-6.3.1/plugins/jspsych-instructions.js'></script>
+	<script src='./jspsych-6.3.1/plugins/jspsych-html-slider-response.js'></script>
 	<script src="jatos.js"></script>
 	<link rel="stylesheet" href="jspsych-6.3.1/css/jspsych.css" type="text/css"></link>
 	<link rel="stylesheet" href="./extra_files/custom.css" type="text/css"></link>	
@@ -27,9 +28,32 @@
 					'<h1> Instructions </h1>'+
 				'</div>'+	
 				'<div class="instruct">'+
-					'<p>Welcome to the experiment!</p>' + 
+					'<p>Welcome to the session!</p>' + 
+					'<p>One each trial, you will see a picture of a bird displayed. Sometimes, the same bird will be shown, one after another. Your job on each trial is to press the button P if the bird shown is the same as the one before, or the button Q if it is different. </p>' + 
 				'</div>',																										
 			];
+
+			var trial_duration_page = {
+				type: 'html-slider-response',
+				stimulus: '<p>Trial duration</p>',
+				labels: ['500','750','1000', '1250','1500', '1750','2000', '2250','2500', '2750','3000', '3250','3500', '3750','4000'],
+				min: 500,
+				max: 4000,
+				step: 100,
+				slider_start: 2000,
+				prompt: "<p>Choose the duration of each trial</p>"
+			};
+
+			var iti_duration_page = {
+				type: 'html-slider-response',
+				stimulus: '<p>ITI duration</p>',
+				labels: ['100','200','300','400','500','600','700','800','900','1000'],
+				min: 100,
+				max: 1000,
+				step: 100,
+				slider_start: 500,
+				prompt: "<p>Choose the duration for ITI</p>"
+			};			
 
 			let instructions = {
 				type: 'instructions',
@@ -38,6 +62,8 @@
 				button_label_next: '<span style="color: black"d;> <strong> Next </stong></span>',
 			};
 
+			timeline.push(trial_duration_page);
+			timeline.push(iti_duration_page);
 			timeline.push(instructions);
 
 			jsPsych.init({
@@ -52,7 +78,11 @@
                     jatos.studySessionData.latestFinishedComponentTitle = jatos.componentProperties.title;
 
 					// Record results
-					// jatos.studySessionData.outputData.instructions_results = jsPsych.data.get().values()[0];
+					debugger
+					var results = jsPsych.data.get().values();
+
+					jatos.studySessionData.trial_duration = results[0].response
+					jatos.studySessionData.iti_duration = results[1].response
 
 					jatos.submitResultData('[instructions_start_' + '---' + 
 					JSON.stringify(jatos.studySessionData) +
