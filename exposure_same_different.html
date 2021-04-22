@@ -8,6 +8,7 @@
         <script src = './extra_functions/jquery-3.4.1.js' type='text/javascript'></script>
         <script src="./jspsych-6.3.1/plugins/jspsych-image-keyboard-response.js"></script>
         <script src="./jspsych-6.3.1/plugins/jspsych-html-keyboard-response.js"></script>
+        <script src="./jspsych-6.3.1/plugins/jspsych-preload.js"></script>
         <link href='./jspsych-6.3.1/css/jspsych.css' rel='stylesheet' type='text/css'></link>
         <link href='./extra_files/custom.css' rel='stylesheet' type='text/css'></link>
     </head>
@@ -173,9 +174,14 @@
                 randomize_order: true
             }
             
+            var preload = {
+                type: 'preload',
+                auto_preload: true,
+                show_progress_bar: true, 
+            }
+
             jsPsych.init({
-                timeline: [session_procedure],  
-                preload_images: img_paths, 
+                timeline: [preload,session_procedure],  
                 // show_progress_bar: true,                 
               
                 on_finish: function(data) {
