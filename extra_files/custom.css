@@ -52,6 +52,14 @@ ul {
     margin: 10px;
 }
 
+#mask {
+    background-color: gray;
+    height: 450px;
+    width: 300px;
+    margin: auto;
+    
+}
+
 .exposure_prompt_text {
     margin: 5px;
     font-size: 90%;

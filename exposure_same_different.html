@@ -152,14 +152,35 @@
             fixation_prompt_element.className = 'exposure_prompt_text'
             fixation_arena_element.appendChild(fixation_prompt_element)
 
-            var fixation = {
+            // Create a gray squared mask
+            let mask_arena_element = document.createElement('div')
+            mask_arena_element.id = 'arena'
+
+            let mask_prompt_element = document.createElement('P')
+            mask_prompt_element.textContent = 'Is the bird the same as the one before? P=same, Q=different'
+            mask_prompt_element.className = 'exposure_prompt_text'
+
+            let mask_square = document.createElement('div')
+            mask_square.id = 'mask'
+
+            mask_arena_element.appendChild(mask_prompt_element)
+            mask_arena_element.appendChild(mask_square)
+
+            var mask_trial = {
+                type: 'html-keyboard-response',
+                stimulus: mask_arena_element.outerHTML,
+                choices: jsPsych.NO_KEYS,
+                trial_duration: jatos.studySessionData.mask_duration,
+            }
+
+            var fixation_trial = {
                 type: 'html-keyboard-response',
                 stimulus: fixation_arena_element.outerHTML,
                 choices: jsPsych.NO_KEYS,
                 trial_duration: jatos.studySessionData.iti_duration,
             }
 
-            var exposure_stimuli = {
+            var exposure_trial = {
                 type: 'html-keyboard-response',
                 stimulus: jsPsych.timelineVariable('html_string'),
                 choices: ['q','p'],
@@ -169,7 +190,7 @@
             }
 
             var session_procedure = {
-                timeline: [exposure_stimuli, fixation],
+                timeline: [exposure_trial, fixation_trial,mask_trial],
                 timeline_variables: session_trials,
                 randomize_order: true
             }
