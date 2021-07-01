@@ -73,3 +73,8 @@ ul {
     margin: auto;
     /* padding: 0; */
 }
+
+#query_img_el {
+    height: 50px;
+    width: 50px;
+}
