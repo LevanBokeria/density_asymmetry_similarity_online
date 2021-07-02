@@ -17,7 +17,7 @@
         jatos.onLoad(function() {
         // debugger
         // List of triplets
-        const triplet_list = [
+        var triplet_list = [
             [50,20,110],
             [120,90,180],
             [230,200,290],
@@ -89,6 +89,9 @@
             [290,40,85]
             ]
 
+        triplet_list = jsPsych.randomization.shuffle(triplet_list)
+
+        // debugger
         // Create the timeline variable
         var timeline_trials = [];
         
@@ -111,23 +114,46 @@
             // ref2_img_el.style.width = '50'
 
 
+            if (i%2 == 0){
+                var ref1_pos_x = 30
+                var ref2_pos_x = 430
+            } else {
+                var ref1_pos_x = 430
+                var ref2_pos_x = 30
+            }
+
+            // debugger
+
+            if (jatos.studySessionData.jitter.Jitter == 'Yes'){
+
+                var ref1_pos_y = Math.floor(Math.random() * 200)
+                var ref2_pos_y = Math.floor(Math.random() * 200)
+
+            } else {
+
+                var ref1_pos_y = 100
+                var ref2_pos_y = 100
+
+            }
+
             timeline_trials[i] = {
 
                 query_img_el: query_img_el, 
                 ref1_img_el: ref1_img_el,
                 ref2_img_el: ref2_img_el,
 
-                query_pos_x: 100,
+                query_pos_x: 230,
+                ref1_pos_x: ref1_pos_x,
+                ref2_pos_x: ref2_pos_x,
+
                 query_pos_y: 100,
-                ref1_pos_x: 200,
-                ref1_pos_y: 100,                
-                ref2_pos_x: 300,
-                ref2_pos_y: 100,                                
+                ref1_pos_y: ref1_pos_y,                
+                ref2_pos_y: ref2_pos_y,                                
 
             }
         }
         
-        var img_height = 150
+        var img_height = 400
         var img_width  = img_height/2
 
         jatos.studySessionData.timeline_trials = timeline_trials
@@ -138,8 +164,11 @@
                 type: 'canvas-keyboard-response',
                 stimulus: function(c) {
                     var ctx = c.getContext('2d');
-                    ctx.width = '700',
-                    ctx.height = '500',
+                    // debugger
+                    ctx.canvas.width = 700,
+                    ctx.canvas.height = 700,
+                    // ctx.height = 700,
+                    // ctx.style.border = '1px solid;'
                     ctx.drawImage(
                         jsPsych.timelineVariable('query_img_el'),
                         jsPsych.timelineVariable('query_pos_x'),
@@ -160,7 +189,8 @@
                     );                                        
                 },
                 choices: ['q','p'],
-                prompt: '<p>Which image is more similar to the middle image? Press "q" for the left image, press "p" for the right image.</p>',
+                prompt: '<p>Press "Q" or "P" for left/right.</p>',
+                post_trial_gap: 1000
             }],
 
             timeline_variables: timeline_trials,
