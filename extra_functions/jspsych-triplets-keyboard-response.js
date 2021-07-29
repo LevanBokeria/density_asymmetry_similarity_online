@@ -138,6 +138,8 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
 
     query_img_el.style.height = trial.stimulus_height.toString() + 'px'
     query_img_el.style.width  = query_img_el.naturalWidth * query_img_el.style.height / query_img_el.naturalHeight
+    query_img_el.style['margin-right'] = '20px'
+    query_img_el.style['margin-left'] = '20px'
 
     wrapper_arena.appendChild(query_img_el)
 
