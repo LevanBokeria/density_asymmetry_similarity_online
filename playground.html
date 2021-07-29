@@ -8,7 +8,7 @@
         <script src="./extra_functions/jspsych-triplets-keyboard-response.js"></script>
         <script src="./jspsych-6.3.1/plugins/jspsych-preload.js"></script>
         <link href='./jspsych-6.3.1/css/jspsych.css' rel='stylesheet' type='text/css'></link>
-        <!-- <link href='./extra_files/custom.css' rel='stylesheet' type='text/css'></link> -->
+        <link href='./extra_files/custom.css' rel='stylesheet' type='text/css'></link>
     </head>
     
     <body></body>
@@ -17,9 +17,12 @@
 
         var trial = {
             type: 'triplets-keyboard-response',
-            // query_stimulus: './img/neck_legs_space/dim_1_stim_119_x_119_y_110.png',
-            query_stimulus: 'img/neck_legs_space/americangoldfinch.JPG',
-            stimulus_height: 100,
+            query_stimulus: 'img/neck_legs_space/dim_1_stim_16_x_50_y_110.png',
+            ref1_stimulus: 'img/neck_legs_space/dim_1_stim_16_x_50_y_110.png',
+            ref2_stimulus: 'img/neck_legs_space/dim_1_stim_16_x_50_y_110.png',
+            ref1_y_offset: -100,
+            ref2_y_offset: 100,
+            stimulus_height: 400,
             choices: ['1','2'],
         }
             

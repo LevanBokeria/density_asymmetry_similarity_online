@@ -21,18 +21,18 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
         default: undefined,
         description: 'The query image to be displayed'
       },
-    //   ref1_stimulus: {
-    //     type: jsPsych.plugins.parameterType.IMAGE,
-    //     pretty_name: 'Ref1 Stimulus',
-    //     default: undefined,
-    //     description: 'The ref1 image to be displayed'
-    //   },
-    //   ref2_stimulus: {
-    //     type: jsPsych.plugins.parameterType.IMAGE,
-    //     pretty_name: 'Ref2 Stimulus',
-    //     default: undefined,
-    //     description: 'The ref2 image to be displayed'
-    //   },  
+      ref1_stimulus: {
+        type: jsPsych.plugins.parameterType.STRING,
+        pretty_name: 'Ref1 Stimulus',
+        default: undefined,
+        description: 'The ref1 image to be displayed'
+      },
+      ref2_stimulus: {
+        type: jsPsych.plugins.parameterType.STRING,
+        pretty_name: 'Ref2 Stimulus',
+        default: undefined,
+        description: 'The ref2 image to be displayed'
+      },  
       ref1_y_offset: {
         type: jsPsych.plugins.parameterType.INT,
         pretty_name: 'Ref1 vertical offset',
@@ -103,9 +103,9 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
     var html = '<img src="'+trial.query_stimulus+'" id="jspsych-image-keyboard-response-stimulus">';
     
     // update the page content
-    display_element.innerHTML = html;
+    // display_element.innerHTML = html;
     
-    debugger
+    // debugger
     // Create an initial div as an arena
     wrapper_arena = document.createElement('div')
     wrapper_arena.id = 'wrapper_arena'
@@ -113,6 +113,21 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
     wrapper_arena.style.width = '700px'
     wrapper_arena.style.border = '1px solid black'
 
+
+    // Create the ref1 element
+    var ref1_img_el = document.createElement('img')
+
+    ref1_img_el.src = trial.ref1_stimulus
+
+    ref1_img_el.className = 'stimuli'
+    ref1_img_el.id        = 'ref1_img'
+
+    ref1_img_el.style.height = trial.stimulus_height.toString() + 'px'
+    ref1_img_el.style.width  = ref1_img_el.naturalWidth * ref1_img_el.style.height / ref1_img_el.naturalHeight
+    ref1_img_el.style['margin-top'] = trial.ref1_y_offset.toString() + 'px'
+
+    wrapper_arena.appendChild(ref1_img_el)    
+    
     // Create the query image element
     var query_img_el = document.createElement('img')
 
@@ -122,9 +137,27 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
     query_img_el.id        = 'query_img'
 
     query_img_el.style.height = trial.stimulus_height.toString() + 'px'
-    query_img_el.style.width  = '100px'
+    query_img_el.style.width  = query_img_el.naturalWidth * query_img_el.style.height / query_img_el.naturalHeight
 
     wrapper_arena.appendChild(query_img_el)
+
+    // Create the ref2 element
+    var ref2_img_el = document.createElement('img')
+
+    ref2_img_el.src = trial.ref2_stimulus
+
+    ref2_img_el.className = 'stimuli'
+    ref2_img_el.id        = 'ref2_img'
+
+    ref2_img_el.style.height = trial.stimulus_height.toString() + 'px'
+    ref2_img_el.style.width  = ref2_img_el.naturalWidth * ref2_img_el.style.height / ref2_img_el.naturalHeight
+    ref2_img_el.style['margin-top'] = trial.ref2_y_offset.toString() + 'px'
+
+    wrapper_arena.appendChild(ref2_img_el)      
+
+
+
+    // Add the arena to the display element
     display_element.appendChild(wrapper_arena)
 
     // store response
