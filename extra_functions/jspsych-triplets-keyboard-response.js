@@ -99,12 +99,6 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
 
   plugin.trial = function(display_element, trial) {
     
-    // display stimulus as an image element
-    var html = '<img src="'+trial.query_stimulus+'" id="jspsych-image-keyboard-response-stimulus">';
-    
-    // update the page content
-    // display_element.innerHTML = html;
-    
     // debugger
     // Create an initial div as an arena
     wrapper_arena = document.createElement('div')
@@ -158,7 +152,6 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
     wrapper_arena.appendChild(ref2_img_el)      
 
 
-
     // Add the arena to the display element
     display_element.appendChild(wrapper_arena)
 
@@ -195,11 +188,7 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
 
     // function to handle responses by the subject
     var after_response = function(info) {
-
-      // after a valid response, the stimulus will have the CSS class 'responded'
-      // which can be used to provide visual feedback that a response was recorded
-      display_element.querySelector('#jspsych-triplets-keyboard-response-stimulus').className += ' responded';
-
+      
       // only record the first response
       if (response.key == null) {
         response = info;

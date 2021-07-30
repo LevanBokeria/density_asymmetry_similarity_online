@@ -75,9 +75,8 @@ ul {
     /* padding: 0; */
 }
 
-#query_img_el {
-    height: 50px;
-    width: 50px;
+#query_img {
+    border-bottom: 10px solid blue;
 }
 /* 
 .stimuli {
