@@ -1,4 +1,4 @@
-function trial_creator(parameters){
+function trial_creator_triplets(parameters){
     
     let all_trials = []
 

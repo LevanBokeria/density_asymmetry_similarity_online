@@ -43,9 +43,9 @@ ul {
 
 #wrapper_arena {
     background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
 }
 
 .exposure_exemplars {
@@ -77,6 +77,10 @@ ul {
 
 #query_img {
     border-bottom: 10px solid blue;
+}
+
+#prompt_el {
+    margin-top: 20px;
 }
 /* 
 .stimuli {
