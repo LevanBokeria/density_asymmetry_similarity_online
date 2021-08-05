@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
+    <title>Break</title>	
+	<script src="jspsych-6.3.1/jspsych.js" ></script>
+	<script src='./jspsych-6.3.1/plugins/jspsych-instructions.js'></script>
+	<script src='./jspsych-6.3.1/plugins/jspsych-html-slider-response.js'></script>
+	<script src="jatos.js"></script>
+	<link rel="stylesheet" href="jspsych-6.3.1/css/jspsych.css" type="text/css"></link>
+	<link rel="stylesheet" href="./extra_files/schema_online.css" type="text/css"></link>	
+  </head>
+
+  <body>
+  <script>
+
+		//start timeline
+		jatos.onLoad(function() {
+			debugger
+			let comp_to_start = []
+		
+			//make a timeline
+			let timeline =[]; 
+
+			let instructions_text = []
+
+
+			// Was last finished condition an exposure one?
+			if (jatos.studySessionData.latestFinishedComponentPos == jatos.studySessionData.inputData.component_positions.exposure){
+
+
+				// Check if all sessions done:
+				if (jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions == jatos.studySessionData.inputData.session_counters.exposure){
+
+					instructions_text = 'Thank you. You have finished the "same/different" task. <br> Next, you will do the similarity judgment task one more time.'
+
+					comp_to_start = jatos.studySessionData.inputData.component_positions.post_exposure
+
+				} else {
+
+					instructions_text = 'Thank you. You have finished session ' + jatos.studySessionData.inputData.session_counters.exposure + 'of ' + jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions + ' of the "same/different" task. Please take a short break and then continue.'
+
+					comp_to_start = jatos.studySessionData.inputData.component_positions.exposure
+
+				}
+
+			}
+
+			// let curr_session = jatos.studySessionData.inputData.curr_session
+
+			// if (curr_session == jatos.studySessionData.inputData.all_sessions.length){
+
+			// 	instructions_text = 'Thank you. You have finished the experiment. Please complete a short debriefing.'
+
+			// 	comp_to_start = jatos.studySessionData.inputData.component_positions.debriefing2
+			// } else if (curr_session == 1){
+
+			// 	// So we just finished the practice session
+			// 	instructions_text = 'Great! These were practice trials on the purple board. You will not see that board or those pictures again. <br> Lets start with the real trials. You will learn location of pictures on 5 new different boards that are colored differently. <br> <strong>On some of these boards, the visible items you will see at the beginning of trials might change locations or be absent completely!</strong> <br> For each of the 5 boards, you will do ' + jatos.studySessionData.inputData.n_ses_per_condition.schema_c + ' sessions, each session with ' + (jatos.studySessionData.inputData.n_trials_per_pa.schema_c*6) + ' trials (' + jatos.studySessionData.inputData.n_trials_per_pa.schema_c + ' trials per hidden picture). <br><br> Click next to start with the first board'
+
+			// 	comp_to_start = jatos.studySessionData.inputData.component_positions.session_pa2
+
+			// } else {
+
+			// 	let previous_condition = jatos.studySessionData.inputData.all_sessions[curr_session-1][0].condition
+			// 	let next_condition     = jatos.studySessionData.inputData.all_sessions[curr_session][0].condition
+
+			// 	if (previous_condition != next_condition){
+			// 		// So we're changing the board
+
+			// 		if (next_condition == 'no_schema'){
+			// 			instructions_text = '<strong>On the next board, there are no visible items.</strong> You will only learn location of the 6 invisible items. <br> Please take a break and move onto the next board.'
+			// 		} else {
+			// 			instructions_text = 'Please take a break. <br> <strong>Next, you will learn a new board with new pictures.</strong>'
+			// 		}
+			// 	} else {
+			// 		instructions_text = 'Please take a break. You will continue learning the locations of the same images on this ' + jatos.studySessionData.inputData.condition_colors[previous_condition] + ' board. Once you are ready please move to the next session.'
+			// 	}
+				
+			// 	comp_to_start = jatos.studySessionData.inputData.component_positions.session_pa2
+
+			// }
+
+			var instructions = {
+					type: 'instructions',
+					pages : [			
+						'<div class= "header">'+
+							'<h1> Break </h1>'+
+						'</div>'+	
+						'<div class="instruct">'+
+							'<p>' + instructions_text + '</p>' + 
+						'</div>',
+					],						
+					show_clickable_nav: true,
+					button_label_next: '<span style="color: black"d;> <strong> Next </stong></span>',
+				};
+
+			timeline.push(instructions);
+
+			jsPsych.init({
+				
+				timeline: timeline,
+
+				on_finish: function(data) {
+
+					// Make JATOS remember that this session was run
+                    jatos.studySessionData.latestFinishedComponentId    = jatos.componentId;
+                    jatos.studySessionData.latestFinishedComponentPos   = jatos.componentPos;
+                    jatos.studySessionData.latestFinishedComponentTitle = jatos.componentProperties.title;
+
+					jatos.submitResultData('[break_start_' + '---' + 
+					JSON.stringify(jatos.studySessionData) +
+					'---' + '_break_end]', 
+					function(){jatos.startComponentByPos(comp_to_start)});
+
+					// jsPsych.data.displayData();
+				}
+			});
+
+		});
+
+
+	</script>
+</body>
+</html>

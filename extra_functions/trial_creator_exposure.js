@@ -1,4 +1,4 @@
-function trial_creator_exposure(){
+function trial_creator_exposure(n_sessions){
     
     // Unique indices of exemplars
     let indices = Array.from(Array(40).keys())
@@ -88,5 +88,16 @@ function trial_creator_exposure(){
     // Shuffle the array
     // all_trials = jsPsych.randomization.shuffleNoRepeats(all_trials,function(a,b){return a.query_stimulus === b.query_stimulus})
 
-    return all_trials
+    var all_sessions = []
+
+    debugger
+
+    let n_trials_per_session = all_trials.length/n_sessions
+
+    while(all_trials.length){
+        all_sessions[all_sessions.length] = all_trials.splice(0,n_trials_per_session)
+    }
+
+
+    return all_sessions
 }

@@ -25,6 +25,16 @@
 
         jatos.studySessionData.inputData.curr_session = 0
         
+        // Component positions
+        jatos.studySessionData.inputData.component_positions = {
+            instructions: 3,
+            pre_exposure: 7,
+            exposure: 8,
+            break: 9,            
+            data_submission: 6,
+            debriefing: 7,
+        }        
+
         // All images
         jatos.studySessionData.inputData.all_exemplars = [
             'img/neck_legs_space/dim_1_stim_100_x_100_y_110.png',
@@ -383,14 +393,28 @@
             295
         ]
 
+
+        // How many exposure sessions
+        jatos.studySessionData.inputData.experiment_parameters = {
+            n_exposure_sessions: 4,
+            exposure_trial_dur: 3000,
+            triplet_trial_dur: 5000,
+        }
+
+        jatos.studySessionData.inputData.session_counters = {
+            pre_exposure: 0,
+            exposure: 0,
+            post_exposure: 0,
+        }
+
         // Create the pre-exposure trials
         jatos.studySessionData.inputData.pre_exposure_trials = trial_creator_triplets(jatos.studySessionData.inputData.pre_exposure)
 
         // Create the exposure trials
-        jatos.studySessionData.inputData.exposure_trials = trial_creator_exposure()
+        jatos.studySessionData.inputData.exposure_trials = trial_creator_exposure(jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions)
 
  
-        jatos.submitResultData('done',function(){jatos.startComponentByPos(8)})
+        jatos.submitResultData('done',function(){jatos.startComponentByPos(jatos.studySessionData.inputData.component_positions.exposure)})
 
 		// jsPsych.init({
 			

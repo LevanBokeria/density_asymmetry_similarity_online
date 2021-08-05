@@ -17,9 +17,11 @@
     <script>
 
         jatos.onLoad(function() {
-            
+
+            jatos.studySessionData.inputData.session_counters.exposure ++ 
+
             // Create the snippets for stimulus trials
-            var session_trials = jatos.studySessionData.inputData.exposure_trials
+            var session_trials = jatos.studySessionData.inputData.exposure_trials[jatos.studySessionData.inputData.session_counters.exposure-1]
 
             // For the fixation trials, create an html element of a blank arena, with the prompt text
             let fixation_arena_element = document.createElement('div')
@@ -56,8 +58,9 @@
                 prompt: 'Is the bird the same as the one before? Press 1 for same, 2 for different.',
                 choices: jsPsych.NO_KEYS,
                 stimulus: 'img/fixation.png',
+                stimulus_height: 500,
                 x_offset: 0,
-                y_offset: 100,
+                y_offset: 50,
                 trial_duration: 500,
                 response_ends_trial: false,                
             }
@@ -80,20 +83,34 @@
                 post_trial_gap: 0,
             }
             
-            var preload = {
+            // Create the preload trial
+            var preload_trial = {
                 type: 'preload',
-                auto_preload: true,
-                show_progress_bar: true, 
+                images: [jatos.studySessionData.inputData.all_exemplars,'img/fixation.png'],
             }
 
             jsPsych.init({
-                timeline: [preload,session_procedure],  
+                timeline: [preload_trial,session_procedure],  
                 // show_progress_bar: true,                 
               
-                on_finish: function(data) {
-                    console.log('Over');
-                    jsPsych.data.displayData('json');
-                }       
+                on_finish: function(data){
+
+                    // Make JATOS remember that this session was run
+                    jatos.studySessionData.latestFinishedComponentId    = jatos.componentId;
+                    jatos.studySessionData.latestFinishedComponentPos   = jatos.componentPos;
+                    jatos.studySessionData.latestFinishedComponentTitle = jatos.componentProperties.title;
+
+                    jatos.submitResultData("[exposure_start---" + 
+                    JSON.stringify(jatos.studySessionData) + "---exposure_end]",
+                    function(){jatos.startComponentByPos(
+                        jatos.studySessionData.inputData.component_positions.break
+                        )})
+                }
+
+                // on_finish: function(data) {
+                //     console.log('Over');
+                //     jsPsych.data.displayData('json');
+                // }       
             });
    
             // ///////////////////////////////////////////////////////////////////////////////////////////////
