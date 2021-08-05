@@ -90,8 +90,6 @@ function trial_creator_exposure(n_sessions){
 
     var all_sessions = []
 
-    debugger
-
     let n_trials_per_session = all_trials.length/n_sessions
 
     while(all_trials.length){

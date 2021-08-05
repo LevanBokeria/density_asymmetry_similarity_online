@@ -28,11 +28,11 @@
         // Component positions
         jatos.studySessionData.inputData.component_positions = {
             instructions: 3,
-            pre_exposure: 7,
+            triplet_task: 7,
             exposure: 8,
             break: 9,            
-            data_submission: 6,
-            debriefing: 7,
+            data_submission: 11,
+            debriefing: 10,
         }        
 
         // All images
@@ -348,6 +348,14 @@
             n_reps: 2
         }
 
+        // Post-exposure task stimuli
+        jatos.studySessionData.inputData.post_exposure = {
+            query: [240,160,80,250,180,100,265,180,110,210,180,150,270,230,170,250,160,100,210,160,100,210,120,40,285,180,130,200,150,50,170,120,40,280,190,130,250,70,260,60,270,50,160,80,240,160,90,240,160,60,250,210,160,110,80,250,150,170,270,80,150,150,70],
+            ref1:  [280,200,120,290,220,140,285,200,130,290,260,230,180,140,80,290,200,140,275,225,165,280,190,110,205,100,50,290,240,140,260,210,130,220,130,70,40,280,60,260,70,290,180,100,260,210,140,290,190,90,280,290,240,190,70,240,70,240,220,30,30,120,270,],
+            ref2:  [220,140,60,180,110,30,205,120,50,90,60,30,140,100,40,210,120,60,160,110,50,260,170,90,195,90,40,280,230,130,230,180,100,190,100,40,30,290,30,290,30,250,140,60,220,110,40,190,130,30,220,130,80,30,90,260,80,250,230,40,50,170,230],
+            n_reps: 2
+        }        
+
         jatos.studySessionData.inputData.exposure_exemplars = [
             20,
             30,
@@ -399,6 +407,8 @@
             n_exposure_sessions: 4,
             exposure_trial_dur: 3000,
             triplet_trial_dur: 5000,
+            fixation_trial_dur: 500,
+            triplet_trial_iti: 500,
         }
 
         jatos.studySessionData.inputData.session_counters = {
@@ -413,7 +423,31 @@
         // Create the exposure trials
         jatos.studySessionData.inputData.exposure_trials = trial_creator_exposure(jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions)
 
- 
+        // Create the post-exposure trials
+        jatos.studySessionData.inputData.post_exposure_trials = trial_creator_triplets(jatos.studySessionData.inputData.post_exposure)        
+
+        if (jatos.componentJsonInput.debugMode){
+
+            jatos.studySessionData.inputData.experiment_parameters = {
+                n_exposure_sessions: 4,
+                exposure_trial_dur: 10,
+                triplet_trial_dur: 10,
+                fixation_trial_dur: 10,
+                triplet_trial_iti: 10,
+            }
+
+            jatos.studySessionData.inputData.pre_exposure_trials = jatos.studySessionData.inputData.pre_exposure_trials.slice(0,5)
+
+            jatos.studySessionData.inputData.exposure_trials = jatos.studySessionData.inputData.exposure_trials.slice(0,20)
+
+        }
+
+
+        // Make JATOS remember that this session was run
+        jatos.studySessionData.latestFinishedComponentId    = jatos.componentId;
+        jatos.studySessionData.latestFinishedComponentPos   = jatos.componentPos;
+        jatos.studySessionData.latestFinishedComponentTitle = jatos.componentProperties.title;
+
         jatos.submitResultData('done',function(){jatos.startComponentByPos(jatos.studySessionData.inputData.component_positions.exposure)})
 
 		// jsPsych.init({

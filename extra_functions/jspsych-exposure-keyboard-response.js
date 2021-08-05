@@ -87,6 +87,18 @@ jsPsych.plugins["exposure-keyboard-response"] = (function() {
 
   plugin.trial = function(display_element, trial) {
     
+
+    // How many trials?
+    // debugger
+    let n_trials = jsPsych.data.get().values().filter(el => el.trial_stage == 'exemplar_display').length + 1
+
+    let trial_counter_el = document.createElement('P')
+
+    trial_counter_el.innerText = 'Trial ' + n_trials + ' of ' + jatos.studySessionData.inputData.exposure_trials[0].length
+    trial_counter_el.id = 'trial_counter'
+
+    display_element.appendChild(trial_counter_el)
+
     // debugger
     // Create an initial div as an arena
     wrapper_arena = document.createElement('div')

@@ -17,41 +17,11 @@
     <script>
 
         jatos.onLoad(function() {
-
+            // debugger
             jatos.studySessionData.inputData.session_counters.exposure ++ 
 
             // Create the snippets for stimulus trials
             var session_trials = jatos.studySessionData.inputData.exposure_trials[jatos.studySessionData.inputData.session_counters.exposure-1]
-
-            // For the fixation trials, create an html element of a blank arena, with the prompt text
-            let fixation_arena_element = document.createElement('div')
-            fixation_arena_element.id = 'arena'
-
-            let fixation_prompt_element = document.createElement('P')
-            fixation_prompt_element.textContent = 'Is the bird the same as the one before? 1=same, 2=different'
-            fixation_prompt_element.className = 'exposure_prompt_text'
-            fixation_arena_element.appendChild(fixation_prompt_element)
-
-            // Create a gray squared mask
-            let mask_arena_element = document.createElement('div')
-            mask_arena_element.id = 'arena'
-
-            let mask_prompt_element = document.createElement('P')
-            mask_prompt_element.textContent = 'Is the bird the same as the one before? 1=same, 2=different'
-            mask_prompt_element.className = 'exposure_prompt_text'
-
-            let mask_square = document.createElement('div')
-            mask_square.id = 'mask'
-
-            mask_arena_element.appendChild(mask_prompt_element)
-            mask_arena_element.appendChild(mask_square)
-
-            var mask_trial = {
-                type: 'html-keyboard-response',
-                stimulus: mask_arena_element.outerHTML,
-                choices: jsPsych.NO_KEYS,
-                trial_duration: jatos.studySessionData.mask_duration,
-            }
 
             var fixation_trial = {
                 type: 'exposure-keyboard-response',
@@ -61,8 +31,9 @@
                 stimulus_height: 500,
                 x_offset: 0,
                 y_offset: 50,
-                trial_duration: 500,
-                response_ends_trial: false,                
+                trial_duration: jatos.studySessionData.inputData.experiment_parameters.fixation_trial_dur,
+                response_ends_trial: false,
+                data: { trial_stage: 'fixation' }                
             }
 
             var exposure_trial = {
@@ -72,8 +43,9 @@
                 stimulus: jsPsych.timelineVariable('stimulus'),
                 x_offset: jsPsych.timelineVariable('x_offset'),
                 y_offset: jsPsych.timelineVariable('y_offset'),
-                trial_duration: 3000,
-                response_ends_trial: true,                
+                trial_duration: jatos.studySessionData.inputData.experiment_parameters.exposure_trial_dur,
+                response_ends_trial: true,
+                data: { trial_stage: 'exemplar_display' }                
             }
 
             var session_procedure = {

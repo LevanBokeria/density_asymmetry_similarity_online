@@ -9,7 +9,7 @@
 	<script src='./jspsych-6.3.1/plugins/jspsych-html-slider-response.js'></script>
 	<script src="jatos.js"></script>
 	<link rel="stylesheet" href="jspsych-6.3.1/css/jspsych.css" type="text/css"></link>
-	<link rel="stylesheet" href="./extra_files/schema_online.css" type="text/css"></link>	
+	<link rel="stylesheet" href="./extra_files/custom.css" type="text/css"></link>	
   </head>
 
   <body>
@@ -43,6 +43,24 @@
 
 					comp_to_start = jatos.studySessionData.inputData.component_positions.exposure
 
+				}
+
+			} else if (jatos.studySessionData.latestFinishedComponentPos == jatos.studySessionData.inputData.component_positions.triplet_task){
+
+				// Check if exposure happened already or not
+
+				if (jatos.studySessionData.inputData.session_counters.exposure == 0){
+					// So we're done with pre-exposure
+
+					instructions_text = 'Thanks. Moving onto exposure'
+
+					comp_to_start = jatos.studySessionData.inputData.component_positions.exposure
+
+				} else {
+
+					instructions_text = 'Thanks. You are done. Please do the debriefing.'
+
+					comp_to_start = jatos.studySessionData.inputData.component_positions.debriefing
 				}
 
 			}

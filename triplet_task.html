@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Pre Exposure</title>
+        <title>Triplet task</title>
         <script src='jatos.js'></script>
         <script src='./jspsych-6.3.1/jspsych.js'></script>        
         <script src='./extra_functions/lodash.js'></script>
@@ -15,7 +15,21 @@
     <body></body>
     
     <script>
-      jatos.onLoad(function() {
+        jatos.onLoad(function() {
+
+            var current_trials = []
+
+            // Is this pre or post
+            if (jatos.studySessionData.latestFinishedComponentTitle == 'determine condition'){
+
+                current_trials = jatos.studySessionData.inputData.pre_exposure_trials
+
+            } else {
+                
+                current_trials = jatos.studySessionData.inputData.post_exposure_trials
+
+            }
+
             var trial = {
                 type: 'triplets-keyboard-response',
                 query_stimulus: jsPsych.timelineVariable('query_stimulus'),
@@ -25,8 +39,8 @@
                 ref2_y_offset: jsPsych.timelineVariable('ref2_y_offset'),
                 stimulus_height: 400,
                 choices: ['1','2'],
-                trial_duration: 5000,
-                post_trial_gap: 500,
+                trial_duration: jatos.studySessionData.inputData.experiment_parameters.triplet_trial_dur,
+                post_trial_gap: jatos.studySessionData.inputData.experiment_parameters.triplet_trial_iti,
             }
             
             // Preload trial
@@ -37,7 +51,7 @@
 
             var session_procedure = {
                 timeline: [preload_trial,trial],
-                timeline_variables: jatos.studySessionData.inputData.pre_exposure_trials
+                timeline_variables: current_trials,
             }
 
             jsPsych.init({
@@ -45,13 +59,19 @@
                 timeline: [session_procedure],  
                 
                 on_finish: function(data) {
-                    console.log('Over');
-                    jsPsych.data.displayData('json');
-                }       
+                                
+                    // Make JATOS remember that this session was run
+                    jatos.studySessionData.latestFinishedComponentId    = jatos.componentId;
+                    jatos.studySessionData.latestFinishedComponentPos   = jatos.componentPos;
+                    jatos.studySessionData.latestFinishedComponentTitle = jatos.componentProperties.title;
+
+                    jatos.submitResultData("[triplet_task_start---" + 
+                    JSON.stringify(jatos.studySessionData) + "---triplet_task_end]",
+                    function(){jatos.startComponentByPos(
+                        jatos.studySessionData.inputData.component_positions.break
+                        )})                }       
             });
 
-                // ///////////////////////////////////////////////////////////////////////////////////////////////
-                //////////////////////////////////////////////////////////////////////////////////////////////////
         }); // jatos on load
 
     </script>
