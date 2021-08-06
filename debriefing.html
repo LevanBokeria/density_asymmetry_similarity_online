@@ -39,11 +39,11 @@
 				timeline: timeline,
 
 				on_finish: function(data) {
-
+          debugger
 					// Make JATOS remember that this session was run
-                    jatos.studySessionData.latestFinishedComponentId    = jatos.componentId;
-                    jatos.studySessionData.latestFinishedComponentPos   = jatos.componentPos;
-                    jatos.studySessionData.latestFinishedComponentTitle = jatos.componentProperties.title;
+          jatos.studySessionData.latestFinishedComponentId    = jatos.componentId;
+          jatos.studySessionData.latestFinishedComponentPos   = jatos.componentPos;
+          jatos.studySessionData.latestFinishedComponentTitle = jatos.componentProperties.title;
           
           jatos.studySessionData.outputData.debriefing = jsPsych.data.get().values()
 

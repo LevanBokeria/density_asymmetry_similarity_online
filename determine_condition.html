@@ -432,22 +432,22 @@
             // debugger
             jatos.studySessionData.inputData.experiment_parameters = {
                 n_exposure_sessions: 4,
-                exposure_trial_dur: 5000,
-                triplet_trial_dur: 5000,
+                exposure_trial_dur: 10,
+                triplet_trial_dur: 10,
                 fixation_trial_dur: 10,
                 triplet_trial_iti: 10,
             }
             // debugger
-            jatos.studySessionData.inputData.pre_exposure_trials = jatos.studySessionData.inputData.pre_exposure_trials.slice(0,5)
+            jatos.studySessionData.inputData.pre_exposure_trials = jatos.studySessionData.inputData.pre_exposure_trials.slice(0,2)
 
             let temp_exposure = []
             jatos.studySessionData.inputData.exposure_trials = jatos.studySessionData.inputData.exposure_trials.forEach(function(el){
-                temp_exposure.push(el.slice(0,5))
+                temp_exposure.push(el.slice(0,2))
             })
             jatos.studySessionData.inputData.exposure_trials = temp_exposure
             
 
-            jatos.studySessionData.inputData.post_exposure_trials = jatos.studySessionData.inputData.post_exposure_trials.slice(0,5)            
+            jatos.studySessionData.inputData.post_exposure_trials = jatos.studySessionData.inputData.post_exposure_trials.slice(0,2)            
 
         }
 

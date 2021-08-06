@@ -65,7 +65,7 @@
                 timeline: [preload_trial,session_procedure],  
                 
                 on_finish: function(data) {
-                    debugger
+                    // debugger
                     // Get the data and save it!
                     if (jatos.studySessionData.latestFinishedComponentTitle == 'determine_condition'){
                         jatos.studySessionData.outputData.pre_exposure = data.values().filter(item => item.trial_stage == trial_stage_name)
