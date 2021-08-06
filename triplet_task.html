@@ -17,18 +17,22 @@
     <script>
         jatos.onLoad(function() {
             // debugger
-            var current_trials = []
-            var trial_stage = []
+            var session_trials = []
+            var trial_stage_name = []
 
             // Is this pre or post
-            if (jatos.studySessionData.latestFinishedComponentTitle == 'determine_condition'){
+            if (jatos.studySessionData.inputData.session_counters.exposure == 0){
 
-                current_trials = jatos.studySessionData.inputData.pre_exposure_trials
+                jatos.studySessionData.inputData.session_counters.pre_exposure++
+
+                session_trials = jatos.studySessionData.inputData.pre_exposure_trials[jatos.studySessionData.inputData.session_counters.pre_exposure-1]
                 trial_stage_name = 'pre_exposure_triplets'
 
             } else {
                 
-                current_trials = jatos.studySessionData.inputData.post_exposure_trials
+                jatos.studySessionData.inputData.session_counters.post_exposure++
+
+                session_trials = jatos.studySessionData.inputData.post_exposure_trials[jatos.studySessionData.inputData.session_counters.post_exposure-1]
                 trial_stage_name = 'post_exposure_triplets'
 
             }
@@ -49,7 +53,7 @@
             
             var session_procedure = {
                 timeline: [trial],
-                timeline_variables: current_trials,
+                timeline_variables: session_trials,
                 randomize_order: false,
                 post_trial_gap: 0,
             }
@@ -67,10 +71,11 @@
                 on_finish: function(data) {
                     // debugger
                     // Get the data and save it!
-                    if (jatos.studySessionData.latestFinishedComponentTitle == 'determine_condition'){
-                        jatos.studySessionData.outputData.pre_exposure = data.values().filter(item => item.trial_stage == trial_stage_name)
+                    if (jatos.studySessionData.inputData.session_counters.exposure == 0){
+                        jatos.studySessionData.outputData.pre_exposure.push(...data.values().filter(item => item.trial_stage == trial_stage_name))
+
                     } else {
-                        jatos.studySessionData.outputData.post_exposure = data.values().filter(item => item.trial_stage == trial_stage_name)
+                        jatos.studySessionData.outputData.post_exposure.push(...data.values().filter(item => item.trial_stage == trial_stage_name))
                     }                    
 
                     // Make JATOS remember that this session was run

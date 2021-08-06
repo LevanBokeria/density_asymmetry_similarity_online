@@ -39,20 +39,20 @@
 				timeline: timeline,
 
 				on_finish: function(data) {
-          debugger
-					// Make JATOS remember that this session was run
+          
+          // Make JATOS remember that this session was run
           jatos.studySessionData.latestFinishedComponentId    = jatos.componentId;
           jatos.studySessionData.latestFinishedComponentPos   = jatos.componentPos;
           jatos.studySessionData.latestFinishedComponentTitle = jatos.componentProperties.title;
           
           jatos.studySessionData.outputData.debriefing = jsPsych.data.get().values()
 
-					jatos.submitResultData('[debriefing_start_' + '---' + 
-					JSON.stringify(jatos.studySessionData) +
-					'---' + '_debriefing_end]', 
-					function(){jatos.startComponentByPos(comp_to_start)});
+          jatos.submitResultData('[debriefing_start_' + '---' + 
+          JSON.stringify(jatos.studySessionData) +
+          '---' + '_debriefing_end]', 
+          function(){jatos.startComponentByPos(comp_to_start)});
 
-					// jsPsych.data.displayData();
+          // jsPsych.data.displayData();
 				}
 			});
 

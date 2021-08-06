@@ -50,16 +50,36 @@
 				// Check if exposure happened already or not
 				if (jatos.studySessionData.inputData.session_counters.exposure == 0){
 					// So we're done with pre-exposure
+					// debugger
+					// Now check if all sessions ran or not
+					if (jatos.studySessionData.inputData.session_counters.pre_exposure == jatos.studySessionData.inputData.pre_exposure.n_sessions){
 
-					instructions_text = 'Thanks. Moving onto exposure'
+						instructions_text = 'Thanks. Moving onto exposure'
+						comp_to_start = jatos.studySessionData.inputData.component_positions.exposure
 
-					comp_to_start = jatos.studySessionData.inputData.component_positions.exposure
+					} else {
+
+						instructions_text = 'Thank you. You have finished session ' + jatos.studySessionData.inputData.session_counters.pre_exposure + ' of ' + jatos.studySessionData.inputData.pre_exposure.n_sessions + ' of the similarity judgment task. Please take a short break and then continue.'
+						comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task
+
+					}
 
 				} else {
 
-					instructions_text = 'Thanks. You are done. Please do the debriefing.'
+					// So we're done with post-exposure
 
-					comp_to_start = jatos.studySessionData.inputData.component_positions.debriefing
+					// Now check if all sessions ran or not
+					if (jatos.studySessionData.inputData.session_counters.post_exposure == jatos.studySessionData.inputData.post_exposure.n_sessions){
+
+						instructions_text = 'Thanks. Please do debriefing'
+						comp_to_start = jatos.studySessionData.inputData.component_positions.debriefing
+
+					} else {
+
+						instructions_text = 'Thank you. You have finished session ' + jatos.studySessionData.inputData.session_counters.post_exposure + ' of ' + jatos.studySessionData.inputData.post_exposure.n_sessions + ' of the similarity judgment task. Please take a short break and then continue.'
+						comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task
+
+					}
 				}
 
 			}
