@@ -21,7 +21,9 @@
         var timeline = []
 
         jatos.studySessionData.inputData = {}
-        jatos.studySessionData.outputData = {}
+        jatos.studySessionData.outputData = {
+            exposure: []
+        }
 
         jatos.studySessionData.inputData.curr_session = 0
         
@@ -427,18 +429,25 @@
         jatos.studySessionData.inputData.post_exposure_trials = trial_creator_triplets(jatos.studySessionData.inputData.post_exposure)        
 
         if (jatos.componentJsonInput.debugMode){
-
+            // debugger
             jatos.studySessionData.inputData.experiment_parameters = {
                 n_exposure_sessions: 4,
-                exposure_trial_dur: 10,
-                triplet_trial_dur: 10,
+                exposure_trial_dur: 5000,
+                triplet_trial_dur: 5000,
                 fixation_trial_dur: 10,
                 triplet_trial_iti: 10,
             }
-
+            // debugger
             jatos.studySessionData.inputData.pre_exposure_trials = jatos.studySessionData.inputData.pre_exposure_trials.slice(0,5)
 
-            jatos.studySessionData.inputData.exposure_trials = jatos.studySessionData.inputData.exposure_trials.slice(0,20)
+            let temp_exposure = []
+            jatos.studySessionData.inputData.exposure_trials = jatos.studySessionData.inputData.exposure_trials.forEach(function(el){
+                temp_exposure.push(el.slice(0,5))
+            })
+            jatos.studySessionData.inputData.exposure_trials = temp_exposure
+            
+
+            jatos.studySessionData.inputData.post_exposure_trials = jatos.studySessionData.inputData.post_exposure_trials.slice(0,5)            
 
         }
 
@@ -448,7 +457,7 @@
         jatos.studySessionData.latestFinishedComponentPos   = jatos.componentPos;
         jatos.studySessionData.latestFinishedComponentTitle = jatos.componentProperties.title;
 
-        jatos.submitResultData('done',function(){jatos.startComponentByPos(jatos.studySessionData.inputData.component_positions.exposure)})
+        jatos.submitResultData('done',function(){jatos.startComponentByPos(jatos.studySessionData.inputData.component_positions.triplet_task)})
 
 		// jsPsych.init({
 			

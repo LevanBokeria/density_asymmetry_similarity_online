@@ -99,6 +99,25 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
 
   plugin.trial = function(display_element, trial) {
     
+    // How many trials?
+    // debugger
+    let n_trials = jsPsych.data.get().values().filter(el => 'trial_stage' in el).length + 1
+
+    let trial_counter_el = document.createElement('P')
+    let n_total_trials = []
+
+    if (jatos.studySessionData.inputData.session_counters.exposure == 0){
+      n_total_trials = jatos.studySessionData.inputData.pre_exposure_trials.length
+    } else {
+      n_total_trials = jatos.studySessionData.inputData.post_exposure_trials.length
+    }
+
+
+    trial_counter_el.innerText = 'Trial ' + n_trials + ' of ' + n_total_trials
+    trial_counter_el.id = 'trial_counter'
+
+    display_element.appendChild(trial_counter_el)
+
     // debugger
     // Create an initial div as an arena
     wrapper_arena = document.createElement('div')
@@ -106,7 +125,11 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
     wrapper_arena.style.height = '700px'
     wrapper_arena.style.width = '700px'
     wrapper_arena.style.border = '1px solid black'
+    wrapper_arena.style.display = 'flex'
+    wrapper_arena.style["justify-content"] = 'center'
+    wrapper_arena.style["align-items"] = 'center'
 
+    // debugger
 
     // Create the ref1 element
     var ref1_img_el = document.createElement('img')

@@ -16,17 +16,20 @@
     
     <script>
         jatos.onLoad(function() {
-
+            // debugger
             var current_trials = []
+            var trial_stage = []
 
             // Is this pre or post
-            if (jatos.studySessionData.latestFinishedComponentTitle == 'determine condition'){
+            if (jatos.studySessionData.latestFinishedComponentTitle == 'determine_condition'){
 
                 current_trials = jatos.studySessionData.inputData.pre_exposure_trials
+                trial_stage_name = 'pre_exposure_triplets'
 
             } else {
                 
                 current_trials = jatos.studySessionData.inputData.post_exposure_trials
+                trial_stage_name = 'post_exposure_triplets'
 
             }
 
@@ -41,25 +44,35 @@
                 choices: ['1','2'],
                 trial_duration: jatos.studySessionData.inputData.experiment_parameters.triplet_trial_dur,
                 post_trial_gap: jatos.studySessionData.inputData.experiment_parameters.triplet_trial_iti,
+                data: { trial_stage: trial_stage_name }                
             }
             
+            var session_procedure = {
+                timeline: [trial],
+                timeline_variables: current_trials,
+                randomize_order: false,
+                post_trial_gap: 0,
+            }
+
             // Preload trial
             var preload_trial = {
                 type: 'preload',
                 images: jatos.studySessionData.inputData.all_exemplars
             }
 
-            var session_procedure = {
-                timeline: [preload_trial,trial],
-                timeline_variables: current_trials,
-            }
-
             jsPsych.init({
                 
-                timeline: [session_procedure],  
+                timeline: [preload_trial,session_procedure],  
                 
                 on_finish: function(data) {
-                                
+                    debugger
+                    // Get the data and save it!
+                    if (jatos.studySessionData.latestFinishedComponentTitle == 'determine_condition'){
+                        jatos.studySessionData.outputData.pre_exposure = data.values().filter(item => item.trial_stage == trial_stage_name)
+                    } else {
+                        jatos.studySessionData.outputData.post_exposure = data.values().filter(item => item.trial_stage == trial_stage_name)
+                    }                    
+
                     // Make JATOS remember that this session was run
                     jatos.studySessionData.latestFinishedComponentId    = jatos.componentId;
                     jatos.studySessionData.latestFinishedComponentPos   = jatos.componentPos;

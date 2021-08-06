@@ -17,7 +17,7 @@
 
 		//start timeline
 		jatos.onLoad(function() {
-			debugger
+			// debugger
 			let comp_to_start = []
 		
 			//make a timeline
@@ -35,11 +35,11 @@
 
 					instructions_text = 'Thank you. You have finished the "same/different" task. <br> Next, you will do the similarity judgment task one more time.'
 
-					comp_to_start = jatos.studySessionData.inputData.component_positions.post_exposure
+					comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task
 
 				} else {
 
-					instructions_text = 'Thank you. You have finished session ' + jatos.studySessionData.inputData.session_counters.exposure + 'of ' + jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions + ' of the "same/different" task. Please take a short break and then continue.'
+					instructions_text = 'Thank you. You have finished session ' + jatos.studySessionData.inputData.session_counters.exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions + ' of the "same/different" task. Please take a short break and then continue.'
 
 					comp_to_start = jatos.studySessionData.inputData.component_positions.exposure
 
@@ -48,7 +48,6 @@
 			} else if (jatos.studySessionData.latestFinishedComponentPos == jatos.studySessionData.inputData.component_positions.triplet_task){
 
 				// Check if exposure happened already or not
-
 				if (jatos.studySessionData.inputData.session_counters.exposure == 0){
 					// So we're done with pre-exposure
 

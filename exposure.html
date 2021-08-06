@@ -66,6 +66,8 @@
                 // show_progress_bar: true,                 
               
                 on_finish: function(data){
+                    debugger
+                    jatos.studySessionData.outputData.exposure.push(...data.values().filter(item => item.trial_stage == 'exemplar_display'))
 
                     // Make JATOS remember that this session was run
                     jatos.studySessionData.latestFinishedComponentId    = jatos.componentId;
