@@ -28,9 +28,17 @@
 					'<h1> Instructions </h1>'+
 				'</div>'+	
 				'<div class="instruct">'+
-					'<p>Welcome to the session!</p>' + 
-					'<p>One each trial, you will see a picture of a bird displayed. Sometimes, the same bird will be shown, one after another. Your job on each trial is to press the button P if the bird shown is the same as the one before, or the button Q if it is different. </p>' + 
-				'</div>',																										
+					'<p>Welcome to the experiment!</p>' + 
+					'<p>You will do 3 tasks: (1) a similarity  task, (2) then a same/difference task, and (3) another similarity  task. </p>' + 
+				'</div>',				
+				'<div class= "header">'+
+					'<h1> Similarity task </h1>'+
+				'</div>'+	
+				'<div class="instruct">'+
+					'<p> Lets start the similarity task. On each trial, you will see 3 birds. The middle one is the "target" bird. You have to choose which of the side-birds is more similar to this target bird, by using key "1" for the left bird and key "2" for the right bird. </p>' + 
+					'<p>You will have ' + (jatos.studySessionData.inputData.experiment_parameters.triplet_trial_dur/1000) + ' seconds on each trial.</p>' +
+					'<p>Press next to begin</p>'+
+				'</div>',
 			];
 
 			var trial_duration_page = {
@@ -76,9 +84,9 @@
 				button_label_next: '<span style="color: black"d;> <strong> Next </stong></span>',
 			};
 
-			timeline.push(trial_duration_page);
-			timeline.push(mask_duration_page);
-			timeline.push(iti_duration_page);
+			// timeline.push(trial_duration_page);
+			// timeline.push(mask_duration_page);
+			// timeline.push(iti_duration_page);
 			timeline.push(instructions);
 
 			jsPsych.init({
@@ -93,16 +101,10 @@
                     jatos.studySessionData.latestFinishedComponentTitle = jatos.componentProperties.title;
 
 					// Record results
-					var results = jsPsych.data.get().values();
-
-					jatos.studySessionData.trial_duration = results[0].response
-					jatos.studySessionData.mask_duration = results[1].response
-					jatos.studySessionData.iti_duration = results[2].response
-
 					jatos.submitResultData('[instructions_start_' + '---' + 
 					JSON.stringify(jatos.studySessionData) +
 					'---' + '_instructions_end]', 
-					jatos.startNextComponent);
+					function(){jatos.startComponentByPos(jatos.studySessionData.inputData.component_positions.triplet_task)});
 
 					// jsPsych.data.displayData();
 				}

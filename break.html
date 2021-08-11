@@ -54,12 +54,12 @@
 					// Now check if all sessions ran or not
 					if (jatos.studySessionData.inputData.session_counters.pre_exposure == jatos.studySessionData.inputData.pre_exposure.n_sessions){
 
-						instructions_text = 'Thanks. Moving onto exposure'
+						instructions_text = 'Thanks. Moving onto the same/difference task. You will see birds on the screen one-by-one. Press "1" if the current bird is the same as the previous one, or "2" if its different.'
 						comp_to_start = jatos.studySessionData.inputData.component_positions.exposure
 
 					} else {
 
-						instructions_text = 'Thank you. You have finished session ' + jatos.studySessionData.inputData.session_counters.pre_exposure + ' of ' + jatos.studySessionData.inputData.pre_exposure.n_sessions + ' of the similarity judgment task. Please take a short break and then continue.'
+						instructions_text = 'Thank you. You have finished session ' + jatos.studySessionData.inputData.session_counters.pre_exposure + ' of ' + jatos.studySessionData.inputData.pre_exposure.n_sessions + ' of the similarity  task. Please take a short break and then continue.'
 						comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task
 
 					}
@@ -76,7 +76,7 @@
 
 					} else {
 
-						instructions_text = 'Thank you. You have finished session ' + jatos.studySessionData.inputData.session_counters.post_exposure + ' of ' + jatos.studySessionData.inputData.post_exposure.n_sessions + ' of the similarity judgment task. Please take a short break and then continue.'
+						instructions_text = 'Thank you. You have finished session ' + jatos.studySessionData.inputData.session_counters.post_exposure + ' of ' + jatos.studySessionData.inputData.post_exposure.n_sessions + ' of the similarity  task. Please take a short break and then continue.'
 						comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task
 
 					}
