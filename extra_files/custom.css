@@ -75,9 +75,9 @@ ul {
     /* padding: 0; */
 }
 
-/* #query_img {
-    border-bottom: 10px solid blue;
-} */
+#query_img {
+    border-bottom: 10px solid gray;
+}
 
 #prompt_el {
     margin-top: 20px;
