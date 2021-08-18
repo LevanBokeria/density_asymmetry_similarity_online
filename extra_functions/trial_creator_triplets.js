@@ -14,7 +14,7 @@ function trial_creator_triplets(parameters,n_reps,n_sessions){
             ref1_idx = 2
             ref2_idx = 1
         }
-        debugger
+        
         for (iT=0; iT<parameters.length; iT++){
 
             let correct

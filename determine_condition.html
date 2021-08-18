@@ -23,6 +23,7 @@
 
         jatos.studySessionData.inputData = {}
         jatos.studySessionData.outputData = {
+            practice: [],
             exposure: [],
             pre_exposure: [],
             post_exposure: [],
@@ -447,15 +448,35 @@
                 triplet_trial_iti: 10,
             }
 
+            debugger
+
+            let n_debug_trials = 10
+
             let temp_exposure = []
             jatos.studySessionData.inputData.exposure_trials.forEach(function(el){
-                temp_exposure.push(el.slice(0,2))
+                temp_exposure.push(el.slice(0,n_debug_trials))
             })
             // jatos.studySessionData.inputData.exposure_trials = temp_exposure
 
             // Shorten the triplet trials
+            let temp_practice = []
+            jatos.studySessionData.inputData.triplet_practice_trials.forEach(function(el){
+                temp_practice.push(el.slice(0,n_debug_trials))
+            })
+            jatos.studySessionData.inputData.triplet_practice_trials = temp_practice
 
 
+            let temp_pre_exp = []
+            jatos.studySessionData.inputData.pre_exposure_trials.forEach(function(el){
+                temp_pre_exp.push(el.slice(0,n_debug_trials))
+            })
+            jatos.studySessionData.inputData.pre_exposure_trials = temp_pre_exp
+
+            let temp_post_exp = []
+            jatos.studySessionData.inputData.post_exposure_trials.forEach(function(el){
+                temp_post_exp.push(el.slice(0,n_debug_trials))
+            })
+            jatos.studySessionData.inputData.post_exposure_trials = temp_post_exp
         }
 
 

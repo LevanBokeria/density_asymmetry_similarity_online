@@ -60,10 +60,13 @@
                 on_finish: function(data){
                     if (jsPsych.timelineVariable('correct_response') == null){
                         data.correct = null
+                        data.correct_response = null
                     } else if(jsPsych.pluginAPI.compareKeys(data.response,jsPsych.timelineVariable('correct_response'))){
                         data.correct = true;
+                        data.correct_response = jsPsych.timelineVariable('correct_response')
                     } else {
                         data.correct = false
+                        data.correct_response = jsPsych.timelineVariable('correct_response')
                     }
                 }                
             }
@@ -103,9 +106,14 @@
                 timeline: [preload_trial,session_procedure],  
                 
                 on_finish: function(data) {
-                    // debugger
+                    debugger
                     // Get the data and save it!
-                    if (jatos.studySessionData.inputData.session_counters.exposure == 0){
+
+                    if (jatos.studySessionData.inputData.session_counters.pre_exposure == 0){
+
+                        jatos.studySessionData.outputData.practice.push(...data.values().filter(item => item.trial_stage == trial_stage_name))                        
+
+                    } else if (jatos.studySessionData.inputData.session_counters.exposure == 0){
                         jatos.studySessionData.outputData.pre_exposure.push(...data.values().filter(item => item.trial_stage == trial_stage_name))
 
                     } else {

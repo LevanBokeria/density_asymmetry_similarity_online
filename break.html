@@ -17,7 +17,7 @@
 
 		//start timeline
 		jatos.onLoad(function() {
-			
+			debugger
 			let comp_to_start = []
 		
 			//make a timeline
@@ -49,8 +49,19 @@
 
 				// Check if pre-exposure happened already or not
 				if (jatos.studySessionData.inputData.session_counters.pre_exposure == 0){
+					debugger
+					// Calculate performance
+					let correct_data = jatos.studySessionData.outputData.practice
 
-					instructions_text = 'Good job! Those were practice trials. Now moving onto the real trials!'
+					// Get trials that had a correct response
+					let correct_exists = correct_data.filter(item => item.correct_response != null)
+
+					// Count the number of correct responses
+					let n_corr = correct_exists.filter(item => item.correct == true).length
+
+					let perc_corr = n_corr * 100 / correct_exists.length
+
+					instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of the trials! <br> Those were practice trials. Now moving onto the real trials!'
 					comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task			
 				} else if (jatos.studySessionData.inputData.session_counters.exposure == 0){
 					// So we're done with pre-exposure
