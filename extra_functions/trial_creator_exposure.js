@@ -71,15 +71,28 @@ function trial_creator_exposure(n_sessions){
 
 
     for (iT = 0; iT<full_array.length; iT++){
-
+        // debugger
         let curr_exemplar = jatos.studySessionData.inputData.exposure_exemplars[full_array[iT]]
 
         let iTrial = {
 
             stimulus: 'img/neck_legs_space/dim_1_stim_' + curr_exemplar + '_x_' + curr_exemplar + '_y_110.png',
+            dimension_value: curr_exemplar,
             y_offset: Math.floor((Math.random()) * 200),
             x_offset: Math.floor((Math.random()-0.5) * 300),
 
+        }
+
+        // Whats the correct response on this trial?
+        if (iT == 0){
+            iTrial.correct_response = null
+        } else {
+            // Was it repeated?
+            if (full_array[iT] == full_array[iT-1]){
+                iTrial.correct_response = '1'
+            } else {
+                iTrial.correct_response = '2'
+            }
         }
 
         all_trials.push(iTrial)
@@ -87,7 +100,7 @@ function trial_creator_exposure(n_sessions){
     
     // Shuffle the array
     // all_trials = jsPsych.randomization.shuffleNoRepeats(all_trials,function(a,b){return a.query_stimulus === b.query_stimulus})
-
+    debugger
     var all_sessions = []
 
     let n_trials_per_session = all_trials.length/n_sessions

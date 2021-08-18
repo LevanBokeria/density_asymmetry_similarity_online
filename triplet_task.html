@@ -27,7 +27,7 @@
                 jatos.studySessionData.inputData.session_counters.practice++
                 
                 session_trials = jatos.studySessionData.inputData.triplet_practice_trials[jatos.studySessionData.inputData.session_counters.practice-1]
-                trial_stage_name = 'practice_trials'
+                trial_stage_name = 'practice'
 
 
             } else if (jatos.studySessionData.inputData.session_counters.exposure == 0){
@@ -35,14 +35,14 @@
                 jatos.studySessionData.inputData.session_counters.pre_exposure++
 
                 session_trials = jatos.studySessionData.inputData.pre_exposure_trials[jatos.studySessionData.inputData.session_counters.pre_exposure-1]
-                trial_stage_name = 'pre_exposure_triplets'
+                trial_stage_name = 'pre_exposure'
 
             } else {
                 
                 jatos.studySessionData.inputData.session_counters.post_exposure++
 
                 session_trials = jatos.studySessionData.inputData.post_exposure_trials[jatos.studySessionData.inputData.session_counters.post_exposure-1]
-                trial_stage_name = 'post_exposure_triplets'
+                trial_stage_name = 'post_exposure'
 
             }
 
@@ -58,6 +58,11 @@
                 trial_duration: jatos.studySessionData.inputData.experiment_parameters.triplet_trial_dur,
                 data: { trial_stage: trial_stage_name },
                 on_finish: function(data){
+                    // debugger
+                    // What session is this
+                    data.session = jatos.studySessionData.inputData.session_counters[trial_stage_name]
+
+
                     if (jsPsych.timelineVariable('correct_response') == null){
                         data.correct = null
                         data.correct_response = null
@@ -106,7 +111,7 @@
                 timeline: [preload_trial,session_procedure],  
                 
                 on_finish: function(data) {
-                    debugger
+                    // debugger
                     // Get the data and save it!
 
                     if (jatos.studySessionData.inputData.session_counters.pre_exposure == 0){

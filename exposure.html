@@ -45,7 +45,27 @@
                 y_offset: jsPsych.timelineVariable('y_offset'),
                 trial_duration: jatos.studySessionData.inputData.experiment_parameters.exposure_trial_dur,
                 response_ends_trial: true,
-                data: { trial_stage: 'exemplar_display' }                
+                data: { trial_stage: 'exemplar_display' },
+                on_finish: function(data){
+
+                    data.correct_response = jsPsych.timelineVariable('correct_response')
+
+                    data.session = jatos.studySessionData.inputData.session_counters.exposure
+
+                    // debugger
+                    let n_trials = jsPsych.data.get().filter({trial_stage: 'exemplar_display'}).count()
+
+                    if (n_trials > 1){
+                        if (data.response == data.correct_response){
+                            data.correct = true
+                        } else {
+                            data.correct = false
+                        }
+                    } else {
+                        data.correct = null
+                    }
+
+                }                
             }
 
             var session_procedure = {
