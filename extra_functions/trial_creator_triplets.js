@@ -1,10 +1,10 @@
-function trial_creator_triplets(parameters){
+function trial_creator_triplets(parameters,n_reps,n_sessions){
     
     let all_trials = []
 
     var ref1_idx, ref2_idx
 
-    for (iRep = 0; iRep<parameters.n_reps; iRep++){
+    for (iRep = 0; iRep<n_reps; iRep++){
 
         // Flip the ref1 and ref2?
         if (iRep%2==0){
@@ -14,16 +14,36 @@ function trial_creator_triplets(parameters){
             ref1_idx = 2
             ref2_idx = 1
         }
+        debugger
+        for (iT=0; iT<parameters.length; iT++){
 
-        for (iT=0; iT<parameters.query.length; iT++){
+            let correct
+
+            // Whats the "correct" response?
+            if (parameters[iT].abs_dist_query_ref1 == parameters[iT].abs_dist_query_ref2){
+                correct = null
+            } else if (parameters[iT].abs_dist_query_ref1 < parameters[iT].abs_dist_query_ref2){
+                if (ref1_idx == 1){
+                    correct = '1'
+                } else {
+                    correct = '2'
+                }
+            } else if (parameters[iT].abs_dist_query_ref1 > parameters[iT].abs_dist_query_ref2){
+                if (ref1_idx == 1){
+                    correct = '2'
+                } else {
+                    correct = '1'
+                }
+            }
 
             let iTrial = {
 
-                query_stimulus: 'img/neck_legs_space/dim_1_stim_' + parameters.query[iT] + '_x_' + parameters.query[iT] + '_y_110.png',
-                ref1_stimulus: 'img/neck_legs_space/dim_1_stim_' + parameters['ref'+ref1_idx][iT] + '_x_' + parameters['ref'+ref1_idx][iT] + '_y_110.png',
-                ref2_stimulus: 'img/neck_legs_space/dim_1_stim_' + parameters['ref'+ref2_idx][iT] + '_x_' + parameters['ref'+ref2_idx][iT] + '_y_110.png',
+                query_stimulus: 'img/neck_legs_space/dim_1_stim_' + parameters[iT].query + '_x_' + parameters[iT].query + '_y_110.png',
+                ref1_stimulus: 'img/neck_legs_space/dim_1_stim_' + parameters[iT]['ref'+ref1_idx] + '_x_' + parameters[iT]['ref'+ref1_idx] + '_y_110.png',
+                ref2_stimulus: 'img/neck_legs_space/dim_1_stim_' + parameters[iT]['ref'+ref2_idx] + '_x_' + parameters[iT]['ref'+ref2_idx] + '_y_110.png',
                 ref1_y_offset: Math.floor((Math.random()-0.5) * 200),
                 ref2_y_offset: Math.floor((Math.random()-0.5) * 200),
+                correct_response: correct,
 
             }
 
@@ -31,13 +51,13 @@ function trial_creator_triplets(parameters){
         }
 
     }
-
+    
     // Shuffle the array
     all_trials = jsPsych.randomization.shuffleNoRepeats(all_trials,function(a,b){return a.query_stimulus === b.query_stimulus})
 
     var all_sessions = []
 
-    let n_trials_per_session = all_trials.length/parameters.n_sessions
+    let n_trials_per_session = all_trials.length/n_sessions
 
     while(all_trials.length){
         all_sessions[all_sessions.length] = all_trials.splice(0,n_trials_per_session)

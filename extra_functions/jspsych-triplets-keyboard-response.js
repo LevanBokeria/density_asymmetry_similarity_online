@@ -100,7 +100,7 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
   plugin.trial = function(display_element, trial) {
     
     // How many trials?
-    // debugger
+    debugger
     let n_trials = jsPsych.data.get().values().filter(el => 'trial_stage' in el).length + 1
 
     let trial_counter_el = document.createElement('P')
