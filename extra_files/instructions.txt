@@ -1,0 +1,31 @@
+Welcome to the experiment!
+
+The whole experiment will last about ~60 minutes. It consists of the following parts:
+
+- Instructions
+- Similarity task #1
+- Same/difference task
+- Similarity task #2
+- Debriefing
+
+Please note that, during the experiment, your responses will be continuously monitored for good performance.
+You can earn up to £2 extra bonus for good performance! The amount of bonus will depend on the quality of your engagement with the task. 
+On the other hand, if you perform poorly (ex: missing lots of trials), you might be discontinued from the study and only paid for the sections you will have finished.
+
+Click next to view instructions for the 1st similarity task.
+
+SIMILARITY INSTRUCTIONS:
+
+In this first task, you will compare pictures of birds to each other. 
+
+On each trial, you will see three birds on the screen, and will have to judge which of the side-birds is more similar to the central bird. See a screenshot from an example trial below. Note that the left and right birds are not aligned with the central bird, and on every trial they will appear at slightly different locations.
+ 
+If the bird on the left is more similar to the central bird than the right bird is, press "q" on your keyboard. If the right bird is more similar to the central one than the left bird is, please press "p" on your keyboard.
+
+You will have 5 seconds on each trial to make your decision. 
+
+You will do X number of sessions for this task, each session consisting of X trials. You will get breaks in between the sessions.
+
+First, you will do X number of practice trials. Please do these practice trials as if they were real trials, so that you can get used to the task. 
+
+Click next to begin the practice trials. Thank you!
