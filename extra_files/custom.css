@@ -6,7 +6,7 @@ body {
 }
 
 p, li {
-    font-size: 125%; 
+    font-size: 100%; 
     margin-top:0px; 
     margin-right:100px; 
     margin-bottom:20px; 
@@ -15,7 +15,7 @@ p, li {
 
 /* Appears during consent */
 ul {
-    font-size: 125%; 
+    font-size: 100%; 
     margin-top:50px; 
     margin-right:100px; 
     margin-bottom:20px; 
@@ -23,9 +23,9 @@ ul {
     cursor:default;
 }
 
-/* li {
-    font-size: 125%;
-} */
+li {
+    font-size: 100%;
+}
 
 /* Those paragraphs with instrcut class. Used in the instructions, post-practice instructions, and transition. */
 .instruct {
