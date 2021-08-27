@@ -34,10 +34,7 @@
 		//make a timeline
 		var timeline = [];
 
-		//make a welcome message
-		var welcome = {
-			type: 'instructions',
-			pages: ['<div class= "header">' +
+		var welcome_page = ['<div class= "header">' +
 				'<h1> Welcome.</h1>' +
 				'<p> Please read through the following pages of information.</p>' +
 				'</div>' +
@@ -55,34 +52,19 @@
 				'<p><b>Please note that quality checks are performed. You might be discontinued ' +
 				'from the study if your responses fail the quality checks. In that case, you will be paid for the sections completed.</b></p>' +
 				'<br><hr></div>' +
-				'<p><br><em><span style="color: black;"> To navigate these pages, use the mouse to click the "More information" button below.</span></em></p>'],
-			show_clickable_nav: true,
-			button_label_next: '<span style="color: black";> <strong> More information </stong></span>',
-			allow_backward: true,
-			show_page_number: true,
-		};
-
-		//information, consent and ethics -->
-		var information1 = {
-			type: "instructions",
-			pages: ["<div class= 'header'>" +
-				"<h2> Information 1 of 3</h2>" +
+				'<p><br><em><span style="color: black;"> To navigate these pages, use the mouse to click the "More information" button below.</span></em></p>']
+		
+		var info1 = ["<div class= 'header'>" +
+				"<h2> Information</h2>" +
 				"</div>" +
 				"<div class='instruct'>  " +
 				"<p><u><b>Ethics Code:</b></u><br>You are being invited to take part in a research study.  Before you decide it is important for you to understand why the research is being done and what it will involve.  Please take time to read the following information carefully and discuss it with others if you wish.  You may contact us via a Prolific message to the researcher if there is anything that is not clear or if you would like more information.  Take time to decide whether or not you wish to take part.<br>" +
 				" <br><hr>" +
 				"</div>" +
-				"<p><em><span style='color: black;'> Click 'More information' to continue.</span></em></p>"],
-			show_clickable_nav: true,
-			button_label_next: "<span style='color: black';> <strong> More information </stong></span>",
-			allow_backward: true,
-			show_page_number: true,
-		};
+				"<p><em><span style='color: black;'> Click 'More information' to continue.</span></em></p>"]
 
-		var information2 = {
-			type: "instructions",
-			pages: ["<div class= 'header'>" +
-				"<h2> Information 2 of 3 </h2>" +
+		var info2 = ["<div class= 'header'>" +
+				"<h2> Information</h2>" +
 				"</div>" +
 				"<div class='instruct'> <br>" +
 				"<p> <u> What is the purpose of this study? </u> <br>" + 
@@ -92,17 +74,10 @@
 				'<li> Sensory analysis in vision, hearing and other modalities</li>' +
 				"<p><br><u> Why have I been chosen? </u>" +
 				'<p>You have been chosen because you are registered with Prolific Academic and you meet the eligibility criteria.</p>' +
-				'</div>'],
-			show_clickable_nav: true,
-			button_label_next: "<span style='color: black';> <strong> More information </stong></span>",
-			allow_backward: true,
-			show_page_number: true,
-		};
+				'</div>']
 
-		var information3 = {
-			type: "instructions",
-			pages: ["<div class= 'header'>" +
-				"<h2> Information 3 of 3 </h2>" +
+		var info3 = ["<div class= 'header'>" +
+				"<h2> Information</h2>" +
 				"</div>" +
 				"<div class='instruct'> <br>" +
 				"<p><br><br> <u> Who is organizing this study? </u>" +
@@ -118,16 +93,10 @@
 				'<li>Dr. Moataz Assem (Moataz.Assem@mrc-cbu.cam.ac.uk)</li>' +
 				'<li>Dr. Reza Rajimehr (Reza.Rajimehr@mrc-cbu.cam.ac.uk)</li>' +
 				'<li>Mr. Alexander Anwyl-Irvine (Alexander.Irvine@mrc-cbu.cam.ac.uk)</li>' +
-				"<hr></div>"],
-			show_clickable_nav: true,
-			button_label_next: "<span style='color: black';> <strong> More information </stong></span>",
-			allow_backward: true,
-		};
+				"<hr></div>"]
 
-		var information4 = {
-			type: "instructions",
-			pages: ["<div class= 'header'>" +
-				"<h2> Information 4 of 3 </h2>" +
+		var info4 = ["<div class= 'header'>" +
+				"<h2> Information</h2>" +
 				"</div>" +
 				"<div class='instruct'> <br>" +
 				"<p><u> What does the procedure involve? </u>" +
@@ -138,30 +107,18 @@
 				'<p>We will reimburse you for your time, and you will have the pleasure of knowing that you have made a contribution to our understanding of the mind. There will be no other direct benefits from being involved in the study.</p>' +
 				"<p><u> What happens at the end of the study? </u>" +
 				'<p>When data from volunteers are collected, it will be analyzed and written up for publication in a scientific journal, and the anonymous data may be shared online. The results may also be presented at scientific meetings, or in talks at academic institutions. Results will always be presented in such a way that data from individual volunteers cannot be identified.</p>' +
-				"<hr></div>"],
-			show_clickable_nav: true,
-			button_label_next: "<span style='color: black';> <strong> More information </stong></span>",
-			allow_backward: true,
-		};
+				"<hr></div>"]
 
-		var information5 = {
-			type: "instructions",
-			pages: ["<div class= 'header'>" +
-				"<h2> Information 4 of 3 </h2>" +
+		var info5 = ["<div class= 'header'>" +
+				"<h2> Information</h2>" +
 				"</div>" +
 				"<div class='instruct'> <br>" +
 				"<p><u> Confidentiality – who will have access to the data?</u>" +
 				'<p>Only certain members of the CBSU and members of the research group will have access to the data. It is possible that the data may be used by researchers working with the CBSU for other similar ethically approved research protocols, where the same standards of confidentiality will apply. It may also be disclosed to researchers working outside the EEC, when that person is working in close collaboration with the CBSU researchers on this project. In that case, that person has signed a Code of Conduct guaranteeing that the data will be kept confidential & secure. The MRC complies with the requirements of the Data Protection Act 1998 with regard to the collection, storage, processing and disclosure of personal information and is committed to upholding the Acts core Data Protection Principles. All enquiries concerning access to data held by the CBSU should be addressed to the Freedom of Information Liaison Officer at the Unit in the first instance. After the study is complete, the data (e.g. behavioural responses, reaction times) collected may be shared online, with the chief aim of sharing the results with the scientific community. No personally identifiable information will be shared.</p>' +
-				"<hr></div>"],
-			show_clickable_nav: true,
-			button_label_next: "<span style='color: black';> <strong> More information </stong></span>",
-			allow_backward: true,
-		};
+				"<hr></div>"]
 
-		var information6 = {
-			type: "instructions",
-			pages: ["<div class= 'header'>" +
-				"<h2> Information 4 of 3 </h2>" +
+		var info6 = ["<div class= 'header'>" +
+				"<h2> Information</h2>" +
 				"</div>" +
 				"<div class='instruct'> <br>" +
 				"<p><br><br><u> What other information will you collect?</u>" +
@@ -176,17 +133,12 @@
 				'<p>This research study has been approved by the Cambridge Research Ethics Committee.</p>' +
 				'<p><br>Thank you for considering taking part in this study. If you require any further information, we will be pleased to help you in any way we can. </p>' +
 				'<p>Please click the “next” button to see the consent form, where you will have the option to consent to participate in this study. You will be able to return to this page after clicking “next”.</p>' +
-				"<hr></div>"],
-			show_clickable_nav: true,
-			button_label_next: "<span style='color: black';> <strong> Next </stong></span>",
-			allow_backward: true,
-		};
+				"<hr></div>"]
 
-		var informed_consent = {
-			type: "instructions",
-			pages: ["<div class= 'header'>" +
+		var consent_page = ["<div class= 'header'>" +
 				"<h1> Informed consent for the study: </h1>" +
 				"</div>" +
+				"<br><br><br>" +
 				" <li> I confirm that I have read and understood the volunteer information on the previous page. (Click the “previous” button to review this information). </li>" +
 				" <li> I understand that I can ask questions by contacting the researcher via Prolific messages. </li>" +
 				" <li> I understand that my participation is voluntary. I am free to withdraw at any time, without giving a reason, without penalty or affecting my legal rights. </li>" +
@@ -194,20 +146,19 @@
 				" <li> I understand that on publication, research data may be shared with others through a protected database after removing information that might identify me.</li>" +
 				'<p>Do you wish to take part in this study?</p>' +
 				" <br><hr>" +
-				"<p><em><span style='color: black';>Click 'Take Part' to consent and continue with the study. On the next page, we will test your browser and then provide instructions for the task. <br>If you no longer wish to take part, close your internet tab/browser window.</span></em></p>"],
+				"<p><em><span style='color: black';>Click 'Take Part' to consent and continue with the study. On the next page, we will test your browser and then provide instructions for the task. <br>If you no longer wish to take part, close your internet tab/browser window.</span></em></p>"]
+
+		//make a welcome message
+		var welcome = {
+			type: 'instructions',
+			pages: [welcome_page,info1,info2,info3,info4,info5,info6,consent_page],	
 			show_clickable_nav: true,
-			button_label_next: "<span style='color: blue';> <strong> Take Part</stong></span>",
+			button_label_next: '<span style="color: black";> <strong> Next </stong></span>',
 			allow_backward: true,
+			show_page_number: true,
 		};
 
 		timeline.push(welcome);
-		timeline.push(information1);
-		timeline.push(information2);
-		timeline.push(information3);
-		timeline.push(information4);
-		timeline.push(information5);
-		timeline.push(information6);
-		timeline.push(informed_consent);
 
 		//start timeline
 		jatos.onLoad(function() {
