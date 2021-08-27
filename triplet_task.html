@@ -56,6 +56,7 @@
                 stimulus_height: 400,
                 choices: ['1','2'],
                 trial_duration: jatos.studySessionData.inputData.experiment_parameters.triplet_trial_dur,
+                post_response_delay: 500,
                 data: { trial_stage: trial_stage_name },
                 on_finish: function(data){
                     // debugger
@@ -94,7 +95,7 @@
             }            
             
             var session_procedure = {
-                timeline: [trial,feedback],
+                timeline: [trial],
                 timeline_variables: session_trials,
                 randomize_order: false,
                 post_trial_gap: 0,

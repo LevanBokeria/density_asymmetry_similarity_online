@@ -94,6 +94,12 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
         default: true,
         description: 'If true, trial will end when subject makes a response.'
       },
+      post_response_delay: {
+        type: jsPsych.plugins.parameterType.INT,
+        pretty_name: 'Delay before the next trial',
+        default: 0,
+        description: 'After a response or a miss, how long to show the empty board before the next trial'
+      }
     }
   }
 
@@ -103,7 +109,7 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
     // debugger
     let n_trials = jsPsych.data.get().values().filter(el => 'trial_stage' in el).length + 1
 
-    let trial_counter_el = document.createElement('P')
+    var trial_counter_el = document.createElement('P')
     let n_total_trials = []
 
     if (jatos.studySessionData.inputData.session_counters.exposure == 0){
@@ -115,8 +121,15 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
 
     trial_counter_el.innerText = 'Trial ' + n_trials + ' of ' + n_total_trials
     trial_counter_el.id = 'trial_counter'
-
+    trial_counter_el.style['margin-bottom'] = '0px'
+    
     display_element.appendChild(trial_counter_el)
+
+    var feedback_text_el = document.createElement('P')
+    feedback_text_el.innerText = 'missed...'
+    feedback_text_el.style.visibility = 'visible'
+    feedback_text_el.style['font-weight'] = 'bold'
+    feedback_text_el.style.color = 'red'
 
     // debugger
     // Create an initial div as an arena
@@ -218,9 +231,25 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
       }
 
       if (trial.response_ends_trial) {
-        end_trial();
+        blank_board(info);
       }
     };
+
+    var blank_board = function(info){
+
+      // Make everything disappear
+      document.querySelectorAll('.stimuli').forEach(item => item.remove())
+
+      // Display 'missed' as the message if they missed!
+      if (info.rt == null){
+        wrapper_arena.appendChild(feedback_text_el)
+      }
+
+      // End trial eventually
+      jsPsych.pluginAPI.setTimeout(function() {
+        end_trial();
+      }, trial.post_response_delay);
+    }
 
     // start the response listener
     if (trial.choices != jsPsych.NO_KEYS) {
@@ -243,7 +272,11 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
     // end trial if trial_duration is set
     if (trial.trial_duration !== null) {
       jsPsych.pluginAPI.setTimeout(function() {
-        end_trial();
+        let info = {
+          rt: null
+        }
+        
+        blank_board(info);
       }, trial.trial_duration);
     } else if (trial.response_ends_trial === false) {
       console.warn("The experiment may be deadlocked. Try setting a trial duration or set response_ends_trial to true.");

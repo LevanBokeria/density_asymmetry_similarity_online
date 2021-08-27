@@ -100,7 +100,7 @@ function trial_creator_exposure(n_sessions){
     
     // Shuffle the array
     // all_trials = jsPsych.randomization.shuffleNoRepeats(all_trials,function(a,b){return a.query_stimulus === b.query_stimulus})
-    debugger
+    // debugger
     var all_sessions = []
 
     let n_trials_per_session = all_trials.length/n_sessions
