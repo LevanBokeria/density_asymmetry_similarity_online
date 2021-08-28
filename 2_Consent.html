@@ -40,19 +40,17 @@
 				'</div>' +
 				'<div class="instruct"> <br>' +
 				'<p><br><br><br><br>You should complete this study in one sitting. ' +
-				'It will last about 60 minutes.</p>' +
+				'It will last about 54 minutes.</p>' +
 				'<p>The study is broken up into several sections. You will be paid a set amount for each of these sections:</p>' +
-				'<li> Initial instructions and practice session: takes ~8 minutes. Payment: 0.8£ </li>' +
-				'<li> Similarity task #1. Payment £2 </li>' +
-				'<li> Same/different judgment task. Payment: 1£</li>' +
-				'<li> Similarity task #2. Payment: 1£</li>' +
-				'<li> Debriefing survey. Payment: £1</li>' +
-				'<p> Total payment for completing the full experiment: 6.8£ </p>' +
-				'<p> Additionally, you will get a bonus payment of up to £2 depending on the quality of your responses!</p>' +
-				'<p><b>Please note that quality checks are performed. You might be discontinued ' +
-				'from the study if your responses fail the quality checks. In that case, you will be paid for the sections completed.</b></p>' +
+				'<li> Consent, instructions and practice session: takes ~5 minutes. Payment: 50p </li>' +
+				'<li> Similarity task #1. Takes ~7 minutes. Payment 70p </li>' +
+				'<li> Same/different judgment task. Takes ~30 minutes. Payment: 3£</li>' +
+				'<li> Similarity task #2. Takes ~7 minutes. Payment: 70p</li>' +
+				'<li> Debriefing survey. Payment: 50p</li>' +
+				'<p> Total payment for completing the full experiment: £5.4 </p>' +
+				'<p> Please note that you will get an additional bonus payment of up to £2 depending on the quality of your responses! However, if the quality of your responses are consistently low, such as if you miss too many trials, you might be discontinued from the study. In that case, you will be paid only for the parts of the experiment completed.</p>' +
 				'<br><hr></div>' +
-				'<p><br><em><span style="color: black;"> To navigate these pages, use the mouse to click the "More information" button below.</span></em></p>']
+				'<p><br><em><span style="color: black;"> To navigate these pages, use the mouse to click the "Next" button below.</span></em></p>']
 		
 		var info1 = ["<div class= 'header'>" +
 				"<h2> Information</h2>" +
@@ -60,8 +58,7 @@
 				"<div class='instruct'>  " +
 				"<p><u><b>Ethics Code:</b></u><br>You are being invited to take part in a research study.  Before you decide it is important for you to understand why the research is being done and what it will involve.  Please take time to read the following information carefully and discuss it with others if you wish.  You may contact us via a Prolific message to the researcher if there is anything that is not clear or if you would like more information.  Take time to decide whether or not you wish to take part.<br>" +
 				" <br><hr>" +
-				"</div>" +
-				"<p><em><span style='color: black;'> Click 'More information' to continue.</span></em></p>"]
+				"</div>"]
 
 		var info2 = ["<div class= 'header'>" +
 				"<h2> Information</h2>" +
@@ -166,6 +163,10 @@
 			jsPsych.init({
 				timeline: timeline,
 				on_finish: function (data) {
+
+					// Save the consent infomration
+					jatos.studySessionData.outputData.consent_results = jsPsych.data.get().values()
+
 
 					// Make JATOS remember that this session was run
 					jatos.studySessionData.latestFinishedComponentId    = jatos.componentId;

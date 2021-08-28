@@ -109,6 +109,12 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
     // debugger
     let n_trials = jsPsych.data.get().values().filter(el => 'trial_stage' in el).length + 1
 
+    // Create a flexbox at the top, for displaying which buttons to use and showing the trial counter
+    var top_flex_el = document.createElement('div')
+
+    top_flex_el.style.display = 'flex'
+    top_flex_el['justify-content'] = 'space-between'
+
     var trial_counter_el = document.createElement('P')
     let n_total_trials = []
 
@@ -118,12 +124,21 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
       n_total_trials = jatos.studySessionData.inputData.post_exposure_trials[0].length
     }
 
-
     trial_counter_el.innerText = 'Trial ' + n_trials + ' of ' + n_total_trials
     trial_counter_el.id = 'trial_counter'
     trial_counter_el.style['margin-bottom'] = '0px'
     
-    display_element.appendChild(trial_counter_el)
+    // Create the elements for button instructions
+    var left_button_text_el = document.createElement('P')
+    left_button_text_el.innerText = 'Press "q" for the left bird'
+    var right_button_text_el = document.createElement('P')
+    right_button_text_el.innerText = 'Press "p" for the left bird'    
+
+    top_flex_el.appendChild(left_button_text_el)
+    top_flex_el.appendChild(trial_counter_el)
+    top_flex_el.appendChild(right_button_text_el)
+
+    display_element.appendChild(top_flex_el)
 
     var feedback_text_el = document.createElement('P')
     feedback_text_el.innerText = 'missed...'

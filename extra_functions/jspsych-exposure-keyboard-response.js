@@ -90,14 +90,29 @@ jsPsych.plugins["exposure-keyboard-response"] = (function() {
 
     // How many trials?
     // debugger
+
+    // Create a flexbox at the top, for displaying which buttons to use and showing the trial counter
+    var top_flex_el = document.createElement('div')
+
+    top_flex_el.style.display = 'flex'
+    top_flex_el['justify-content'] = 'space-between'
+
     let n_trials = jsPsych.data.get().values().filter(el => el.trial_stage == 'exemplar_display').length + 1
-
     let trial_counter_el = document.createElement('P')
-
     trial_counter_el.innerText = 'Trial ' + n_trials + ' of ' + jatos.studySessionData.inputData.exposure_trials[0].length
     trial_counter_el.id = 'trial_counter'
 
-    display_element.appendChild(trial_counter_el)
+    // Create the elements for button instructions
+    var left_button_text_el = document.createElement('P')
+    left_button_text_el.innerText = '"q" = same as previous'
+    var right_button_text_el = document.createElement('P')
+    right_button_text_el.innerText = '"p" = different from previous'    
+
+    top_flex_el.appendChild(left_button_text_el)
+    top_flex_el.appendChild(trial_counter_el)
+    top_flex_el.appendChild(right_button_text_el)
+
+    display_element.appendChild(top_flex_el)
 
     // debugger
     // Create an initial div as an arena

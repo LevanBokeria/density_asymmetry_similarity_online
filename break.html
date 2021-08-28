@@ -33,9 +33,11 @@
 				return perc_corr
 			}
 
-
 			let comp_to_start = []
-		
+
+			// Whats the title of the break page? This will change if exposure is about to begin.
+			var page_title = 'Break'
+
 			//make a timeline
 			let timeline =[]; 
 
@@ -90,7 +92,7 @@
 					// Calculate performance
 					let perc_corr = calc_perf(jatos.studySessionData.outputData.practice)
 
-					instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of the trials! <br> Those were practice trials. Now moving onto the real trials!'
+					instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of the trials! <br> Those were practice trials. Now you will do the real trials! <br><br> You will do a total of '+ jatos.studySessionData.inputData.experiment_parameters.n_pre_exp_triplet_sessions + ' sessions, each with '+ jatos.studySessionData.inputData.pre_exposure_trials[0].length + ' trials.'
 					comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task			
 				} else if (jatos.studySessionData.inputData.session_counters.exposure == 0){
 					// So we're done with pre-exposure
@@ -101,8 +103,11 @@
 						// Calculate performance
 						let perc_corr = calc_perf(jatos.studySessionData.outputData.pre_exposure.filter(item => item.session == jatos.studySessionData.inputData.session_counters.pre_exposure))
 
-						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of trials! <br> Moving onto the same/difference task. You will see birds on the screen one-by-one. Press "1" if the current bird is the same as the previous one, or "2" if its different.'
+						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of trials! <br> Moving onto the same/difference task. <br><br>You will see these birds show up on the screen one-by-one. The task is simple: if the bird you see is exactly the same as you saw on the previous trial, press the button "q". If the current bird is different than the previous one, press the button "p". <br><br> You will do a total of '+jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions+' sessions for the same/difference task, each with '+ jatos.studySessionData.inputData.exposure_trials[0].length +' trials. <br><br> You will have '+ (jatos.studySessionData.inputData.experiment_parameters.exposure_trial_dur/1000) +' seconds on each trial to make your response!'
 						comp_to_start = jatos.studySessionData.inputData.component_positions.exposure
+
+						page_title = 'Beginning the Same/difference task!'
+
 
 					} else {
 
@@ -183,7 +188,7 @@
 					type: 'instructions',
 					pages : [			
 						'<div class= "header">'+
-							'<h1> Break </h1>'+
+							'<h1>' + page_title + '</h1>'+
 						'</div>'+	
 						'<div class="instruct">'+
 							'<p>' + instructions_text + '</p>' + 

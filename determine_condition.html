@@ -21,14 +21,6 @@
         // Define all the conditions here ///////////////////////////////////////////////////////////
         var timeline = []
 
-        jatos.studySessionData.inputData = {}
-        jatos.studySessionData.outputData = {
-            practice: [],
-            exposure: [],
-            pre_exposure: [],
-            post_exposure: [],
-        }
-
         jatos.studySessionData.inputData.curr_session = 0
         
         // Component positions
@@ -444,15 +436,15 @@
                 n_practice_sessions: 1,
                 n_pre_exp_triplet_sessions: 2,
                 n_post_exp_triplet_sessions: 2,                
-                exposure_trial_dur: 1000,
-                triplet_trial_dur: 500,
+                exposure_trial_dur: 5000,
+                triplet_trial_dur: 50,
                 fixation_trial_dur: 10,
                 triplet_trial_iti: 10,
             }
 
             // debugger
 
-            let n_debug_trials = 10
+            let n_debug_trials = 3
 
             let temp_exposure = []
             jatos.studySessionData.inputData.exposure_trials.forEach(function(el){

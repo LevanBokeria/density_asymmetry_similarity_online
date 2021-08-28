@@ -24,15 +24,15 @@ function trial_creator_triplets(parameters,n_reps,n_sessions){
                 correct = null
             } else if (parameters[iT].abs_dist_query_ref1 < parameters[iT].abs_dist_query_ref2){
                 if (ref1_idx == 1){
-                    correct = '1'
+                    correct = 'q'
                 } else {
-                    correct = '2'
+                    correct = 'p'
                 }
             } else if (parameters[iT].abs_dist_query_ref1 > parameters[iT].abs_dist_query_ref2){
                 if (ref1_idx == 1){
-                    correct = '2'
+                    correct = 'q'
                 } else {
-                    correct = '1'
+                    correct = 'p'
                 }
             }
 

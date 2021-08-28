@@ -89,9 +89,9 @@ function trial_creator_exposure(n_sessions){
         } else {
             // Was it repeated?
             if (full_array[iT] == full_array[iT-1]){
-                iTrial.correct_response = '1'
+                iTrial.correct_response = 'q'
             } else {
-                iTrial.correct_response = '2'
+                iTrial.correct_response = 'p'
             }
         }
 
