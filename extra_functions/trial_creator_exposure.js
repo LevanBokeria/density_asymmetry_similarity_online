@@ -49,6 +49,17 @@ function trial_creator_exposure(n_sessions){
 
     }
     
+    // Finally, add the 41st and 42nd stimuli
+    for (iAdd=0; iAdd<10; iAdd++){
+        
+        // Randomly choose an index
+        let idx_rand = Math.floor(Math.random()*full_array.length)
+        full_array.splice(idx_rand,0,40)
+        // Randomly choose an index
+        idx_rand = Math.floor(Math.random()*full_array.length)
+        full_array.splice(idx_rand,0,41)        
+    }
+
     // Count n repeats
     var counter = 0
     for (i=1; i<full_array.length; i++){
@@ -64,7 +75,6 @@ function trial_creator_exposure(n_sessions){
     /////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////
-
 
     // Start creating all the trials
     let all_trials = []

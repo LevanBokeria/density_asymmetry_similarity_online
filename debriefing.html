@@ -25,7 +25,13 @@
             var general_questions_page = {
                 type: 'survey-text',
                 questions: [
-                    {prompt: 'Any feedback?', rows: 3, columns: 100}, 
+                    {prompt: 'Similarity tasks: was anything unclear in the instructions?', rows: 3, columns: 100}, 
+                    {prompt: 'Similarity tasks: How did you choose which bird was more similar to the target bird?', rows: 3, columns: 100}, 
+                    {prompt: 'Similarity tasks: did you have enough time on each trial to make your response?', rows: 1, columns: 100}, 
+                    {prompt: 'Similarity tasks: any other feedback?', rows: 3, columns: 100}, 
+                    {prompt: 'Same/different task: was anything unclear in the instructions?', rows: 3, columns: 100}, 
+                    {prompt: 'Same/different task: did you have enough time on each trial to make your response?', rows: 1, columns: 100}, 
+                    {prompt: 'Same/different task: any other feedback?', rows: 3, columns: 100},
                     ],
                 button_label: 'Finish',
                 preamble: '<p style="font-size: 30px;"><b>Please answer the following questions:</b></p>',

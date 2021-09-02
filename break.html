@@ -49,36 +49,36 @@
 
 				// Check if all sessions done:
 				if (jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions == jatos.studySessionData.inputData.session_counters.exposure){
-					debugger
+					
 					// Calculate performance on the "same" trials
 					let perc_corr_same = calc_perf(
 						jatos.studySessionData.outputData.exposure.filter(
-							item => item.session == jatos.studySessionData.inputData.session_counters.exposure & item.correct_response == '1')
+							item => item.session == jatos.studySessionData.inputData.session_counters.exposure & item.correct_response == 'q')
 					)
 
 					let perc_corr_diff = calc_perf(
 						jatos.studySessionData.outputData.exposure.filter(
-							item => item.session == jatos.studySessionData.inputData.session_counters.exposure & item.correct_response == '2')
+							item => item.session == jatos.studySessionData.inputData.session_counters.exposure & item.correct_response == 'p')
 					)
 
-					instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr_same) + '% of the "same" trials and ' + Math.floor(perc_corr_diff) + '% of the "different" trials! <br> You have finished the "same/different" task. <br> Next, you will do the similarity judgment task one more time.'
+					instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr_same) + '% of the "same" trials and ' + Math.floor(perc_corr_diff) + '% of the "different" trials! <br> You have finished the "same/different" task. <br> <strong>Please take a break of no more than 1 minute!</strong><br>Next, you will do the similarity judgment task one more time.'
 
 					comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task
 
 				} else {
-					debugger
+					
 					// Calculate performance on the "same" trials
 					let perc_corr_same = calc_perf(
 						jatos.studySessionData.outputData.exposure.filter(
-							item => item.session == jatos.studySessionData.inputData.session_counters.exposure & item.correct_response == '1')
+							item => item.session == jatos.studySessionData.inputData.session_counters.exposure & item.correct_response == 'q')
 					)
 
 					let perc_corr_diff = calc_perf(
 						jatos.studySessionData.outputData.exposure.filter(
-							item => item.session == jatos.studySessionData.inputData.session_counters.exposure & item.correct_response == '2')
+							item => item.session == jatos.studySessionData.inputData.session_counters.exposure & item.correct_response == 'p')
 					)
 
-					instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr_same) + '% of the "same" trials and ' + Math.floor(perc_corr_diff) + '% of the "different" trials! <br> You have finished session ' + jatos.studySessionData.inputData.session_counters.exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions + ' of the "same/different" task. Please take a short break and then continue.'
+					instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr_same) + '% of the "same" trials and ' + Math.floor(perc_corr_diff) + '% of the "different" trials! <br> You have finished session ' + jatos.studySessionData.inputData.session_counters.exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions + ' of the "same/different" task. Please take a short break of maximum 30 seconds and then continue.'
 
 					comp_to_start = jatos.studySessionData.inputData.component_positions.exposure
 
@@ -103,7 +103,9 @@
 						// Calculate performance
 						let perc_corr = calc_perf(jatos.studySessionData.outputData.pre_exposure.filter(item => item.session == jatos.studySessionData.inputData.session_counters.pre_exposure))
 
-						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of trials! <br> Moving onto the same/difference task. <br><br>You will see these birds show up on the screen one-by-one. The task is simple: if the bird you see is exactly the same as you saw on the previous trial, press the button "q". If the current bird is different than the previous one, press the button "p". <br><br> You will do a total of '+jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions+' sessions for the same/difference task, each with '+ jatos.studySessionData.inputData.exposure_trials[0].length +' trials. <br><br> You will have '+ (jatos.studySessionData.inputData.experiment_parameters.exposure_trial_dur/1000) +' seconds on each trial to make your response!'
+						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of trials! <br> That was the end of the similarity task #1. <br>Now we will move onto the same/difference task. <br><br>You will see these birds show up on the screen one-by-one. The task is simple: if the bird you see is exactly the same as you saw on the previous trial, press the button "q". If the current bird is different than the previous one, press the button "p". <br><br> You will do a total of '+jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions+' sessions for the same/difference task, each with '+ jatos.studySessionData.inputData.exposure_trials[0].length +' trials. <br><br> You will have '+ (jatos.studySessionData.inputData.experiment_parameters.exposure_trial_dur/1000) +' seconds on each trial to make your response!' + 
+						'<br><p>Please take a 1 minute break and then start the next task!</p>'
+
 						comp_to_start = jatos.studySessionData.inputData.component_positions.exposure
 
 						page_title = 'Beginning the Same/difference task!'
@@ -116,7 +118,7 @@
 						let perc_corr = calc_perf(jatos.studySessionData.outputData.pre_exposure.filter(item => item.session == jatos.studySessionData.inputData.session_counters.pre_exposure))
 
 
-						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of trials! <br> You have finished session ' + jatos.studySessionData.inputData.session_counters.pre_exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_pre_exp_triplet_sessions + ' of the similarity  task. Please take a short break and then continue.'
+						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of trials! <br> You have finished session ' + jatos.studySessionData.inputData.session_counters.pre_exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_pre_exp_triplet_sessions + ' of the similarity  task. Please take a short break of maximum 30 seconds and then continue.'
 						comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task
 
 					}
@@ -135,13 +137,15 @@
 						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of trials! <br> You are finished with the experiment! <br> Please complete some debriefing questions.'
 						comp_to_start = jatos.studySessionData.inputData.component_positions.debriefing
 
+						page_title = 'Finished!'
+
 					} else {
 
 						// debugger
 						// Calculate performance
 						let perc_corr = calc_perf(jatos.studySessionData.outputData.post_exposure.filter(item => item.session == jatos.studySessionData.inputData.session_counters.post_exposure))
 
-						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of trials! <br> You have finished session ' + jatos.studySessionData.inputData.session_counters.post_exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_post_exp_triplet_sessions + ' of the similarity  task. Please take a short break and then continue.'
+						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of trials! <br> You have finished session ' + jatos.studySessionData.inputData.session_counters.post_exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_post_exp_triplet_sessions + ' of the similarity  task. Please take a short break of maximum 30 seconds and then continue.'
 						comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task
 
 					}

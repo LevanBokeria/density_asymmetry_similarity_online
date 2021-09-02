@@ -118,7 +118,9 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
     var trial_counter_el = document.createElement('P')
     let n_total_trials = []
 
-    if (jatos.studySessionData.inputData.session_counters.exposure == 0){
+    if (jatos.studySessionData.inputData.session_counters.pre_exposure == 0){
+      n_total_trials = jatos.studySessionData.inputData.triplet_practice_trials[0].length
+    } else if (jatos.studySessionData.inputData.session_counters.exposure == 0){
       n_total_trials = jatos.studySessionData.inputData.pre_exposure_trials[0].length
     } else {
       n_total_trials = jatos.studySessionData.inputData.post_exposure_trials[0].length

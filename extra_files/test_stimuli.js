@@ -10,7 +10,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 20,
     "abs_dist_query_ref2": 20,
     "abs_dist_ref1_ref2": 40,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -23,7 +24,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 20,
     "abs_dist_query_ref2": 20,
     "abs_dist_ref1_ref2": 40,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -36,7 +38,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 20,
     "abs_dist_query_ref2": 20,
     "abs_dist_ref1_ref2": 40,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -49,20 +52,22 @@ var test_stimuli = [
     "abs_dist_query_ref1": 40,
     "abs_dist_query_ref2": 40,
     "abs_dist_ref1_ref2": 80,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 40,
     "dist_query_ref_2": -40,
     "dist_ref1_ref2": -80,
-    "query": 150,
-    "ref1": 110,
-    "ref2": 190,
+    "query": 140,
+    "ref1": 100,
+    "ref2": 180,
     "abs_dist_query_ref1": 40,
     "abs_dist_query_ref2": 40,
     "abs_dist_ref1_ref2": 80,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -75,7 +80,22 @@ var test_stimuli = [
     "abs_dist_query_ref1": 40,
     "abs_dist_query_ref2": 40,
     "abs_dist_ref1_ref2": 80,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
+  },
+  {
+    "simulation name": "post_rik_meeting",
+    "dist_query_ref1": 40,
+    "dist_query_ref_2": -40,
+    "dist_ref1_ref2": -80,
+    "query": 260,
+    "ref1": 220,
+    "ref2": 300,
+    "abs_dist_query_ref1": 40,
+    "abs_dist_query_ref2": 40,
+    "abs_dist_ref1_ref2": 80,
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -88,7 +108,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 60,
     "abs_dist_query_ref2": 60,
     "abs_dist_ref1_ref2": 120,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -101,7 +122,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 60,
     "abs_dist_query_ref2": 60,
     "abs_dist_ref1_ref2": 120,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -114,7 +136,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 60,
     "abs_dist_query_ref2": 60,
     "abs_dist_ref1_ref2": 120,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -127,7 +150,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 20,
     "abs_dist_query_ref2": 40,
     "abs_dist_ref1_ref2": 60,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -140,7 +164,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 20,
     "abs_dist_query_ref2": 40,
     "abs_dist_ref1_ref2": 60,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -153,7 +178,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 20,
     "abs_dist_query_ref2": 40,
     "abs_dist_ref1_ref2": 60,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -166,7 +192,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 20,
     "abs_dist_query_ref2": 40,
     "abs_dist_ref1_ref2": 60,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -179,7 +206,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 40,
     "abs_dist_query_ref2": 20,
     "abs_dist_ref1_ref2": 60,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -192,7 +220,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 40,
     "abs_dist_query_ref2": 20,
     "abs_dist_ref1_ref2": 60,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -205,7 +234,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 40,
     "abs_dist_query_ref2": 20,
     "abs_dist_ref1_ref2": 60,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -218,7 +248,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 40,
     "abs_dist_query_ref2": 20,
     "abs_dist_ref1_ref2": 60,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -231,20 +262,22 @@ var test_stimuli = [
     "abs_dist_query_ref1": 20,
     "abs_dist_query_ref2": 60,
     "abs_dist_ref1_ref2": 80,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 20,
     "dist_query_ref_2": -60,
     "dist_ref1_ref2": -80,
-    "query": 170,
-    "ref1": 150,
-    "ref2": 230,
+    "query": 160,
+    "ref1": 140,
+    "ref2": 220,
     "abs_dist_query_ref1": 20,
     "abs_dist_query_ref2": 60,
     "abs_dist_ref1_ref2": 80,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -257,7 +290,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 20,
     "abs_dist_query_ref2": 60,
     "abs_dist_ref1_ref2": 80,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -270,20 +304,22 @@ var test_stimuli = [
     "abs_dist_query_ref1": 60,
     "abs_dist_query_ref2": 20,
     "abs_dist_ref1_ref2": 80,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 60,
     "dist_query_ref_2": -20,
     "dist_ref1_ref2": -80,
-    "query": 170,
-    "ref1": 110,
-    "ref2": 190,
+    "query": 180,
+    "ref1": 120,
+    "ref2": 200,
     "abs_dist_query_ref1": 60,
     "abs_dist_query_ref2": 20,
     "abs_dist_ref1_ref2": 80,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -296,7 +332,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 60,
     "abs_dist_query_ref2": 20,
     "abs_dist_ref1_ref2": 80,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -309,7 +346,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 60,
     "abs_dist_query_ref2": 40,
     "abs_dist_ref1_ref2": 100,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -322,20 +360,22 @@ var test_stimuli = [
     "abs_dist_query_ref1": 60,
     "abs_dist_query_ref2": 40,
     "abs_dist_ref1_ref2": 100,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 60,
     "dist_query_ref_2": -40,
     "dist_ref1_ref2": -100,
-    "query": 190,
-    "ref1": 130,
-    "ref2": 230,
+    "query": 180,
+    "ref1": 120,
+    "ref2": 220,
     "abs_dist_query_ref1": 60,
     "abs_dist_query_ref2": 40,
     "abs_dist_ref1_ref2": 100,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -348,7 +388,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 60,
     "abs_dist_query_ref2": 40,
     "abs_dist_ref1_ref2": 100,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -361,20 +402,22 @@ var test_stimuli = [
     "abs_dist_query_ref1": 40,
     "abs_dist_query_ref2": 60,
     "abs_dist_ref1_ref2": 100,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 40,
     "dist_query_ref_2": -60,
     "dist_ref1_ref2": -100,
-    "query": 110,
-    "ref1": 70,
-    "ref2": 170,
+    "query": 120,
+    "ref1": 80,
+    "ref2": 180,
     "abs_dist_query_ref1": 40,
     "abs_dist_query_ref2": 60,
     "abs_dist_ref1_ref2": 100,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -387,7 +430,8 @@ var test_stimuli = [
     "abs_dist_query_ref1": 40,
     "abs_dist_query_ref2": 60,
     "abs_dist_ref1_ref2": 100,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "post_rik_meeting",
@@ -400,201 +444,203 @@ var test_stimuli = [
     "abs_dist_query_ref1": 40,
     "abs_dist_query_ref2": 60,
     "abs_dist_ref1_ref2": 100,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "main"
+  },
+  {
+    "simulation name": "balancing",
+    "dist_query_ref1": 110,
+    "dist_query_ref_2": -120,
+    "dist_ref1_ref2": -230,
+    "query": 160,
+    "ref1": 50,
+    "ref2": 280,
+    "abs_dist_query_ref1": 110,
+    "abs_dist_query_ref2": 120,
+    "abs_dist_ref1_ref2": 230,
+    "trial_type": "query_central",
+    "Comment": "practice"
+  },
+  {
+    "simulation name": "balancing",
+    "dist_query_ref1": -80,
+    "dist_query_ref_2": 130,
+    "dist_ref1_ref2": 210,
+    "query": 210,
+    "ref1": 290,
+    "ref2": 80,
+    "abs_dist_query_ref1": 80,
+    "abs_dist_query_ref2": 130,
+    "abs_dist_ref1_ref2": 210,
+    "trial_type": "query_central",
+    "Comment": "practice"
   },
   {
     "simulation name": "balancing",
     "dist_query_ref1": 20,
-    "dist_query_ref_2": -30,
-    "dist_ref1_ref2": -50,
-    "query": 50,
-    "ref1": 30,
-    "ref2": 80,
+    "dist_query_ref_2": -100,
+    "dist_ref1_ref2": -120,
+    "query": 60,
+    "ref1": 40,
+    "ref2": 160,
     "abs_dist_query_ref1": 20,
-    "abs_dist_query_ref2": 30,
-    "abs_dist_ref1_ref2": 50,
-    "trial_type": "query_central"
-  },
-  {
-    "simulation name": "balancing",
-    "dist_query_ref1": 140,
-    "dist_query_ref_2": 170,
-    "dist_ref1_ref2": 30,
-    "query": 220,
-    "ref1": 80,
-    "ref2": 50,
-    "abs_dist_query_ref1": 140,
-    "abs_dist_query_ref2": 170,
-    "abs_dist_ref1_ref2": 30,
-    "trial_type": "query_side"
-  },
-  {
-    "simulation name": "balancing",
-    "dist_query_ref1": 40,
-    "dist_query_ref_2": -40,
-    "dist_ref1_ref2": -80,
-    "query": 260,
-    "ref1": 220,
-    "ref2": 300,
-    "abs_dist_query_ref1": 40,
-    "abs_dist_query_ref2": 40,
-    "abs_dist_ref1_ref2": 80,
-    "trial_type": "query_central"
-  },
-  {
-    "simulation name": "balancing",
-    "dist_query_ref1": 30,
-    "dist_query_ref_2": -20,
-    "dist_ref1_ref2": -50,
-    "query": 280,
-    "ref1": 250,
-    "ref2": 300,
-    "abs_dist_query_ref1": 30,
-    "abs_dist_query_ref2": 20,
-    "abs_dist_ref1_ref2": 50,
-    "trial_type": "query_central"
+    "abs_dist_query_ref2": 100,
+    "abs_dist_ref1_ref2": 120,
+    "trial_type": "query_central",
+    "Comment": "main"
   },
   {
     "simulation name": "balancing",
     "dist_query_ref1": -20,
-    "dist_query_ref_2": 30,
-    "dist_ref1_ref2": 50,
+    "dist_query_ref_2": -210,
+    "dist_ref1_ref2": -190,
+    "query": 40,
+    "ref1": 60,
+    "ref2": 250,
+    "abs_dist_query_ref1": 20,
+    "abs_dist_query_ref2": 210,
+    "abs_dist_ref1_ref2": 190,
+    "trial_type": "query_side",
+    "Comment": "practice"
+  },
+  {
+    "simulation name": "balancing",
+    "dist_query_ref1": -20,
+    "dist_query_ref_2": 60,
+    "dist_ref1_ref2": 80,
     "query": 270,
     "ref1": 290,
-    "ref2": 240,
+    "ref2": 210,
     "abs_dist_query_ref1": 20,
-    "abs_dist_query_ref2": 30,
-    "abs_dist_ref1_ref2": 50,
-    "trial_type": "query_central"
-  },
-  {
-    "simulation name": "balancing",
-    "dist_query_ref1": -60,
-    "dist_query_ref_2": -80,
-    "dist_ref1_ref2": -20,
-    "query": 210,
-    "ref1": 270,
-    "ref2": 290,
-    "abs_dist_query_ref1": 60,
-    "abs_dist_query_ref2": 80,
-    "abs_dist_ref1_ref2": 20,
-    "trial_type": "query_side"
-  },
-  {
-    "simulation name": "balancing",
-    "dist_query_ref1": -140,
-    "dist_query_ref_2": -170,
-    "dist_ref1_ref2": -30,
-    "query": 60,
-    "ref1": 200,
-    "ref2": 230,
-    "abs_dist_query_ref1": 140,
-    "abs_dist_query_ref2": 170,
-    "abs_dist_ref1_ref2": 30,
-    "trial_type": "query_side"
-  },
-  {
-    "simulation name": "balancing",
-    "dist_query_ref1": -240,
-    "dist_query_ref_2": -260,
-    "dist_ref1_ref2": -20,
-    "query": 40,
-    "ref1": 280,
-    "ref2": 300,
-    "abs_dist_query_ref1": 240,
-    "abs_dist_query_ref2": 260,
-    "abs_dist_ref1_ref2": 20,
-    "trial_type": "query_side"
-  },
-  {
-    "simulation name": "balancing",
-    "dist_query_ref1": -50,
-    "dist_query_ref_2": -80,
-    "dist_ref1_ref2": -30,
-    "query": 210,
-    "ref1": 260,
-    "ref2": 290,
-    "abs_dist_query_ref1": 50,
-    "abs_dist_query_ref2": 80,
-    "abs_dist_ref1_ref2": 30,
-    "trial_type": "query_side"
-  },
-  {
-    "simulation name": "balancing",
-    "dist_query_ref1": 60,
-    "dist_query_ref_2": -60,
-    "dist_ref1_ref2": -120,
-    "query": 100,
-    "ref1": 40,
-    "ref2": 160,
-    "abs_dist_query_ref1": 60,
     "abs_dist_query_ref2": 60,
-    "abs_dist_ref1_ref2": 120,
-    "trial_type": "query_central"
-  },
-  {
-    "simulation name": "balancing",
-    "dist_query_ref1": 60,
-    "dist_query_ref_2": -20,
-    "dist_ref1_ref2": -80,
-    "query": 120,
-    "ref1": 60,
-    "ref2": 140,
-    "abs_dist_query_ref1": 60,
-    "abs_dist_query_ref2": 20,
     "abs_dist_ref1_ref2": 80,
-    "trial_type": "query_central"
-  },
-  {
-    "simulation name": "balancing",
-    "dist_query_ref1": -60,
-    "dist_query_ref_2": -80,
-    "dist_ref1_ref2": -20,
-    "query": 40,
-    "ref1": 100,
-    "ref2": 120,
-    "abs_dist_query_ref1": 60,
-    "abs_dist_query_ref2": 80,
-    "abs_dist_ref1_ref2": 20,
-    "trial_type": "query_side"
-  },
-  {
-    "simulation name": "balancing",
-    "dist_query_ref1": 20,
-    "dist_query_ref_2": -20,
-    "dist_ref1_ref2": -40,
-    "query": 60,
-    "ref1": 40,
-    "ref2": 80,
-    "abs_dist_query_ref1": 20,
-    "abs_dist_query_ref2": 20,
-    "abs_dist_ref1_ref2": 40,
-    "trial_type": "query_central"
+    "trial_type": "query_central",
+    "Comment": "practice"
   },
   {
     "simulation name": "balancing",
     "dist_query_ref1": 40,
-    "dist_query_ref_2": -30,
-    "dist_ref1_ref2": -70,
-    "query": 250,
-    "ref1": 210,
-    "ref2": 280,
+    "dist_query_ref_2": 190,
+    "dist_ref1_ref2": 150,
+    "query": 290,
+    "ref1": 250,
+    "ref2": 100,
     "abs_dist_query_ref1": 40,
-    "abs_dist_query_ref2": 30,
-    "abs_dist_ref1_ref2": 70,
-    "trial_type": "query_central"
+    "abs_dist_query_ref2": 190,
+    "abs_dist_ref1_ref2": 150,
+    "trial_type": "query_side",
+    "Comment": "main"
   },
   {
     "simulation name": "balancing",
-    "dist_query_ref1": 20,
-    "dist_query_ref_2": -20,
-    "dist_ref1_ref2": -40,
-    "query": 270,
-    "ref1": 250,
-    "ref2": 290,
+    "dist_query_ref1": -20,
+    "dist_query_ref_2": -100,
+    "dist_ref1_ref2": -80,
+    "query": 40,
+    "ref1": 60,
+    "ref2": 140,
     "abs_dist_query_ref1": 20,
-    "abs_dist_query_ref2": 20,
-    "abs_dist_ref1_ref2": 40,
-    "trial_type": "query_central"
+    "abs_dist_query_ref2": 100,
+    "abs_dist_ref1_ref2": 80,
+    "trial_type": "query_side",
+    "Comment": "main"
+  },
+  {
+    "simulation name": "balancing",
+    "dist_query_ref1": 40,
+    "dist_query_ref_2": -160,
+    "dist_ref1_ref2": -200,
+    "query": 120,
+    "ref1": 80,
+    "ref2": 280,
+    "abs_dist_query_ref1": 40,
+    "abs_dist_query_ref2": 160,
+    "abs_dist_ref1_ref2": 200,
+    "trial_type": "query_central",
+    "Comment": "main"
+  },
+  {
+    "simulation name": "balancing",
+    "dist_query_ref1": 50,
+    "dist_query_ref_2": -150,
+    "dist_ref1_ref2": -200,
+    "query": 130,
+    "ref1": 80,
+    "ref2": 280,
+    "abs_dist_query_ref1": 50,
+    "abs_dist_query_ref2": 150,
+    "abs_dist_ref1_ref2": 200,
+    "trial_type": "query_central",
+    "Comment": "main"
+  },
+  {
+    "simulation name": "balancing",
+    "dist_query_ref1": -20,
+    "dist_query_ref_2": -230,
+    "dist_ref1_ref2": -210,
+    "query": 40,
+    "ref1": 60,
+    "ref2": 270,
+    "abs_dist_query_ref1": 20,
+    "abs_dist_query_ref2": 230,
+    "abs_dist_ref1_ref2": 210,
+    "trial_type": "query_side",
+    "Comment": "main"
+  },
+  {
+    "simulation name": "balancing",
+    "dist_query_ref1": -20,
+    "dist_query_ref_2": 150,
+    "dist_ref1_ref2": 170,
+    "query": 250,
+    "ref1": 270,
+    "ref2": 100,
+    "abs_dist_query_ref1": 20,
+    "abs_dist_query_ref2": 150,
+    "abs_dist_ref1_ref2": 170,
+    "trial_type": "query_central",
+    "Comment": "main"
+  },
+  {
+    "simulation name": "balancing",
+    "dist_query_ref1": -60,
+    "dist_query_ref_2": 200,
+    "dist_ref1_ref2": 260,
+    "query": 240,
+    "ref1": 300,
+    "ref2": 40,
+    "abs_dist_query_ref1": 60,
+    "abs_dist_query_ref2": 200,
+    "abs_dist_ref1_ref2": 260,
+    "trial_type": "query_central",
+    "Comment": "practice"
+  },
+  {
+    "simulation name": "balancing",
+    "dist_query_ref1": -80,
+    "dist_query_ref_2": 160,
+    "dist_ref1_ref2": 240,
+    "query": 210,
+    "ref1": 290,
+    "ref2": 50,
+    "abs_dist_query_ref1": 80,
+    "abs_dist_query_ref2": 160,
+    "abs_dist_ref1_ref2": 240,
+    "trial_type": "query_central",
+    "Comment": "practice"
+  },
+  {
+    "simulation name": "balancing",
+    "dist_query_ref1": -10,
+    "dist_query_ref_2": 150,
+    "dist_ref1_ref2": 160,
+    "query": 250,
+    "ref1": 260,
+    "ref2": 100,
+    "abs_dist_query_ref1": 10,
+    "abs_dist_query_ref2": 150,
+    "abs_dist_ref1_ref2": 160,
+    "trial_type": "query_central",
+    "Comment": "main"
   }
 ]

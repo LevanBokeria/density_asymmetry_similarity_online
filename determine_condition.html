@@ -31,17 +31,17 @@
             triplet_task: 6,
             exposure: 7,
             break: 8,            
-            data_submission: 10,
             debriefing: 9,
+            data_submission: 10,
         }        
         
         // From the test stimuli take the "balancing" ones use as test trials
-        jatos.studySessionData.inputData.triplet_practice_params = test_stimuli.filter(item => item['simulation name'] == 'balancing')
+        jatos.studySessionData.inputData.triplet_practice_params = test_stimuli.filter(item => item['Comment'] == 'practice')
 
-        jatos.studySessionData.inputData.pre_exposure_params = test_stimuli.filter(item => item['simulation name'] != 'balancing')        
+        jatos.studySessionData.inputData.pre_exposure_params = test_stimuli.filter(item => item['Comment'] == 'main')        
 
-        jatos.studySessionData.inputData.post_exposure_params = test_stimuli.filter(item => item['simulation name'] != 'balancing')        
-
+        jatos.studySessionData.inputData.post_exposure_params = test_stimuli.filter(item => item['Comment'] == 'main')        
+        
         // All images
         jatos.studySessionData.inputData.all_exemplars = [
             'img/neck_legs_space/dim_1_stim_100_x_100_y_110.png',

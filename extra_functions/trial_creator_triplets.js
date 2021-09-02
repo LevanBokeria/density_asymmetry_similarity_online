@@ -1,5 +1,5 @@
 function trial_creator_triplets(parameters,n_reps,n_sessions){
-    
+    // debugger
     let all_trials = []
 
     var ref1_idx, ref2_idx
