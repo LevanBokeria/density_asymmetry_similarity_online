@@ -88,6 +88,12 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
         default: null,
         description: 'How long to show trial before it ends.'
       },
+      stim_min_duration: {
+        type: jsPsych.plugins.parameterType.INT,
+        pretty_name: 'Minimum Stimulus duration',
+        default: null,
+        description: 'How long to show the stimulus at the minimum.'
+      },      
       response_ends_trial: {
         type: jsPsych.plugins.parameterType.BOOL,
         pretty_name: 'Response ends trial',
@@ -268,15 +274,30 @@ jsPsych.plugins["triplets-keyboard-response"] = (function() {
       }, trial.post_response_delay);
     }
 
-    // start the response listener
-    if (trial.choices != jsPsych.NO_KEYS) {
-      var keyboardListener = jsPsych.pluginAPI.getKeyboardResponse({
-        callback_function: after_response,
-        valid_responses: trial.choices,
-        rt_method: 'performance',
-        persist: false,
-        allow_held_key: false
-      });
+    if (trial.stim_min_duration !== null) {
+      jsPsych.pluginAPI.setTimeout(function () {
+        // start the response listener after a bi
+        if (trial.choices != jsPsych.NO_KEYS) {
+          var keyboardListener = jsPsych.pluginAPI.getKeyboardResponse({
+            callback_function: after_response,
+            valid_responses: trial.choices,
+            rt_method: 'performance',
+            persist: false,
+            allow_held_key: false
+          });
+        }
+      }, trial.stim_min_duration)
+    } else {
+      // start the response listener right away
+      if (trial.choices != jsPsych.NO_KEYS) {
+        var keyboardListener = jsPsych.pluginAPI.getKeyboardResponse({
+          callback_function: after_response,
+          valid_responses: trial.choices,
+          rt_method: 'performance',
+          persist: false,
+          allow_held_key: false
+        });
+      }
     }
 
     // hide stimulus if stimulus_duration is set

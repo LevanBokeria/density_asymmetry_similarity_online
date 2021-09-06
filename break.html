@@ -56,12 +56,20 @@
 							item => item.session == jatos.studySessionData.inputData.session_counters.exposure & item.correct_response == 'q')
 					)
 
+					// Now difference trials
 					let perc_corr_diff = calc_perf(
 						jatos.studySessionData.outputData.exposure.filter(
 							item => item.session == jatos.studySessionData.inputData.session_counters.exposure & item.correct_response == 'p')
 					)
 
-					instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr_same) + '% of the "same" trials and ' + Math.floor(perc_corr_diff) + '% of the "different" trials! <br> You have finished the "same/different" task. <br> <strong>Please take a break of no more than 1 minute!</strong><br>Next, you will do the similarity judgment task one more time.'
+					// Calculate for all trials
+					let perc_corr_all = calc_perf(
+						jatos.studySessionData.outputData.exposure.filter(
+							item => item.session == jatos.studySessionData.inputData.session_counters.exposure
+						)
+					)
+
+					instructions_text = 'Thanks! For the last session, you were accurate on ' + Math.floor(perc_corr_same) + '% of the "same" trials and ' + Math.floor(perc_corr_diff) + '% of the "different" trials! Overall, you were ' + Math.floor(perc_corr_all) + '% accurate on all trials. <br> You have finished the "same/different" task. <br> <strong>Please take a break of no more than 1 minute!</strong><br>Next, you will do the similarity judgment task one more time.'
 
 					comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task
 
@@ -78,7 +86,14 @@
 							item => item.session == jatos.studySessionData.inputData.session_counters.exposure & item.correct_response == 'p')
 					)
 
-					instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr_same) + '% of the "same" trials and ' + Math.floor(perc_corr_diff) + '% of the "different" trials! <br> You have finished session ' + jatos.studySessionData.inputData.session_counters.exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions + ' of the "same/different" task. Please take a short break of maximum 30 seconds and then continue.'
+					// Calculate for all trials
+					let perc_corr_all = calc_perf(
+						jatos.studySessionData.outputData.exposure.filter(
+							item => item.session == jatos.studySessionData.inputData.session_counters.exposure
+						)
+					)					
+
+					instructions_text = 'Thanks! For the last session, you were accurate on ' + Math.floor(perc_corr_same) + '% of the "same" trials and ' + Math.floor(perc_corr_diff) + '% of the "different" trials! Overall, you were ' + Math.floor(perc_corr_all) + '% accurate on all trials.<br> You have finished session ' + jatos.studySessionData.inputData.session_counters.exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions + ' of the "same/different" task. Please take a short break of maximum 30 seconds and then continue.'
 
 					comp_to_start = jatos.studySessionData.inputData.component_positions.exposure
 

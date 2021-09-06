@@ -45,6 +45,7 @@
                 y_offset: jsPsych.timelineVariable('y_offset'),
                 trial_duration: jatos.studySessionData.inputData.experiment_parameters.exposure_trial_dur,
                 response_ends_trial: true,
+                stim_min_duration: jatos.studySessionData.inputData.experiment_parameters.stim_min_duration,
                 data: { trial_stage: 'exemplar_display' },
                 on_finish: function(data){
 
@@ -69,7 +70,7 @@
             }
 
             var session_procedure = {
-                timeline: [exposure_trial,fixation_trial],
+                timeline: [fixation_trial,exposure_trial],
                 timeline_variables: session_trials,
                 randomize_order: false,
                 post_trial_gap: 0,

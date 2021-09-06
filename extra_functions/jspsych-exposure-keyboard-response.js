@@ -5,7 +5,7 @@
  **/
 
 
-jsPsych.plugins["exposure-keyboard-response"] = (function() {
+jsPsych.plugins["exposure-keyboard-response"] = (function () {
 
   var plugin = {};
 
@@ -32,7 +32,7 @@ jsPsych.plugins["exposure-keyboard-response"] = (function() {
         pretty_name: 'Ref2 vertical offset',
         default: null,
         description: 'Amount of pixels to offset the ref2 from the center'
-      },      
+      },
       stimulus_height: {
         type: jsPsych.plugins.parameterType.INT,
         pretty_name: 'Image height',
@@ -70,6 +70,12 @@ jsPsych.plugins["exposure-keyboard-response"] = (function() {
         default: null,
         description: 'How long to hide the stimulus.'
       },
+      stim_min_duration: {
+        type: jsPsych.plugins.parameterType.INT,
+        pretty_name: 'Minimum Stimulus duration',
+        default: null,
+        description: 'How long to show the stimulus at the minimum.'
+      },
       trial_duration: {
         type: jsPsych.plugins.parameterType.INT,
         pretty_name: 'Trial duration',
@@ -85,8 +91,8 @@ jsPsych.plugins["exposure-keyboard-response"] = (function() {
     }
   }
 
-  plugin.trial = function(display_element, trial) {
-    
+  plugin.trial = function (display_element, trial) {
+
 
     // How many trials?
     // debugger
@@ -106,7 +112,7 @@ jsPsych.plugins["exposure-keyboard-response"] = (function() {
     var left_button_text_el = document.createElement('P')
     left_button_text_el.innerText = '"q" = same as previous'
     var right_button_text_el = document.createElement('P')
-    right_button_text_el.innerText = '"p" = different from previous'    
+    right_button_text_el.innerText = '"p" = different from previous'
 
     top_flex_el.appendChild(left_button_text_el)
     top_flex_el.appendChild(trial_counter_el)
@@ -135,10 +141,10 @@ jsPsych.plugins["exposure-keyboard-response"] = (function() {
     stimulus_el.src = trial.stimulus
 
     stimulus_el.className = 'stimuli'
-    stimulus_el.id        = 'stimulus'
+    stimulus_el.id = 'stimulus'
 
     stimulus_el.style.height = trial.stimulus_height.toString() + 'px'
-    stimulus_el.style.width  = stimulus_el.naturalWidth * stimulus_el.style.height / stimulus_el.naturalHeight
+    stimulus_el.style.width = stimulus_el.naturalWidth * stimulus_el.style.height / stimulus_el.naturalHeight
     stimulus_el.style['margin-top'] = trial.y_offset.toString() + 'px'
     stimulus_el.style['margin-left'] = trial.x_offset.toString() + 'px'
 
@@ -154,7 +160,7 @@ jsPsych.plugins["exposure-keyboard-response"] = (function() {
     };
 
     // function to end trial when it is time
-    var end_trial = function() {
+    var end_trial = function () {
 
       // kill any remaining setTimeout handlers
       jsPsych.pluginAPI.clearAllTimeouts();
@@ -179,8 +185,8 @@ jsPsych.plugins["exposure-keyboard-response"] = (function() {
     };
 
     // function to handle responses by the subject
-    var after_response = function(info) {
-      
+    var after_response = function (info) {
+
       // only record the first response
       if (response.key == null) {
         response = info;
@@ -191,27 +197,43 @@ jsPsych.plugins["exposure-keyboard-response"] = (function() {
       }
     };
 
-    // start the response listener
-    if (trial.choices != jsPsych.NO_KEYS) {
-      var keyboardListener = jsPsych.pluginAPI.getKeyboardResponse({
-        callback_function: after_response,
-        valid_responses: trial.choices,
-        rt_method: 'performance',
-        persist: false,
-        allow_held_key: false
-      });
+
+    if (trial.stim_min_duration !== null) {
+      jsPsych.pluginAPI.setTimeout(function () {
+        // start the response listener after a bi
+        if (trial.choices != jsPsych.NO_KEYS) {
+          var keyboardListener = jsPsych.pluginAPI.getKeyboardResponse({
+            callback_function: after_response,
+            valid_responses: trial.choices,
+            rt_method: 'performance',
+            persist: false,
+            allow_held_key: false
+          });
+        }
+      }, trial.stim_min_duration)
+    } else {
+      // start the response listener right away
+      if (trial.choices != jsPsych.NO_KEYS) {
+        var keyboardListener = jsPsych.pluginAPI.getKeyboardResponse({
+          callback_function: after_response,
+          valid_responses: trial.choices,
+          rt_method: 'performance',
+          persist: false,
+          allow_held_key: false
+        });
+      }
     }
 
     // hide stimulus if stimulus_duration is set
     if (trial.stimulus_duration !== null) {
-      jsPsych.pluginAPI.setTimeout(function() {
+      jsPsych.pluginAPI.setTimeout(function () {
         display_element.querySelector('#jspsych-exposure-keyboard-response-stimulus').style.visibility = 'hidden';
       }, trial.stimulus_duration);
     }
 
     // end trial if trial_duration is set
     if (trial.trial_duration !== null) {
-      jsPsych.pluginAPI.setTimeout(function() {
+      jsPsych.pluginAPI.setTimeout(function () {
         end_trial();
       }, trial.trial_duration);
     } else if (trial.response_ends_trial === false) {
