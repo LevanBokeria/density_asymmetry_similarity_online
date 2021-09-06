@@ -193,36 +193,62 @@ jsPsych.plugins["exposure-keyboard-response"] = (function () {
       }
 
       if (trial.response_ends_trial) {
-        end_trial();
+        if(min_duration_over){
+          end_trial();
+        }
       }
     };
 
+    var min_duration_over = false
 
+    // Start the min stim duration timer
     if (trial.stim_min_duration !== null) {
       jsPsych.pluginAPI.setTimeout(function () {
-        // start the response listener after a bi
-        if (trial.choices != jsPsych.NO_KEYS) {
-          var keyboardListener = jsPsych.pluginAPI.getKeyboardResponse({
-            callback_function: after_response,
-            valid_responses: trial.choices,
-            rt_method: 'performance',
-            persist: false,
-            allow_held_key: false
-          });
+        min_duration_over = true
+
+        if(response.key !== null){
+          end_trial();
         }
+
       }, trial.stim_min_duration)
-    } else {
-      // start the response listener right away
-      if (trial.choices != jsPsych.NO_KEYS) {
-        var keyboardListener = jsPsych.pluginAPI.getKeyboardResponse({
-          callback_function: after_response,
-          valid_responses: trial.choices,
-          rt_method: 'performance',
-          persist: false,
-          allow_held_key: false
-        });
-      }
     }
+
+
+    if (trial.choices != jsPsych.NO_KEYS) {
+      var keyboardListener = jsPsych.pluginAPI.getKeyboardResponse({
+        callback_function: after_response,
+        valid_responses: trial.choices,
+        rt_method: 'performance',
+        persist: false,
+        allow_held_key: false
+      });
+    }
+
+    // if (trial.stim_min_duration !== null) {
+    //   jsPsych.pluginAPI.setTimeout(function () {
+    //     // start the response listener after a bi
+    //     if (trial.choices != jsPsych.NO_KEYS) {
+    //       var keyboardListener = jsPsych.pluginAPI.getKeyboardResponse({
+    //         callback_function: after_response,
+    //         valid_responses: trial.choices,
+    //         rt_method: 'performance',
+    //         persist: false,
+    //         allow_held_key: false
+    //       });
+    //     }
+    //   }, trial.stim_min_duration)
+    // } else {
+    //   // start the response listener right away
+    //   if (trial.choices != jsPsych.NO_KEYS) {
+    //     var keyboardListener = jsPsych.pluginAPI.getKeyboardResponse({
+    //       callback_function: after_response,
+    //       valid_responses: trial.choices,
+    //       rt_method: 'performance',
+    //       persist: false,
+    //       allow_held_key: false
+    //     });
+    //   }
+    // }
 
     // hide stimulus if stimulus_duration is set
     if (trial.stimulus_duration !== null) {
