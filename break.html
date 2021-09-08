@@ -122,7 +122,7 @@
 						let perc_corr = calc_perf(jatos.studySessionData.outputData.pre_exposure.filter(item => item.session == jatos.studySessionData.inputData.session_counters.pre_exposure))
 
 						instructions_text = 
-						'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of trials! <br> That was the end of the similarity task #1. <br><b>Now we will move onto the same/difference task.</b> ' + 
+						'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of the trials! <br> That was the end of the similarity task #1. <br><b>Now we will move onto the same/difference task.</b> ' + 
 						'<br><br>You will see these birds show up on the screen one-by-one. The task is simple: if the bird you see is exactly the same as you saw on the previous trial, press the button "q". If the current bird is different than the previous one, press the button "p".' +
 						'<p><br>Each bird will stay on the screen for at least ' + (jatos.studySessionData.inputData.experiment_parameters.exposure_stim_min_duration / 1000) + ' seconds, but you can make your response before that too, it will still get registered.' +
 						'<br><br> However, if you do not respond within ' + (jatos.studySessionData.inputData.experiment_parameters.exposure_trial_dur / 1000) + ' seconds, the trial will be considered as missed and the next trial will begin.' +
@@ -141,7 +141,7 @@
 						let perc_corr = calc_perf(jatos.studySessionData.outputData.pre_exposure.filter(item => item.session == jatos.studySessionData.inputData.session_counters.pre_exposure))
 
 
-						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of trials! <br> You have finished session ' + jatos.studySessionData.inputData.session_counters.pre_exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_pre_exp_triplet_sessions + ' of the similarity  task. Please take a short break of maximum 30 seconds and then continue.'
+						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of the trials! <br> You have finished session ' + jatos.studySessionData.inputData.session_counters.pre_exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_pre_exp_triplet_sessions + ' of the similarity  task. Please take a short break of maximum 30 seconds and then continue.'
 						comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task
 
 					}
@@ -157,7 +157,7 @@
 						// Calculate performance
 						let perc_corr = calc_perf(jatos.studySessionData.outputData.post_exposure.filter(item => item.session == jatos.studySessionData.inputData.session_counters.post_exposure))
 
-						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of trials! <br> You are finished with the experiment! <br> Please complete some debriefing questions.'
+						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of the trials! <br> You are finished with the experiment! <br> Please complete some debriefing questions.'
 						comp_to_start = jatos.studySessionData.inputData.component_positions.debriefing
 
 						page_title = 'Finished!'
@@ -168,7 +168,7 @@
 						// Calculate performance
 						let perc_corr = calc_perf(jatos.studySessionData.outputData.post_exposure.filter(item => item.session == jatos.studySessionData.inputData.session_counters.post_exposure))
 
-						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of trials! <br> You have finished session ' + jatos.studySessionData.inputData.session_counters.post_exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_post_exp_triplet_sessions + ' of the similarity  task. Please take a short break of maximum 30 seconds and then continue.'
+						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of the trials! <br> You have finished session ' + jatos.studySessionData.inputData.session_counters.post_exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_post_exp_triplet_sessions + ' of the similarity  task. Please take a short break of maximum 30 seconds and then continue.'
 						comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task
 
 					}
@@ -186,7 +186,7 @@
 			// } else if (curr_session == 1){
 
 			// 	// So we just finished the practice session
-			// 	instructions_text = 'Great! These were practice trials on the purple board. You will not see that board or those pictures again. <br> Lets start with the real trials. You will learn location of pictures on 5 new different boards that are colored differently. <br> <strong>On some of these boards, the visible items you will see at the beginning of trials might change locations or be absent completely!</strong> <br> For each of the 5 boards, you will do ' + jatos.studySessionData.inputData.n_ses_per_condition.schema_c + ' sessions, each session with ' + (jatos.studySessionData.inputData.n_trials_per_pa.schema_c*6) + ' trials (' + jatos.studySessionData.inputData.n_trials_per_pa.schema_c + ' trials per hidden picture). <br><br> Click next to start with the first board'
+			// 	instructions_text = 'Great! These were practice trials on the purple board. You will not see that board or those pictures again. <br> Lets start with the real trials. You will learn location of pictures on 5 new different boards that are colored differently. <br> <strong>On some of these boards, the visible items you will see at the beginning of the trials might change locations or be absent completely!</strong> <br> For each of the 5 boards, you will do ' + jatos.studySessionData.inputData.n_ses_per_condition.schema_c + ' sessions, each session with ' + (jatos.studySessionData.inputData.n_trials_per_pa.schema_c*6) + ' trials (' + jatos.studySessionData.inputData.n_trials_per_pa.schema_c + ' trials per hidden picture). <br><br> Click next to start with the first board'
 
 			// 	comp_to_start = jatos.studySessionData.inputData.component_positions.session_pa2
 
