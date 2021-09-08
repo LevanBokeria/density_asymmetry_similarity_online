@@ -404,7 +404,7 @@
             triplet_trial_dur: 5000,
             fixation_trial_dur: 500,
             triplet_trial_iti: 500,
-            stim_min_duration: 500, // minimum milliseconds to display birds
+            exposure_stim_min_duration: 1500, // minimum milliseconds to display birds
         }
 
         jatos.studySessionData.inputData.session_counters = {
@@ -433,15 +433,16 @@
         if (jatos.componentJsonInput.debugMode){
             // debugger
             jatos.studySessionData.inputData.experiment_parameters = {
-                n_exposure_sessions: 8,
+                n_exposure_sessions: 2,
                 n_practice_sessions: 1,
-                n_pre_exp_triplet_sessions: 2,
-                n_post_exp_triplet_sessions: 2,                
-                exposure_trial_dur: 5000,
+                n_pre_exp_triplet_sessions: 1,
+                n_post_exp_triplet_sessions: 1,                
+                exposure_trial_dur: 3000,
                 triplet_trial_dur: 5000,
-                fixation_trial_dur: 10,
-                triplet_trial_iti: 10,
-                stim_min_duration: 500, // minimum milliseconds to display birds
+                fixation_trial_dur: 500,
+                triplet_trial_iti: 500,
+                triplet_stim_min_duration: 2000,
+                exposure_stim_min_duration: 2000, // minimum milliseconds to display birds
             }
 
             // debugger

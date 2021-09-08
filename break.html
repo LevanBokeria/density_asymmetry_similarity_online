@@ -1,25 +1,28 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
-    <title>Break</title>	
-	<script src="jspsych-6.3.1/jspsych.js" ></script>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
+	<title>Break</title>
+	<script src="jspsych-6.3.1/jspsych.js"></script>
 	<script src='./jspsych-6.3.1/plugins/jspsych-instructions.js'></script>
 	<script src='./jspsych-6.3.1/plugins/jspsych-html-slider-response.js'></script>
 	<script src="jatos.js"></script>
-	<link rel="stylesheet" href="jspsych-6.3.1/css/jspsych.css" type="text/css"></link>
-	<link rel="stylesheet" href="./extra_files/custom.css" type="text/css"></link>	
-  </head>
+	<link rel="stylesheet" href="jspsych-6.3.1/css/jspsych.css" type="text/css">
+	</link>
+	<link rel="stylesheet" href="./extra_files/custom.css" type="text/css">
+	</link>
+</head>
 
-  <body>
-  <script>
+<body>
+	<script>
 
 		//start timeline
-		jatos.onLoad(function() {
+		jatos.onLoad(function () {
 
-			const calc_perf = function(data){
-				
+			const calc_perf = function (data) {
+
 				let perc_corr
 
 				// Get trials that had a correct response
@@ -39,17 +42,17 @@
 			var page_title = 'Break'
 
 			//make a timeline
-			let timeline =[]; 
+			let timeline = [];
 
 			let instructions_text = []
 
 
 			// Was last finished condition an exposure one?
-			if (jatos.studySessionData.latestFinishedComponentPos == jatos.studySessionData.inputData.component_positions.exposure){
+			if (jatos.studySessionData.latestFinishedComponentPos == jatos.studySessionData.inputData.component_positions.exposure) {
 
 				// Check if all sessions done:
-				if (jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions == jatos.studySessionData.inputData.session_counters.exposure){
-					
+				if (jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions == jatos.studySessionData.inputData.session_counters.exposure) {
+
 					// Calculate performance on the "same" trials
 					let perc_corr_same = calc_perf(
 						jatos.studySessionData.outputData.exposure.filter(
@@ -74,7 +77,7 @@
 					comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task
 
 				} else {
-					
+
 					// Calculate performance on the "same" trials
 					let perc_corr_same = calc_perf(
 						jatos.studySessionData.outputData.exposure.filter(
@@ -91,7 +94,7 @@
 						jatos.studySessionData.outputData.exposure.filter(
 							item => item.session == jatos.studySessionData.inputData.session_counters.exposure
 						)
-					)					
+					)
 
 					instructions_text = 'Thanks! For the last session, you were accurate on ' + Math.floor(perc_corr_same) + '% of the "same" trials and ' + Math.floor(perc_corr_diff) + '% of the "different" trials! Overall, you were ' + Math.floor(perc_corr_all) + '% accurate on all trials.<br> You have finished session ' + jatos.studySessionData.inputData.session_counters.exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions + ' of the "same/different" task. Please take a short break of maximum 30 seconds and then continue.'
 
@@ -99,27 +102,32 @@
 
 				}
 
-			} else if (jatos.studySessionData.latestFinishedComponentPos == jatos.studySessionData.inputData.component_positions.triplet_task){
+			} else if (jatos.studySessionData.latestFinishedComponentPos == jatos.studySessionData.inputData.component_positions.triplet_task) {
 
 				// Check if pre-exposure happened already or not
-				if (jatos.studySessionData.inputData.session_counters.pre_exposure == 0){
+				if (jatos.studySessionData.inputData.session_counters.pre_exposure == 0) {
 
 					// Calculate performance
 					let perc_corr = calc_perf(jatos.studySessionData.outputData.practice)
 
-					instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of the trials! <br> Those were practice trials. Now you will do the real trials! <br><br> You will do a total of '+ jatos.studySessionData.inputData.experiment_parameters.n_pre_exp_triplet_sessions + ' sessions, each with '+ jatos.studySessionData.inputData.pre_exposure_trials[0].length + ' trials.'
-					comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task			
-				} else if (jatos.studySessionData.inputData.session_counters.exposure == 0){
+					instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of the trials! <br> Those were practice trials. Now you will do the real trials! <br><br> You will do a total of ' + jatos.studySessionData.inputData.experiment_parameters.n_pre_exp_triplet_sessions + ' sessions, each with ' + jatos.studySessionData.inputData.pre_exposure_trials[0].length + ' trials.'
+					comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task
+				} else if (jatos.studySessionData.inputData.session_counters.exposure == 0) {
 					// So we're done with pre-exposure
 					// debugger
 					// Now check if all sessions ran or not
-					if (jatos.studySessionData.inputData.session_counters.pre_exposure == jatos.studySessionData.inputData.experiment_parameters.n_pre_exp_triplet_sessions){
+					if (jatos.studySessionData.inputData.session_counters.pre_exposure == jatos.studySessionData.inputData.experiment_parameters.n_pre_exp_triplet_sessions) {
 						// debugger
 						// Calculate performance
 						let perc_corr = calc_perf(jatos.studySessionData.outputData.pre_exposure.filter(item => item.session == jatos.studySessionData.inputData.session_counters.pre_exposure))
 
-						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of trials! <br> That was the end of the similarity task #1. <br>Now we will move onto the same/difference task. <br><br>You will see these birds show up on the screen one-by-one. The task is simple: if the bird you see is exactly the same as you saw on the previous trial, press the button "q". If the current bird is different than the previous one, press the button "p". <br><br> You will do a total of '+jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions+' sessions for the same/difference task, each with '+ jatos.studySessionData.inputData.exposure_trials[0].length +' trials. <br><br> You will have '+ (jatos.studySessionData.inputData.experiment_parameters.exposure_trial_dur/1000) +' seconds on each trial to make your response!' + 
-						'<br><p>Please take a 1 minute break and then start the next task!</p>'
+						instructions_text = 
+						'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of trials! <br> That was the end of the similarity task #1. <br><b>Now we will move onto the same/difference task.</b> ' + 
+						'<br><br>You will see these birds show up on the screen one-by-one. The task is simple: if the bird you see is exactly the same as you saw on the previous trial, press the button "q". If the current bird is different than the previous one, press the button "p".' +
+						'<p><br>Each bird will stay on the screen for at least ' + (jatos.studySessionData.inputData.experiment_parameters.exposure_stim_min_duration / 1000) + ' seconds, but you can make your response before that too, it will still get registered.' +
+						'<br><br> However, if you do not respond within ' + (jatos.studySessionData.inputData.experiment_parameters.exposure_trial_dur / 1000) + ' seconds, the trial will be considered as missed and the next trial will begin.' +
+						'<br><br> You will do a total of ' + jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions + ' sessions for the same/difference task, each with ' + jatos.studySessionData.inputData.exposure_trials[0].length + ' trials.' +
+						'<p><br><b>Please take a 1 minute break and then start the next task!</b></p>'
 
 						comp_to_start = jatos.studySessionData.inputData.component_positions.exposure
 
@@ -143,7 +151,7 @@
 					// So we're done with post-exposure
 
 					// Now check if all sessions ran or not
-					if (jatos.studySessionData.inputData.session_counters.post_exposure == jatos.studySessionData.inputData.experiment_parameters.n_post_exp_triplet_sessions){
+					if (jatos.studySessionData.inputData.session_counters.post_exposure == jatos.studySessionData.inputData.experiment_parameters.n_post_exp_triplet_sessions) {
 
 						// debugger
 						// Calculate performance
@@ -198,42 +206,42 @@
 			// 	} else {
 			// 		instructions_text = 'Please take a break. You will continue learning the locations of the same images on this ' + jatos.studySessionData.inputData.condition_colors[previous_condition] + ' board. Once you are ready please move to the next session.'
 			// 	}
-				
+
 			// 	comp_to_start = jatos.studySessionData.inputData.component_positions.session_pa2
 
 			// }
 
 			var instructions = {
-					type: 'instructions',
-					pages : [			
-						'<div class= "header">'+
-							'<h1>' + page_title + '</h1>'+
-						'</div>'+	
-						'<div class="instruct">'+
-							'<p>' + instructions_text + '</p>' + 
-						'</div>',
-					],						
-					show_clickable_nav: true,
-					button_label_next: '<span style="color: black"d;> <strong> Next </stong></span>',
-				};
+				type: 'instructions',
+				pages: [
+					'<div class= "header">' +
+					'<h1>' + page_title + '</h1>' +
+					'</div>' +
+					'<div class="instruct">' +
+					'<p>' + instructions_text + '</p>' +
+					'</div>',
+				],
+				show_clickable_nav: true,
+				button_label_next: '<span style="color: black"d;> <strong> Next </stong></span>',
+			};
 
 			timeline.push(instructions);
 
 			jsPsych.init({
-				
+
 				timeline: timeline,
 
-				on_finish: function(data) {
+				on_finish: function (data) {
 
 					// Make JATOS remember that this session was run
-                    jatos.studySessionData.latestFinishedComponentId    = jatos.componentId;
-                    jatos.studySessionData.latestFinishedComponentPos   = jatos.componentPos;
-                    jatos.studySessionData.latestFinishedComponentTitle = jatos.componentProperties.title;
+					jatos.studySessionData.latestFinishedComponentId = jatos.componentId;
+					jatos.studySessionData.latestFinishedComponentPos = jatos.componentPos;
+					jatos.studySessionData.latestFinishedComponentTitle = jatos.componentProperties.title;
 
-					jatos.submitResultData('[break_start_' + '---' + 
-					JSON.stringify(jatos.studySessionData) +
-					'---' + '_break_end]', 
-					function(){jatos.startComponentByPos(comp_to_start)});
+					jatos.submitResultData('[break_start_' + '---' +
+						JSON.stringify(jatos.studySessionData) +
+						'---' + '_break_end]',
+						function () { jatos.startComponentByPos(comp_to_start) });
 
 					// jsPsych.data.displayData();
 				}
@@ -244,4 +252,5 @@
 
 	</script>
 </body>
+
 </html>
