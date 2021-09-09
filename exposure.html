@@ -27,7 +27,27 @@
                 type: 'exposure-keyboard-response',
                 // prompt: 'Is the bird the Same as the one before? Press 1 for same, 2 for different.',
                 choices: jsPsych.NO_KEYS,
-                stimulus: 'img/fixation.png',
+                stimulus: function(){
+
+                    // Get the jsPsych data
+                    let data = jsPsych.data.get().values()
+                    
+                    // If they missed, choose the missed fixation. Else normal
+                    let img = ''
+                    if (data[data.length-1].rt === undefined){
+                        // So its the first trial, show normal
+                        img = 'img/fixation.png'
+                    } else if(data.length == 3){
+                        // So its still the first trial, after the bird was shown. show normal
+                        img = 'img/fixation.png'
+                    } else if(data[data.length-1].rt == null){
+                        img = 'img/fixation_missed.png'
+                    } else {
+                        img = 'img/fixation.png'
+                    }
+
+                    return img
+                },
                 stimulus_height: 500,
                 x_offset: 0,
                 y_offset: 50,
@@ -79,7 +99,7 @@
             // Create the preload trial
             var preload_trial = {
                 type: 'preload',
-                images: [jatos.studySessionData.inputData.all_exemplars,'img/fixation.png'],
+                images: [jatos.studySessionData.inputData.all_exemplars,'img/fixation.png','img/fixation_missed.png'],
             }
 
             jsPsych.init({
