@@ -4,7 +4,7 @@ The whole experiment will last about ~60 minutes. It consists of the following p
 
 - Instructions
 - Similarity task #1
-- Same/difference task
+- Same/Different task
 - Similarity task #2
 - Debriefing
 

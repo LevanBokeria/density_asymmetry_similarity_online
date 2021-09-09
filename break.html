@@ -72,7 +72,7 @@
 						)
 					)
 
-					instructions_text = 'Thanks! For the last session, you were accurate on ' + Math.floor(perc_corr_same) + '% of the "same" trials and ' + Math.floor(perc_corr_diff) + '% of the "different" trials! Overall, you were ' + Math.floor(perc_corr_all) + '% accurate on all trials. <br> You have finished the "same/different" task. <br> <strong>Please take a break of no more than 1 minute!</strong><br>Next, you will do the similarity judgment task one more time.'
+					instructions_text = 'Thanks! For the last session, you were accurate on ' + Math.floor(perc_corr_same) + '% of the "same" trials and ' + Math.floor(perc_corr_diff) + '% of the "different" trials! Overall, you were ' + Math.floor(perc_corr_all) + '% accurate on all trials. <br> You have finished the "Same/Different" task. <br> <strong>Please take a break of no more than 1 minute!</strong><br>Next, you will do the similarity judgment task one more time.'
 
 					comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task
 
@@ -96,7 +96,7 @@
 						)
 					)
 
-					instructions_text = 'Thanks! For the last session, you were accurate on ' + Math.floor(perc_corr_same) + '% of the "same" trials and ' + Math.floor(perc_corr_diff) + '% of the "different" trials! Overall, you were ' + Math.floor(perc_corr_all) + '% accurate on all trials.<br> You have finished session ' + jatos.studySessionData.inputData.session_counters.exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions + ' of the "same/different" task. Please take a short break of maximum 30 seconds and then continue.'
+					instructions_text = 'Thanks! For the last session, you were accurate on ' + Math.floor(perc_corr_same) + '% of the "same" trials and ' + Math.floor(perc_corr_diff) + '% of the "different" trials! Overall, you were ' + Math.floor(perc_corr_all) + '% accurate on all trials.<br> You have finished session ' + jatos.studySessionData.inputData.session_counters.exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions + ' of the "Same/Different" task. Please take a short break of maximum 30 seconds and then continue.'
 
 					comp_to_start = jatos.studySessionData.inputData.component_positions.exposure
 
@@ -122,16 +122,17 @@
 						let perc_corr = calc_perf(jatos.studySessionData.outputData.pre_exposure.filter(item => item.session == jatos.studySessionData.inputData.session_counters.pre_exposure))
 
 						instructions_text = 
-						'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of the trials! <br> That was the end of the similarity task #1. <br><b>Now we will move onto the same/difference task.</b> ' + 
-						'<br><br>You will see these birds show up on the screen one-by-one. The task is simple: if the bird you see is exactly the same as you saw on the previous trial, press the button "q". If the current bird is different than the previous one, press the button "p".' +
+						'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of the trials! <br> That was the end of the similarity task #1. <br><b>Now we will move onto the Same/Different task.</b> ' + 
+						'<br><br>You will see these birds show up on the screen one-by-one. The task is simple: <br>If the bird you see is exactly the same as you saw on the previous trial, <b>press the button "q"</b>. <br>If the current bird is different than the previous one, <b>press the button "p".</b>' +
 						'<p><br>Each bird will stay on the screen for at least ' + (jatos.studySessionData.inputData.experiment_parameters.exposure_stim_min_duration / 1000) + ' seconds, but you can make your response before that too, it will still get registered.' +
 						'<br><br> However, if you do not respond within ' + (jatos.studySessionData.inputData.experiment_parameters.exposure_trial_dur / 1000) + ' seconds, the trial will be considered as missed and the next trial will begin.' +
-						'<br><br> You will do a total of ' + jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions + ' sessions for the same/difference task, each with ' + jatos.studySessionData.inputData.exposure_trials[0].length + ' trials.' +
+						'<br>Please try to be as accurate as possible!' +
+						'<br><br> You will do a total of ' + jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions + ' sessions for the Same/Different task, each with ' + jatos.studySessionData.inputData.exposure_trials[0].length + ' trials.' +
 						'<p><br><b>Please take a 1 minute break and then start the next task!</b></p>'
 
 						comp_to_start = jatos.studySessionData.inputData.component_positions.exposure
 
-						page_title = 'Beginning the Same/difference task!'
+						page_title = 'Beginning the Same/Different task!'
 
 
 					} else {
