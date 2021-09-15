@@ -30,9 +30,9 @@ function trial_creator_triplets(parameters,n_reps,n_sessions){
                 }
             } else if (parameters[iT].abs_dist_query_ref1 > parameters[iT].abs_dist_query_ref2){
                 if (ref1_idx == 1){
-                    correct = 'q'
-                } else {
                     correct = 'p'
+                } else {
+                    correct = 'q'
                 }
             }
 
