@@ -21,29 +21,29 @@ jsPsych.plugins["triplets-keyboard-response"] = (function () {
         default: undefined,
         description: 'The query image to be displayed'
       },
-      ref1_stimulus: {
+      ref_left_stimulus: {
         type: jsPsych.plugins.parameterType.STRING,
-        pretty_name: 'Ref1 Stimulus',
+        pretty_name: 'ref_left Stimulus',
         default: undefined,
-        description: 'The ref1 image to be displayed'
+        description: 'The ref_left image to be displayed'
       },
-      ref2_stimulus: {
+      ref_right_stimulus: {
         type: jsPsych.plugins.parameterType.STRING,
-        pretty_name: 'Ref2 Stimulus',
+        pretty_name: 'ref_right Stimulus',
         default: undefined,
-        description: 'The ref2 image to be displayed'
+        description: 'The ref_right image to be displayed'
       },
-      ref1_y_offset: {
+      ref_left_y_offset: {
         type: jsPsych.plugins.parameterType.INT,
-        pretty_name: 'Ref1 vertical offset',
+        pretty_name: 'ref_left vertical offset',
         default: null,
-        description: 'Amount of pixels to offset the ref1 from the center'
+        description: 'Amount of pixels to offset the ref_left from the center'
       },
-      ref2_y_offset: {
+      ref_right_y_offset: {
         type: jsPsych.plugins.parameterType.INT,
-        pretty_name: 'Ref2 vertical offset',
+        pretty_name: 'ref_right vertical offset',
         default: null,
-        description: 'Amount of pixels to offset the ref2 from the center'
+        description: 'Amount of pixels to offset the ref_right from the center'
       },
       stimulus_height: {
         type: jsPsych.plugins.parameterType.INT,
@@ -167,19 +167,19 @@ jsPsych.plugins["triplets-keyboard-response"] = (function () {
 
     // debugger
 
-    // Create the ref1 element
-    var ref1_img_el = document.createElement('img')
+    // Create the ref_left element
+    var ref_left_img_el = document.createElement('img')
 
-    ref1_img_el.src = trial.ref1_stimulus
+    ref_left_img_el.src = trial.ref_left_stimulus
 
-    ref1_img_el.className = 'stimuli'
-    ref1_img_el.id = 'ref1_img'
+    ref_left_img_el.className = 'stimuli'
+    ref_left_img_el.id = 'ref_left_img'
 
-    ref1_img_el.style.height = trial.stimulus_height.toString() + 'px'
-    ref1_img_el.style.width = ref1_img_el.naturalWidth * ref1_img_el.style.height / ref1_img_el.naturalHeight
-    ref1_img_el.style['margin-top'] = trial.ref1_y_offset.toString() + 'px'
+    ref_left_img_el.style.height = trial.stimulus_height.toString() + 'px'
+    ref_left_img_el.style.width = ref_left_img_el.naturalWidth * ref_left_img_el.style.height / ref_left_img_el.naturalHeight
+    ref_left_img_el.style['margin-top'] = trial.ref_left_y_offset.toString() + 'px'
 
-    wrapper_arena.appendChild(ref1_img_el)
+    wrapper_arena.appendChild(ref_left_img_el)
 
     // Create the query image element
     var query_img_el = document.createElement('img')
@@ -196,19 +196,19 @@ jsPsych.plugins["triplets-keyboard-response"] = (function () {
 
     wrapper_arena.appendChild(query_img_el)
 
-    // Create the ref2 element
-    var ref2_img_el = document.createElement('img')
+    // Create the ref_right element
+    var ref_right_img_el = document.createElement('img')
 
-    ref2_img_el.src = trial.ref2_stimulus
+    ref_right_img_el.src = trial.ref_right_stimulus
 
-    ref2_img_el.className = 'stimuli'
-    ref2_img_el.id = 'ref2_img'
+    ref_right_img_el.className = 'stimuli'
+    ref_right_img_el.id = 'ref_right_img'
 
-    ref2_img_el.style.height = trial.stimulus_height.toString() + 'px'
-    ref2_img_el.style.width = ref2_img_el.naturalWidth * ref2_img_el.style.height / ref2_img_el.naturalHeight
-    ref2_img_el.style['margin-top'] = trial.ref2_y_offset.toString() + 'px'
+    ref_right_img_el.style.height = trial.stimulus_height.toString() + 'px'
+    ref_right_img_el.style.width = ref_right_img_el.naturalWidth * ref_right_img_el.style.height / ref_right_img_el.naturalHeight
+    ref_right_img_el.style['margin-top'] = trial.ref_right_y_offset.toString() + 'px'
 
-    wrapper_arena.appendChild(ref2_img_el)
+    wrapper_arena.appendChild(ref_right_img_el)
 
 
     // Add the arena to the display element

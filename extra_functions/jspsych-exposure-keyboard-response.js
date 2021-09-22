@@ -23,15 +23,15 @@ jsPsych.plugins["exposure-keyboard-response"] = (function () {
       },
       y_offset: {
         type: jsPsych.plugins.parameterType.INT,
-        pretty_name: 'Ref1 vertical offset',
+        pretty_name: 'vertical offset',
         default: null,
-        description: 'Amount of pixels to offset the ref1 from the center'
+        description: 'Amount of pixels to offset vertically from the center'
       },
       x_offset: {
         type: jsPsych.plugins.parameterType.INT,
-        pretty_name: 'Ref2 vertical offset',
+        pretty_name: 'horizontal offset',
         default: null,
-        description: 'Amount of pixels to offset the ref2 from the center'
+        description: 'Amount of pixels to offset horizontally from the center'
       },
       stimulus_height: {
         type: jsPsych.plugins.parameterType.INT,
