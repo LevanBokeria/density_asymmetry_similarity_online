@@ -68,6 +68,9 @@
                 stim_min_duration: jatos.studySessionData.inputData.experiment_parameters.exposure_stim_min_duration,
                 data: { trial_stage: 'exemplar_display' },
                 on_finish: function(data){
+                    
+                    // Counterbalancing condition
+                    data.cb_condition = jatos.studySessionData.inputData.cb_condition
 
                     data.correct_response = jsPsych.timelineVariable('correct_response')
 

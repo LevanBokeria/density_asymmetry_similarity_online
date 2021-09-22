@@ -2,7 +2,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 20,
-    "dist_query_ref_2": -20,
+    "dist_query_ref2": -20,
     "dist_ref1_ref2": -40,
     "query": 70,
     "ref1": 50,
@@ -16,7 +16,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 20,
-    "dist_query_ref_2": -20,
+    "dist_query_ref2": -20,
     "dist_ref1_ref2": -40,
     "query": 170,
     "ref1": 150,
@@ -30,7 +30,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 20,
-    "dist_query_ref_2": -20,
+    "dist_query_ref2": -20,
     "dist_ref1_ref2": -40,
     "query": 250,
     "ref1": 230,
@@ -44,7 +44,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 40,
-    "dist_query_ref_2": -40,
+    "dist_query_ref2": -40,
     "dist_ref1_ref2": -80,
     "query": 70,
     "ref1": 30,
@@ -58,7 +58,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 40,
-    "dist_query_ref_2": -40,
+    "dist_query_ref2": -40,
     "dist_ref1_ref2": -80,
     "query": 140,
     "ref1": 100,
@@ -72,7 +72,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 40,
-    "dist_query_ref_2": -40,
+    "dist_query_ref2": -40,
     "dist_ref1_ref2": -80,
     "query": 180,
     "ref1": 140,
@@ -86,7 +86,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 40,
-    "dist_query_ref_2": -40,
+    "dist_query_ref2": -40,
     "dist_ref1_ref2": -80,
     "query": 260,
     "ref1": 220,
@@ -100,7 +100,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 60,
-    "dist_query_ref_2": -60,
+    "dist_query_ref2": -60,
     "dist_ref1_ref2": -120,
     "query": 90,
     "ref1": 30,
@@ -114,7 +114,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 60,
-    "dist_query_ref_2": -60,
+    "dist_query_ref2": -60,
     "dist_ref1_ref2": -120,
     "query": 170,
     "ref1": 110,
@@ -128,7 +128,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 60,
-    "dist_query_ref_2": -60,
+    "dist_query_ref2": -60,
     "dist_ref1_ref2": -120,
     "query": 240,
     "ref1": 180,
@@ -142,7 +142,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 20,
-    "dist_query_ref_2": -40,
+    "dist_query_ref2": -40,
     "dist_ref1_ref2": -60,
     "query": 70,
     "ref1": 50,
@@ -156,7 +156,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 20,
-    "dist_query_ref_2": -40,
+    "dist_query_ref2": -40,
     "dist_ref1_ref2": -60,
     "query": 150,
     "ref1": 130,
@@ -170,7 +170,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 20,
-    "dist_query_ref_2": -40,
+    "dist_query_ref2": -40,
     "dist_ref1_ref2": -60,
     "query": 170,
     "ref1": 150,
@@ -184,7 +184,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 20,
-    "dist_query_ref_2": -40,
+    "dist_query_ref2": -40,
     "dist_ref1_ref2": -60,
     "query": 260,
     "ref1": 240,
@@ -198,7 +198,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 40,
-    "dist_query_ref_2": -20,
+    "dist_query_ref2": -20,
     "dist_ref1_ref2": -60,
     "query": 70,
     "ref1": 30,
@@ -212,7 +212,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 40,
-    "dist_query_ref_2": -20,
+    "dist_query_ref2": -20,
     "dist_ref1_ref2": -60,
     "query": 170,
     "ref1": 130,
@@ -226,7 +226,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 40,
-    "dist_query_ref_2": -20,
+    "dist_query_ref2": -20,
     "dist_ref1_ref2": -60,
     "query": 190,
     "ref1": 150,
@@ -240,7 +240,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 40,
-    "dist_query_ref_2": -20,
+    "dist_query_ref2": -20,
     "dist_ref1_ref2": -60,
     "query": 270,
     "ref1": 230,
@@ -254,7 +254,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 20,
-    "dist_query_ref_2": -60,
+    "dist_query_ref2": -60,
     "dist_ref1_ref2": -80,
     "query": 50,
     "ref1": 30,
@@ -268,7 +268,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 20,
-    "dist_query_ref_2": -60,
+    "dist_query_ref2": -60,
     "dist_ref1_ref2": -80,
     "query": 160,
     "ref1": 140,
@@ -282,7 +282,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 20,
-    "dist_query_ref_2": -60,
+    "dist_query_ref2": -60,
     "dist_ref1_ref2": -80,
     "query": 240,
     "ref1": 220,
@@ -296,7 +296,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 60,
-    "dist_query_ref_2": -20,
+    "dist_query_ref2": -20,
     "dist_ref1_ref2": -80,
     "query": 90,
     "ref1": 30,
@@ -310,7 +310,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 60,
-    "dist_query_ref_2": -20,
+    "dist_query_ref2": -20,
     "dist_ref1_ref2": -80,
     "query": 180,
     "ref1": 120,
@@ -324,7 +324,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 60,
-    "dist_query_ref_2": -20,
+    "dist_query_ref2": -20,
     "dist_ref1_ref2": -80,
     "query": 260,
     "ref1": 200,
@@ -338,7 +338,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 60,
-    "dist_query_ref_2": -40,
+    "dist_query_ref2": -40,
     "dist_ref1_ref2": -100,
     "query": 90,
     "ref1": 30,
@@ -352,7 +352,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 60,
-    "dist_query_ref_2": -40,
+    "dist_query_ref2": -40,
     "dist_ref1_ref2": -100,
     "query": 150,
     "ref1": 90,
@@ -366,7 +366,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 60,
-    "dist_query_ref_2": -40,
+    "dist_query_ref2": -40,
     "dist_ref1_ref2": -100,
     "query": 180,
     "ref1": 120,
@@ -380,7 +380,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 60,
-    "dist_query_ref_2": -40,
+    "dist_query_ref2": -40,
     "dist_ref1_ref2": -100,
     "query": 260,
     "ref1": 200,
@@ -394,7 +394,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 40,
-    "dist_query_ref_2": -60,
+    "dist_query_ref2": -60,
     "dist_ref1_ref2": -100,
     "query": 70,
     "ref1": 30,
@@ -408,7 +408,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 40,
-    "dist_query_ref_2": -60,
+    "dist_query_ref2": -60,
     "dist_ref1_ref2": -100,
     "query": 120,
     "ref1": 80,
@@ -422,7 +422,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 40,
-    "dist_query_ref_2": -60,
+    "dist_query_ref2": -60,
     "dist_ref1_ref2": -100,
     "query": 170,
     "ref1": 130,
@@ -436,7 +436,7 @@ var test_stimuli = [
   {
     "simulation name": "post_rik_meeting",
     "dist_query_ref1": 40,
-    "dist_query_ref_2": -60,
+    "dist_query_ref2": -60,
     "dist_ref1_ref2": -100,
     "query": 240,
     "ref1": 200,
@@ -450,7 +450,7 @@ var test_stimuli = [
   {
     "simulation name": "balancing",
     "dist_query_ref1": 110,
-    "dist_query_ref_2": -120,
+    "dist_query_ref2": -120,
     "dist_ref1_ref2": -230,
     "query": 160,
     "ref1": 50,
@@ -464,7 +464,7 @@ var test_stimuli = [
   {
     "simulation name": "balancing",
     "dist_query_ref1": -80,
-    "dist_query_ref_2": 130,
+    "dist_query_ref2": 130,
     "dist_ref1_ref2": 210,
     "query": 210,
     "ref1": 290,
@@ -478,7 +478,7 @@ var test_stimuli = [
   {
     "simulation name": "balancing",
     "dist_query_ref1": 20,
-    "dist_query_ref_2": -100,
+    "dist_query_ref2": -100,
     "dist_ref1_ref2": -120,
     "query": 60,
     "ref1": 40,
@@ -492,7 +492,7 @@ var test_stimuli = [
   {
     "simulation name": "balancing",
     "dist_query_ref1": -20,
-    "dist_query_ref_2": -210,
+    "dist_query_ref2": -210,
     "dist_ref1_ref2": -190,
     "query": 40,
     "ref1": 60,
@@ -506,7 +506,7 @@ var test_stimuli = [
   {
     "simulation name": "balancing",
     "dist_query_ref1": -20,
-    "dist_query_ref_2": 60,
+    "dist_query_ref2": 60,
     "dist_ref1_ref2": 80,
     "query": 270,
     "ref1": 290,
@@ -520,7 +520,7 @@ var test_stimuli = [
   {
     "simulation name": "balancing",
     "dist_query_ref1": 40,
-    "dist_query_ref_2": 190,
+    "dist_query_ref2": 190,
     "dist_ref1_ref2": 150,
     "query": 290,
     "ref1": 250,
@@ -534,7 +534,7 @@ var test_stimuli = [
   {
     "simulation name": "balancing",
     "dist_query_ref1": -20,
-    "dist_query_ref_2": -100,
+    "dist_query_ref2": -100,
     "dist_ref1_ref2": -80,
     "query": 40,
     "ref1": 60,
@@ -548,7 +548,7 @@ var test_stimuli = [
   {
     "simulation name": "balancing",
     "dist_query_ref1": 40,
-    "dist_query_ref_2": -160,
+    "dist_query_ref2": -160,
     "dist_ref1_ref2": -200,
     "query": 120,
     "ref1": 80,
@@ -562,7 +562,7 @@ var test_stimuli = [
   {
     "simulation name": "balancing",
     "dist_query_ref1": 50,
-    "dist_query_ref_2": -150,
+    "dist_query_ref2": -150,
     "dist_ref1_ref2": -200,
     "query": 130,
     "ref1": 80,
@@ -576,7 +576,7 @@ var test_stimuli = [
   {
     "simulation name": "balancing",
     "dist_query_ref1": -20,
-    "dist_query_ref_2": -230,
+    "dist_query_ref2": -230,
     "dist_ref1_ref2": -210,
     "query": 40,
     "ref1": 60,
@@ -590,7 +590,7 @@ var test_stimuli = [
   {
     "simulation name": "balancing",
     "dist_query_ref1": -20,
-    "dist_query_ref_2": 150,
+    "dist_query_ref2": 150,
     "dist_ref1_ref2": 170,
     "query": 250,
     "ref1": 270,
@@ -604,7 +604,7 @@ var test_stimuli = [
   {
     "simulation name": "balancing",
     "dist_query_ref1": -60,
-    "dist_query_ref_2": 200,
+    "dist_query_ref2": 200,
     "dist_ref1_ref2": 260,
     "query": 240,
     "ref1": 300,
@@ -618,7 +618,7 @@ var test_stimuli = [
   {
     "simulation name": "balancing",
     "dist_query_ref1": -80,
-    "dist_query_ref_2": 160,
+    "dist_query_ref2": 160,
     "dist_ref1_ref2": 240,
     "query": 210,
     "ref1": 290,
@@ -632,7 +632,7 @@ var test_stimuli = [
   {
     "simulation name": "balancing",
     "dist_query_ref1": -10,
-    "dist_query_ref_2": 150,
+    "dist_query_ref2": 150,
     "dist_ref1_ref2": 160,
     "query": 250,
     "ref1": 260,

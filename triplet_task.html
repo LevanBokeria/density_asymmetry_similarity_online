@@ -60,7 +60,10 @@
                 stim_min_duration: jatos.studySessionData.inputData.experiment_parameters.triplet_stim_min_duration,
                 data: { trial_stage: trial_stage_name },
                 on_finish: function(data){
-                    // debugger
+                    
+                    // Counterbalancing condition?
+                    data.cb_condition = jatos.studySessionData.inputData.cb_condition
+
                     // What session is this
                     data.session = jatos.studySessionData.inputData.session_counters[trial_stage_name]
 
