@@ -1,77 +1,55 @@
 function trial_creator_exposure(n_sessions){
     
-    // Unique indices of exemplars
-    let indices = Array.from(Array(40).keys())
+    let exemplars = jatos.studySessionData.inputData.exposure_exemplars
 
-    // Store the final sequence of 400 elements
-    let full_array = []
+    let n_exposure_exemplars = exemplars.length
 
-    // Repeate each 40 8 times
-    indices_rep8 = jsPsych.randomization.repeat(indices, 4)
+    // Repeat the exposures exemplars each 5 times, creates an array of 170 exemplars
+    let initial_170 = jsPsych.randomization.repeat(exemplars,5)
 
-    // Repeat 20 of these once again
-    indices_rep1 = jsPsych.randomization.repeat(indices.slice(0,20),2)
+    // Make sure they don't repeat
+    initial_170 = jsPsych.randomization.shuffleNoRepeats(initial_170)
 
-    full_array.push(...indices_rep8)
-    full_array.push(...indices_rep1)
+    // Now, for each of the 34, create a doublet and shove it in the array randomly. Do this twice
+    let initial_with_reps = JSON.parse(JSON.stringify(initial_170))
 
-    // Shuffle once again but without repeats!
-    full_array = jsPsych.randomization.shuffleNoRepeats(full_array)
+    for (iRep=0; iRep<2; iRep++){
+        for (iEx=0; iEx<n_exposure_exemplars; iEx++){
 
-    // Now make the reps
-    var new_reps_40 = [indices,indices]
+            // Take a random location in the initial_170 array
+            let rand_idx = Math.ceil(Math.random() * initial_with_reps)
 
-    // Transpose
-    new_reps_40 = _.zip(...new_reps_40)
-    new_reps_40 = [...new_reps_40,...new_reps_40]
+            // Insert the first exemplar back to back here
+            initial_with_reps.splice(rand_idx,0,exemplars[iEx])
+            initial_with_reps.splice(rand_idx,0,exemplars[iEx])
 
-    // Now make the reps of the remaining 20
-    var new_reps_20 = [indices.slice(0,20),indices.slice(0,20)]
-
-    // Transpose
-    new_reps_20 = _.zip(...new_reps_20)    
-
-    // Total reps
-    var total_reps = [...new_reps_40,...new_reps_20]
-
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
-    // Let the sprinkling begin
-    /////////////////////////////////////////////////////////////////////////////////////////////////////
-    for (iRep=0; iRep<total_reps.length; iRep++){
-
-        // randomly choose index of the full array
-        let rand_idx = Math.floor(Math.random() * full_array.length)
-
-        // Insert the reps in the place
-        full_array.splice(rand_idx,0,total_reps[iRep][0])
-        full_array.splice(rand_idx,0,total_reps[iRep][1])
-
-
+        }
     }
-    
-    // Finally, add the 41st and 42nd stimuli
-    for (iAdd=0; iAdd<10; iAdd++){
-        
-        // Randomly choose an index
-        let idx_rand = Math.floor(Math.random()*full_array.length)
-        full_array.splice(idx_rand,0,40)
-        // Randomly choose an index
-        idx_rand = Math.floor(Math.random()*full_array.length)
-        full_array.splice(idx_rand,0,41)        
+
+    // We've now inserted 34*2=68 "same" doublets. We need 85, so do this for 17 more
+    let last_17_to_insert = jsPsych.randomization.sampleWithoutReplacement(exemplars,17)
+    for (iEx=0; iEx<last_17_to_insert.length; iEx++){
+
+        // Take a random location in the initial_170 array
+        let rand_idx = Math.ceil(Math.random() * initial_with_reps)
+
+        // Insert the first exemplar back to back here
+        initial_with_reps.splice(rand_idx,0,last_17_to_insert[iEx])
+        initial_with_reps.splice(rand_idx,0,last_17_to_insert[iEx])
+
     }
 
     // Count n repeats
     var counter = 0
-    for (i=1; i<full_array.length; i++){
+    for (i=1; i<initial_with_reps.length; i++){
 
-        if (full_array[i] == full_array[i-1]){
+        if (initial_with_reps[i] == initial_with_reps[i-1]){
             counter++
         }
 
     }
     console.log(counter)
-
-
+    
     /////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -80,9 +58,9 @@ function trial_creator_exposure(n_sessions){
     let all_trials = []
 
 
-    for (iT = 0; iT<full_array.length; iT++){
+    for (iT = 0; iT<initial_with_reps.length; iT++){
         // debugger
-        let curr_exemplar = jatos.studySessionData.inputData.exposure_exemplars[full_array[iT]]
+        let curr_exemplar = jatos.studySessionData.inputData.exposure_exemplars[initial_with_reps[iT]]
 
         let iTrial = {
 
@@ -98,7 +76,7 @@ function trial_creator_exposure(n_sessions){
             iTrial.correct_response = null
         } else {
             // Was it repeated?
-            if (full_array[iT] == full_array[iT-1]){
+            if (initial_with_reps[iT] == initial_with_reps[iT-1]){
                 iTrial.correct_response = 'q'
             } else {
                 iTrial.correct_response = 'p'

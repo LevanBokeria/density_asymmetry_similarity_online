@@ -165,50 +165,66 @@ jsPsych.plugins["triplets-keyboard-response"] = (function () {
     wrapper_arena.style["justify-content"] = 'center'
     wrapper_arena.style["align-items"] = 'center'
 
-    // debugger
-
+  
     // Create the ref_left element
-    var ref_left_img_el = document.createElement('img')
+    var ref_left_img_el_html = '<img src="' + trial.ref_left_stimulus + 
+    '" class="stimuli" id="ref_left_img" style="height: ' + trial.stimulus_height.toString() + 
+    'px; margin-top: ' + trial.ref_left_y_offset.toString() + 'px;">'
 
-    ref_left_img_el.src = trial.ref_left_stimulus
+    var query_img_el_html = '<img src="' + trial.query_stimulus + 
+    '" class="stimuli" id="query_img" style="height: ' + trial.stimulus_height.toString() + 
+    'px; margin-right: 20px; margin-left: 20px;">'
 
-    ref_left_img_el.className = 'stimuli'
-    ref_left_img_el.id = 'ref_left_img'
+    var ref_right_img_el_html = '<img src="' + trial.ref_right_stimulus + 
+    '" class="stimuli" id="ref_right_img" style="height: ' + trial.stimulus_height.toString() + 
+    'px; margin-top: ' + trial.ref_right_y_offset.toString() + 'px;">'    
 
-    ref_left_img_el.style.height = trial.stimulus_height.toString() + 'px'
-    ref_left_img_el.style.width = ref_left_img_el.naturalWidth * ref_left_img_el.style.height / ref_left_img_el.naturalHeight
-    ref_left_img_el.style['margin-top'] = trial.ref_left_y_offset.toString() + 'px'
 
-    wrapper_arena.appendChild(ref_left_img_el)
+    // var ref_left_img_el = document.createElement('img')
+
+    // ref_left_img_el.src = trial.ref_left_stimulus
+
+    // ref_left_img_el.className = 'stimuli'
+    // ref_left_img_el.id = 'ref_left_img'
+
+    // ref_left_img_el.style.height = trial.stimulus_height.toString() + 'px'
+    // ref_left_img_el.style.width = ref_left_img_el.naturalWidth * ref_left_img_el.style.height / ref_left_img_el.naturalHeight
+    // ref_left_img_el.style['margin-top'] = trial.ref_left_y_offset.toString() + 'px'
+
+    // wrapper_arena.appendChild(ref_left_img_el)
 
     // Create the query image element
-    var query_img_el = document.createElement('img')
+    // var query_img_el = document.createElement('img')
 
-    query_img_el.src = trial.query_stimulus
+    // query_img_el.src = trial.query_stimulus
 
-    query_img_el.className = 'stimuli'
-    query_img_el.id = 'query_img'
+    // query_img_el.className = 'stimuli'
+    // query_img_el.id = 'query_img'
 
-    query_img_el.style.height = trial.stimulus_height.toString() + 'px'
-    query_img_el.style.width = query_img_el.naturalWidth * query_img_el.style.height / query_img_el.naturalHeight
-    query_img_el.style['margin-right'] = '20px'
-    query_img_el.style['margin-left'] = '20px'
+    // query_img_el.style.height = trial.stimulus_height.toString() + 'px'
+    // query_img_el.style.width = query_img_el.naturalWidth * query_img_el.style.height / query_img_el.naturalHeight
+    // query_img_el.style['margin-right'] = '20px'
+    // query_img_el.style['margin-left'] = '20px'
 
-    wrapper_arena.appendChild(query_img_el)
+    // wrapper_arena.appendChild(query_img_el)
 
-    // Create the ref_right element
-    var ref_right_img_el = document.createElement('img')
+    // // Create the ref_right element
+    // var ref_right_img_el = document.createElement('img')
 
-    ref_right_img_el.src = trial.ref_right_stimulus
+    // ref_right_img_el.src = trial.ref_right_stimulus
 
-    ref_right_img_el.className = 'stimuli'
-    ref_right_img_el.id = 'ref_right_img'
+    // ref_right_img_el.className = 'stimuli'
+    // ref_right_img_el.id = 'ref_right_img'
 
-    ref_right_img_el.style.height = trial.stimulus_height.toString() + 'px'
-    ref_right_img_el.style.width = ref_right_img_el.naturalWidth * ref_right_img_el.style.height / ref_right_img_el.naturalHeight
-    ref_right_img_el.style['margin-top'] = trial.ref_right_y_offset.toString() + 'px'
+    // ref_right_img_el.style.height = trial.stimulus_height.toString() + 'px'
+    // ref_right_img_el.style.width = ref_right_img_el.naturalWidth * ref_right_img_el.style.height / ref_right_img_el.naturalHeight
+    // ref_right_img_el.style['margin-top'] = trial.ref_right_y_offset.toString() + 'px'
 
-    wrapper_arena.appendChild(ref_right_img_el)
+    // wrapper_arena.appendChild(ref_right_img_el)
+    debugger
+    wrapper_arena.innerHTML += ref_left_img_el_html
+    wrapper_arena.innerHTML += query_img_el_html
+    wrapper_arena.innerHTML += ref_right_img_el_html
 
 
     // Add the arena to the display element

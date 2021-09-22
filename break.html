@@ -45,6 +45,7 @@
 			let timeline = [];
 
 			let instructions_text = []
+			let instruction_pages = []
 
 
 			// Was last finished condition an exposure one?
@@ -74,6 +75,15 @@
 
 					instructions_text = 'Thanks! For the last session, you were accurate on ' + Math.floor(perc_corr_same) + '% of the "same" trials and ' + Math.floor(perc_corr_diff) + '% of the "different" trials! Overall, you were ' + Math.floor(perc_corr_all) + '% accurate on all trials. <br> You have finished the "Same/Different" task. <br> <strong>Please take a break of no more than 1 minute!</strong><br>Next, you will do the similarity judgment task one more time.'
 
+					instruction_pages = [
+						'<div class= "header">' +
+						'<h1>' + page_title + '</h1>' +
+						'</div>' +
+						'<div class="instruct">' +
+						'<p>' + instructions_text + '</p>' +
+						'</div>',
+					]
+
 					comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task
 
 				} else {
@@ -98,6 +108,15 @@
 
 					instructions_text = 'Thanks! For the last session, you were accurate on ' + Math.floor(perc_corr_same) + '% of the "same" trials and ' + Math.floor(perc_corr_diff) + '% of the "different" trials! Overall, you were ' + Math.floor(perc_corr_all) + '% accurate on all trials.<br> You have finished session ' + jatos.studySessionData.inputData.session_counters.exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions + ' of the "Same/Different" task. Please take a short break of maximum 30 seconds and then continue.'
 
+					instruction_pages = [
+						'<div class= "header">' +
+						'<h1>' + page_title + '</h1>' +
+						'</div>' +
+						'<div class="instruct">' +
+						'<p>' + instructions_text + '</p>' +
+						'</div>',
+					]
+
 					comp_to_start = jatos.studySessionData.inputData.component_positions.exposure
 
 				}
@@ -111,6 +130,16 @@
 					let perc_corr = calc_perf(jatos.studySessionData.outputData.practice)
 
 					instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of the trials! <br> Those were practice trials. Now you will do the real trials! <br><br> You will do a total of ' + jatos.studySessionData.inputData.experiment_parameters.n_pre_exp_triplet_sessions + ' sessions, each with ' + jatos.studySessionData.inputData.pre_exposure_trials[0].length + ' trials.'
+
+					instruction_pages = [
+						'<div class= "header">' +
+						'<h1>' + page_title + '</h1>' +
+						'</div>' +
+						'<div class="instruct">' +
+						'<p>' + instructions_text + '</p>' +
+						'</div>',
+					]
+
 					comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task
 				} else if (jatos.studySessionData.inputData.session_counters.exposure == 0) {
 					// So we're done with pre-exposure
@@ -121,19 +150,58 @@
 						// Calculate performance
 						let perc_corr = calc_perf(jatos.studySessionData.outputData.pre_exposure.filter(item => item.session == jatos.studySessionData.inputData.session_counters.pre_exposure))
 
-						instructions_text = 
-						'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of the trials! <br> That was the end of the similarity task #1. <br><b>Now we will move onto the Same/Different task.</b> ' + 
-						'<br><br>You will see these birds show up on the screen one-by-one. The task is simple: <br>If the bird you see is exactly the same as you saw on the previous trial, <b>press the button "q"</b>. <br>If the current bird is different than the previous one, <b>press the button "p".</b>' +
-						'<p><br>Each bird will stay on the screen for at least ' + (jatos.studySessionData.inputData.experiment_parameters.exposure_stim_min_duration / 1000) + ' seconds, but you can make your response before that too, it will still get registered.' +
-						'<br><br> However, if you do not respond within ' + (jatos.studySessionData.inputData.experiment_parameters.exposure_trial_dur / 1000) + ' seconds, the trial will be considered as missed and the next trial will begin.' +
-						'<br>Please try to be as accurate as possible!' +
-						'<br><br> You will do a total of ' + jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions + ' sessions for the Same/Different task, each with ' + jatos.studySessionData.inputData.exposure_trials[0].length + ' trials.' +
-						'<p><br><b>Please take a 1 minute break and then start the next task!</b></p>'
+						let instructions_text_1 =
+							'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of the trials! <br> ' +
+							'That was the end of the similarity task #1. ' +
+							'<br><b>Now we will move onto the Same/Different task.</b> ' +
+							'<br><b style="font-size: 150%; color: red;">Please attentively read the instructions below!</b>' +
+							'<br><br>For this next task, you will see these birds show up on the screen one-by-one. The task is simple: ' +
+							'<br>If the bird you see is exactly the same as you saw on the previous trial, <b>press the button "q"</b>. ' +
+							'<br>If the current bird is different than the previous one, <b>press the button "p".</b>' +
+							'<br><br>For example: the 2nd bird you see should be compared to the 1st one, the 3rd should be compared to the 2nd, the 4th to the 3rd, etc.'
 
-						comp_to_start = jatos.studySessionData.inputData.component_positions.exposure
+						let instructions_text_2 = '<br>Each bird will stay on the screen for at least ' +
+							(jatos.studySessionData.inputData.experiment_parameters.exposure_stim_min_duration / 1000) +
+							' seconds, but you can make your response before that too, it will still get registered.' +
+							'<br><br> However, if you do not respond within ' +
+							(jatos.studySessionData.inputData.experiment_parameters.exposure_trial_dur / 1000) +
+							' seconds, the trial will be considered as missed and the next trial will begin.' +
+							'<br>Please try to be as accurate as possible!'
+
+						let instructions_text_3 = '<br> You will do a total of ' +
+							jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions +
+							' sessions for the Same/Different task, each with ' +
+							jatos.studySessionData.inputData.exposure_trials[0].length +
+							' trials.' +
+							'<br><br>The very 1st bird you see for each of these ' +
+							jatos.studySessionData.inputData.experiment_parameters.n_exposure_sessions +
+							' sessions should be skipped. Start comparing from the 2nd bird of each session!' +
+							'<br><br><b>Please take a 1 minute break and then start the next task!</b>'
 
 						page_title = 'Beginning the Same/Different task!'
 
+						instruction_pages = [
+							'<div class= "header">' +
+							'<h1>' + page_title + '</h1>' +
+							'</div>' +
+							'<div class="instruct">' +
+							'<p>' + instructions_text_1 + '</p>' +
+							'</div>',
+							'<div class= "header">' +
+							'<h1>' + page_title + '</h1>' +
+							'</div>' +
+							'<div class="instruct">' +
+							'<p>' + instructions_text_2 + '</p>' +
+							'</div>',
+							'<div class= "header">' +
+							'<h1>' + page_title + '</h1>' +
+							'</div>' +
+							'<div class="instruct">' +
+							'<p>' + instructions_text_3 + '</p>' +
+							'</div>',
+						]
+
+						comp_to_start = jatos.studySessionData.inputData.component_positions.exposure
 
 					} else {
 
@@ -143,6 +211,16 @@
 
 
 						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of the trials! <br> You have finished session ' + jatos.studySessionData.inputData.session_counters.pre_exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_pre_exp_triplet_sessions + ' of the similarity  task. Please take a short break of maximum 30 seconds and then continue.'
+
+						instruction_pages = [
+							'<div class= "header">' +
+							'<h1>' + page_title + '</h1>' +
+							'</div>' +
+							'<div class="instruct">' +
+							'<p>' + instructions_text + '</p>' +
+							'</div>',
+						]
+
 						comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task
 
 					}
@@ -159,9 +237,20 @@
 						let perc_corr = calc_perf(jatos.studySessionData.outputData.post_exposure.filter(item => item.session == jatos.studySessionData.inputData.session_counters.post_exposure))
 
 						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of the trials! <br> You are finished with the experiment! <br> Please complete some debriefing questions.'
-						comp_to_start = jatos.studySessionData.inputData.component_positions.debriefing
 
 						page_title = 'Finished!'
+
+						instruction_pages = [
+							'<div class= "header">' +
+							'<h1>' + page_title + '</h1>' +
+							'</div>' +
+							'<div class="instruct">' +
+							'<p>' + instructions_text + '</p>' +
+							'</div>',
+						]
+
+
+						comp_to_start = jatos.studySessionData.inputData.component_positions.debriefing
 
 					} else {
 
@@ -170,6 +259,16 @@
 						let perc_corr = calc_perf(jatos.studySessionData.outputData.post_exposure.filter(item => item.session == jatos.studySessionData.inputData.session_counters.post_exposure))
 
 						instructions_text = 'Thanks! You were accurate on ' + Math.floor(perc_corr) + '% of the trials! <br> You have finished session ' + jatos.studySessionData.inputData.session_counters.post_exposure + ' of ' + jatos.studySessionData.inputData.experiment_parameters.n_post_exp_triplet_sessions + ' of the similarity  task. Please take a short break of maximum 30 seconds and then continue.'
+
+						instruction_pages = [
+							'<div class= "header">' +
+							'<h1>' + page_title + '</h1>' +
+							'</div>' +
+							'<div class="instruct">' +
+							'<p>' + instructions_text + '</p>' +
+							'</div>',
+						]
+
 						comp_to_start = jatos.studySessionData.inputData.component_positions.triplet_task
 
 					}
@@ -177,51 +276,9 @@
 
 			}
 
-			// let curr_session = jatos.studySessionData.inputData.curr_session
-
-			// if (curr_session == jatos.studySessionData.inputData.all_sessions.length){
-
-			// 	instructions_text = 'Thank you. You have finished the experiment. Please complete a short debriefing.'
-
-			// 	comp_to_start = jatos.studySessionData.inputData.component_positions.debriefing2
-			// } else if (curr_session == 1){
-
-			// 	// So we just finished the practice session
-			// 	instructions_text = 'Great! These were practice trials on the purple board. You will not see that board or those pictures again. <br> Lets start with the real trials. You will learn location of pictures on 5 new different boards that are colored differently. <br> <strong>On some of these boards, the visible items you will see at the beginning of the trials might change locations or be absent completely!</strong> <br> For each of the 5 boards, you will do ' + jatos.studySessionData.inputData.n_ses_per_condition.schema_c + ' sessions, each session with ' + (jatos.studySessionData.inputData.n_trials_per_pa.schema_c*6) + ' trials (' + jatos.studySessionData.inputData.n_trials_per_pa.schema_c + ' trials per hidden picture). <br><br> Click next to start with the first board'
-
-			// 	comp_to_start = jatos.studySessionData.inputData.component_positions.session_pa2
-
-			// } else {
-
-			// 	let previous_condition = jatos.studySessionData.inputData.all_sessions[curr_session-1][0].condition
-			// 	let next_condition     = jatos.studySessionData.inputData.all_sessions[curr_session][0].condition
-
-			// 	if (previous_condition != next_condition){
-			// 		// So we're changing the board
-
-			// 		if (next_condition == 'no_schema'){
-			// 			instructions_text = '<strong>On the next board, there are no visible items.</strong> You will only learn location of the 6 invisible items. <br> Please take a break and move onto the next board.'
-			// 		} else {
-			// 			instructions_text = 'Please take a break. <br> <strong>Next, you will learn a new board with new pictures.</strong>'
-			// 		}
-			// 	} else {
-			// 		instructions_text = 'Please take a break. You will continue learning the locations of the same images on this ' + jatos.studySessionData.inputData.condition_colors[previous_condition] + ' board. Once you are ready please move to the next session.'
-			// 	}
-
-			// 	comp_to_start = jatos.studySessionData.inputData.component_positions.session_pa2
-
-			// }
-
 			var instructions = {
 				type: 'instructions',
-				pages: [
-					'<div class= "header">' +
-					'<h1>' + page_title + '</h1>' +
-					'</div>' +
-					'<div class="instruct">' +
-					'<p>' + instructions_text + '</p>' +
-					'</div>',
-				],
+				pages: instruction_pages,
 				show_clickable_nav: true,
 				button_label_next: '<span style="color: black"d;> <strong> Next </stong></span>',
 			};
