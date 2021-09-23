@@ -38,9 +38,9 @@ function trial_creator_triplets(parameters,n_reps,n_sessions){
 
             let iTrial = {
 
-                query_stimulus: 'img/neck_legs_space/dim_1_stim_' + parameters[iT].query + '_x_' + parameters[iT].query + '_y_110.png',
-                ref_left_stimulus: 'img/neck_legs_space/dim_1_stim_' + parameters[iT]['ref'+ref_left_idx] + '_x_' + parameters[iT]['ref'+ref_left_idx] + '_y_110.png',
-                ref_right_stimulus: 'img/neck_legs_space/dim_1_stim_' + parameters[iT]['ref'+ref_right_idx] + '_x_' + parameters[iT]['ref'+ref_right_idx] + '_y_110.png',
+                query_stimulus: 'img/jpg/neck_legs_space/dim_1_stim_' + parameters[iT].query + '_x_' + parameters[iT].query + '_y_110.jpg',
+                ref_left_stimulus: 'img/jpg/neck_legs_space/dim_1_stim_' + parameters[iT]['ref'+ref_left_idx] + '_x_' + parameters[iT]['ref'+ref_left_idx] + '_y_110.jpg',
+                ref_right_stimulus: 'img/jpg/neck_legs_space/dim_1_stim_' + parameters[iT]['ref'+ref_right_idx] + '_x_' + parameters[iT]['ref'+ref_right_idx] + '_y_110.jpg',
                 ref_left_y_offset: Math.floor((Math.random()-0.5) * 200),
                 ref_right_y_offset: Math.floor((Math.random()-0.5) * 200),
                 correct_response: correct,

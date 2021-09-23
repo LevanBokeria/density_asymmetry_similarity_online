@@ -9,7 +9,9 @@ jsPsych.plugins["triplets-keyboard-response"] = (function () {
 
   var plugin = {};
 
-  // jsPsych.pluginAPI.registerPreload('triplets-keyboard-response', 'stimulus', 'image');
+  jsPsych.pluginAPI.registerPreload('triplets-keyboard-response', 'query_stimulus', 'image');
+  jsPsych.pluginAPI.registerPreload('triplets-keyboard-response', 'ref_left_stimulus', 'image');
+  jsPsych.pluginAPI.registerPreload('triplets-keyboard-response', 'ref_right_stimulus', 'image');
 
   plugin.info = {
     name: 'triplets-keyboard-response',
@@ -165,6 +167,8 @@ jsPsych.plugins["triplets-keyboard-response"] = (function () {
     wrapper_arena.style["justify-content"] = 'center'
     wrapper_arena.style["align-items"] = 'center'
 
+    // Add the arena to the display element
+    display_element.appendChild(wrapper_arena)
   
     // Create the ref_left element
     var ref_left_img_el_html = '<img src="' + trial.ref_left_stimulus + 
@@ -224,10 +228,6 @@ jsPsych.plugins["triplets-keyboard-response"] = (function () {
     wrapper_arena.innerHTML += ref_left_img_el_html
     wrapper_arena.innerHTML += query_img_el_html
     wrapper_arena.innerHTML += ref_right_img_el_html
-
-
-    // Add the arena to the display element
-    display_element.appendChild(wrapper_arena)
 
     // store response
     var response = {
