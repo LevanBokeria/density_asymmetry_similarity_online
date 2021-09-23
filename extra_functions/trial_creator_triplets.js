@@ -17,22 +17,24 @@ function trial_creator_triplets(parameters,n_reps,n_sessions){
         
         for (iT=0; iT<parameters.length; iT++){
 
-            let correct
+            let correct_response
 
             // Whats the "correct" response?
             if (parameters[iT].abs_dist_query_ref1 == parameters[iT].abs_dist_query_ref2){
-                correct = null
+                
+                correct_response = null
+
             } else if (parameters[iT].abs_dist_query_ref1 < parameters[iT].abs_dist_query_ref2){
                 if (ref_left_idx == 1){
-                    correct = 'q'
+                    correct_response = 'q'
                 } else {
-                    correct = 'p'
+                    correct_response = 'p'
                 }
             } else if (parameters[iT].abs_dist_query_ref1 > parameters[iT].abs_dist_query_ref2){
                 if (ref_left_idx == 1){
-                    correct = 'p'
+                    correct_response = 'p'
                 } else {
-                    correct = 'q'
+                    correct_response = 'q'
                 }
             }
 
@@ -43,7 +45,7 @@ function trial_creator_triplets(parameters,n_reps,n_sessions){
                 ref_right_stimulus: 'img/jpg/neck_legs_space/dim_1_stim_' + parameters[iT]['ref'+ref_right_idx] + '_x_' + parameters[iT]['ref'+ref_right_idx] + '_y_110.jpg',
                 ref_left_y_offset: Math.floor((Math.random()-0.5) * 200),
                 ref_right_y_offset: Math.floor((Math.random()-0.5) * 200),
-                correct_response: correct,
+                correct_response: correct_response,
 
             }
 

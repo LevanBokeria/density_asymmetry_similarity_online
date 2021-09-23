@@ -78,12 +78,6 @@ jsPsych.plugins["triplets-keyboard-response"] = (function () {
         default: null,
         description: 'Any content here will be displayed below the stimulus.'
       },
-      stimulus_duration: {
-        type: jsPsych.plugins.parameterType.INT,
-        pretty_name: 'Stimulus duration',
-        default: null,
-        description: 'How long to hide the stimulus.'
-      },
       trial_duration: {
         type: jsPsych.plugins.parameterType.INT,
         pretty_name: 'Trial duration',
@@ -183,47 +177,6 @@ jsPsych.plugins["triplets-keyboard-response"] = (function () {
     '" class="stimuli" id="ref_right_img" style="height: ' + trial.stimulus_height.toString() + 
     'px; margin-top: ' + trial.ref_right_y_offset.toString() + 'px;">'    
 
-
-    // var ref_left_img_el = document.createElement('img')
-
-    // ref_left_img_el.src = trial.ref_left_stimulus
-
-    // ref_left_img_el.className = 'stimuli'
-    // ref_left_img_el.id = 'ref_left_img'
-
-    // ref_left_img_el.style.height = trial.stimulus_height.toString() + 'px'
-    // ref_left_img_el.style.width = ref_left_img_el.naturalWidth * ref_left_img_el.style.height / ref_left_img_el.naturalHeight
-    // ref_left_img_el.style['margin-top'] = trial.ref_left_y_offset.toString() + 'px'
-
-    // wrapper_arena.appendChild(ref_left_img_el)
-
-    // Create the query image element
-    // var query_img_el = document.createElement('img')
-
-    // query_img_el.src = trial.query_stimulus
-
-    // query_img_el.className = 'stimuli'
-    // query_img_el.id = 'query_img'
-
-    // query_img_el.style.height = trial.stimulus_height.toString() + 'px'
-    // query_img_el.style.width = query_img_el.naturalWidth * query_img_el.style.height / query_img_el.naturalHeight
-    // query_img_el.style['margin-right'] = '20px'
-    // query_img_el.style['margin-left'] = '20px'
-
-    // wrapper_arena.appendChild(query_img_el)
-
-    // // Create the ref_right element
-    // var ref_right_img_el = document.createElement('img')
-
-    // ref_right_img_el.src = trial.ref_right_stimulus
-
-    // ref_right_img_el.className = 'stimuli'
-    // ref_right_img_el.id = 'ref_right_img'
-
-    // ref_right_img_el.style.height = trial.stimulus_height.toString() + 'px'
-    // ref_right_img_el.style.width = ref_right_img_el.naturalWidth * ref_right_img_el.style.height / ref_right_img_el.naturalHeight
-    // ref_right_img_el.style['margin-top'] = trial.ref_right_y_offset.toString() + 'px'
-
     // wrapper_arena.appendChild(ref_right_img_el)
     wrapper_arena.innerHTML += ref_left_img_el_html
     wrapper_arena.innerHTML += query_img_el_html
@@ -314,14 +267,6 @@ jsPsych.plugins["triplets-keyboard-response"] = (function () {
         persist: false,
         allow_held_key: false
       });
-    }
-
-
-    // hide stimulus if stimulus_duration is set
-    if (trial.stimulus_duration !== null) {
-      jsPsych.pluginAPI.setTimeout(function () {
-        display_element.querySelector('#jspsych-triplets-keyboard-response-stimulus').style.visibility = 'hidden';
-      }, trial.stimulus_duration);
     }
 
     // end trial if trial_duration is set

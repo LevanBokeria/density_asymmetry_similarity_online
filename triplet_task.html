@@ -54,15 +54,12 @@
             query_stimulus: jsPsych.timelineVariable('query_stimulus'),
             ref_left_stimulus: jsPsych.timelineVariable('ref_left_stimulus'),
             ref_right_stimulus: jsPsych.timelineVariable('ref_right_stimulus'),
-            // query_stimulus: 'img/neck_legs_space/dim_1_stim_100_x_100_y_110.png',
-            // ref_left_stimulus: 'img/neck_legs_space/dim_1_stim_100_x_100_y_110.png',
-            // ref_right_stimulus: 'img/neck_legs_space/dim_1_stim_100_x_100_y_110.png',
             ref_left_y_offset: jsPsych.timelineVariable('ref_left_y_offset'),
             ref_right_y_offset: jsPsych.timelineVariable('ref_right_y_offset'),
             stimulus_height: 400,
             choices: ['q', 'p'],
             trial_duration: jatos.studySessionData.inputData.experiment_parameters.triplet_trial_dur,
-            post_response_delay: 500,
+            post_response_delay: jatos.studySessionData.inputData.experiment_parameters.triplet_trial_iti,
             stim_min_duration: jatos.studySessionData.inputData.experiment_parameters.triplet_stim_min_duration,
             data: { trial_stage: trial_stage_name },
             on_finish: function (data) {
@@ -86,30 +83,14 @@
             }
         }
 
-        var feedback = {
-            type: 'html-keyboard-response',
-            stimulus: function () {
-                // The feedback stimulus is a dynamic parameter because we can't know in advance whether
-                // the stimulus should be 'correct' or 'incorrect'.
-                // Instead, this function will check the accuracy of the last response and use that information to set
-                // the stimulus value on each trial.
-                var last_trial = jsPsych.data.get().last(1).values()[0];
-                if (last_trial.rt != null) {
-                    return "<p style=font-size:50px>+</p>"; // the parameter value has to be returned from the function
-                } else {
-                    return "<p>missed...</p>"; // the parameter value has to be returned from the function
-                }
-            },
-            trial_duration: jatos.studySessionData.inputData.experiment_parameters.triplet_trial_iti,
-        }
-
         var session_procedure = {
             timeline: [trial],
             timeline_variables: session_trials,
             randomize_order: false,
             post_trial_gap: 0,
         }
-        debugger
+        
+
         // Preload trial
         var all_query_images     = session_trials.map(item => item.query_stimulus)
         var all_ref_left_images  = session_trials.map(item => item.ref_left_stimulus)
