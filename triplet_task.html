@@ -54,6 +54,9 @@
             query_stimulus: jsPsych.timelineVariable('query_stimulus'),
             ref_left_stimulus: jsPsych.timelineVariable('ref_left_stimulus'),
             ref_right_stimulus: jsPsych.timelineVariable('ref_right_stimulus'),
+            // query_stimulus: 'img/neck_legs_space/dim_1_stim_100_x_100_y_110.png',
+            // ref_left_stimulus: 'img/neck_legs_space/dim_1_stim_100_x_100_y_110.png',
+            // ref_right_stimulus: 'img/neck_legs_space/dim_1_stim_100_x_100_y_110.png',
             ref_left_y_offset: jsPsych.timelineVariable('ref_left_y_offset'),
             ref_right_y_offset: jsPsych.timelineVariable('ref_right_y_offset'),
             stimulus_height: 400,
@@ -106,11 +109,16 @@
             randomize_order: false,
             post_trial_gap: 0,
         }
-
+        
         // Preload trial
+        var all_query_images     = session_trials.map(item => item.query_stimulus)
+        var all_ref_left_images  = session_trials.map(item => item.ref_left_stimulus)
+        var all_ref_right_images = session_trials.map(item => item.ref_right_stimulus)
+        var all_images_preload   = [...all_query_images,...all_ref_left_images,...all_ref_right_images]
+
         var preload_trial = {
             type: 'preload',
-            images: jatos.studySessionData.inputData.all_exemplars
+            images: all_images_preload
         }
 
         jsPsych.init({

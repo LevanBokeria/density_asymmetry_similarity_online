@@ -91,7 +91,7 @@ function trial_creator_exposure(n_sessions){
     // debugger
     var all_sessions = []
 
-    let n_trials_per_session = all_trials.length/n_sessions
+    let n_trials_per_session = 50 //all_trials.length/n_sessions
 
     while(all_trials.length){
         all_sessions[all_sessions.length] = all_trials.splice(0,n_trials_per_session)

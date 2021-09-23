@@ -221,7 +221,6 @@ jsPsych.plugins["triplets-keyboard-response"] = (function () {
     // ref_right_img_el.style['margin-top'] = trial.ref_right_y_offset.toString() + 'px'
 
     // wrapper_arena.appendChild(ref_right_img_el)
-    debugger
     wrapper_arena.innerHTML += ref_left_img_el_html
     wrapper_arena.innerHTML += query_img_el_html
     wrapper_arena.innerHTML += ref_right_img_el_html

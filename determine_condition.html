@@ -379,7 +379,7 @@
 
         // How many exposure sessions
         jatos.studySessionData.inputData.experiment_parameters = {
-            n_exposure_sessions: 5,
+            n_exposure_sessions: 7,
             n_practice_sessions: 1,
             n_pre_exp_triplet_sessions: 2,
             n_post_exp_triplet_sessions: 2,
@@ -438,7 +438,7 @@
             jatos.studySessionData.inputData.exposure_trials.forEach(function(el){
                 temp_exposure.push(el.slice(0,n_debug_trials))
             })
-            // jatos.studySessionData.inputData.exposure_trials = temp_exposure
+            jatos.studySessionData.inputData.exposure_trials = temp_exposure
 
             // Shorten the triplet trials
             let temp_practice = []
