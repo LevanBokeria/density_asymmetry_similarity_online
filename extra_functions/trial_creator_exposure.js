@@ -4,19 +4,19 @@ function trial_creator_exposure(n_sessions){
 
     let n_exposure_exemplars = exemplars.length
 
-    // Repeat the exposures exemplars each 5 times, creates an array of 170 exemplars
-    let initial_170 = jsPsych.randomization.repeat(exemplars,5)
+    // Repeat the exposures exemplars each 6 times, creates an array of 204 exemplars
+    let initial_204 = jsPsych.randomization.repeat(exemplars,6)
 
     // Make sure they don't repeat
-    initial_170 = jsPsych.randomization.shuffleNoRepeats(initial_170)
+    initial_204 = jsPsych.randomization.shuffleNoRepeats(initial_204)
 
     // Now, for each of the 34, create a doublet and shove it in the array randomly. Do this twice
-    let initial_with_reps = JSON.parse(JSON.stringify(initial_170))
+    let initial_with_reps = JSON.parse(JSON.stringify(initial_204))
 
     for (iRep=0; iRep<2; iRep++){
         for (iEx=0; iEx<n_exposure_exemplars; iEx++){
 
-            // Take a random location in the initial_170 array
+            // Take a random location in the initial_204 array
             let rand_idx = Math.ceil(Math.random() * initial_with_reps)
 
             // Insert the first exemplar back to back here
@@ -26,18 +26,18 @@ function trial_creator_exposure(n_sessions){
         }
     }
 
-    // We've now inserted 34*2=68 "same" doublets. We need 85, so do this for 17 more
-    let last_17_to_insert = jsPsych.randomization.sampleWithoutReplacement(exemplars,17)
-    for (iEx=0; iEx<last_17_to_insert.length; iEx++){
+    // // We've now inserted 34*2=68 "same" doublets. We need 85, so do this for 17 more
+    // let last_17_to_insert = jsPsych.randomization.sampleWithoutReplacement(exemplars,17)
+    // for (iEx=0; iEx<last_17_to_insert.length; iEx++){
 
-        // Take a random location in the initial_170 array
-        let rand_idx = Math.ceil(Math.random() * initial_with_reps)
+    //     // Take a random location in the initial_204 array
+    //     let rand_idx = Math.ceil(Math.random() * initial_with_reps)
 
-        // Insert the first exemplar back to back here
-        initial_with_reps.splice(rand_idx,0,last_17_to_insert[iEx])
-        initial_with_reps.splice(rand_idx,0,last_17_to_insert[iEx])
+    //     // Insert the first exemplar back to back here
+    //     initial_with_reps.splice(rand_idx,0,last_17_to_insert[iEx])
+    //     initial_with_reps.splice(rand_idx,0,last_17_to_insert[iEx])
 
-    }
+    // }
 
     // Count n repeats
     var counter = 0
@@ -57,10 +57,10 @@ function trial_creator_exposure(n_sessions){
     // Start creating all the trials
     let all_trials = []
 
-
+    debugger
     for (iT = 0; iT<initial_with_reps.length; iT++){
         // debugger
-        let curr_exemplar = jatos.studySessionData.inputData.exposure_exemplars[initial_with_reps[iT]]
+        let curr_exemplar = initial_with_reps[iT]
 
         let iTrial = {
 
