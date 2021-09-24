@@ -82,8 +82,8 @@
                 if (typeof query_pID != 'undefined') {
 
                     // So we got it from the URL, save it normally
-                    jatos.studySessionData.inputData.prolific_ID = query_pID
-                    jatos.studySessionData.inputData.pid_source = 'url'
+                    jatos.studySessionData.prolific_ID = query_pID
+                    jatos.studySessionData.pid_source = 'url'
 
 
                     jatos.submitResultData("[get_pid_comp_start---" +
@@ -95,7 +95,7 @@
                     // Check if autoPID
                     if (autoPID) {
                         jatos.studySessionData.prolific_ID = "test"
-                        jatos.studySessionData.inputData.pid_source = 'auto'
+                        jatos.studySessionData.pid_source = 'auto'
 
                         jatos.submitResultData("[get_pid_comp_start---" +
                             JSON.stringify(jatos.studySessionData) +
